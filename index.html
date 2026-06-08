@@ -49,6 +49,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .parallax-overlay{position:absolute;inset:0;}
 /* BACKGROUND VIDEO */
 .video-bg{width:100%;height:100%;object-fit:cover;pointer-events:none;}
+/* ───── BOTÓN RESEÑAS FLOTANTE ───── */
+.review-float{position:fixed;bottom:1.5rem;left:1.5rem;z-index:250;}
+.review-btn{background:linear-gradient(135deg,#FF6B35,#F7931E);color:#fff;border:none;padding:.75rem 1.3rem;border-radius:50px;font-weight:700;font-size:.82rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 6px 28px rgba(255,107,53,.35);transition:all .2s;letter-spacing:.03em;text-decoration:none;white-space:nowrap;}
+.review-btn:hover{background:linear-gradient(135deg,#F7931E,#FFB347);transform:translateY(-2px);box-shadow:0 10px 32px rgba(255,107,53,.5);}
+.review-stars{color:#FFD700;font-size:.9rem;letter-spacing:.05em;}
+@media(max-width:600px){.review-float{left:.75rem;bottom:1rem;}.review-btn{font-size:.75rem;padding:.65rem 1rem;}}
 /* Section overlays */
 .overlay-fachada{background:linear-gradient(160deg,rgba(15,12,9,.72) 0%,rgba(201,168,76,.08) 100%);}
 .overlay-desayuno{background:linear-gradient(to bottom,rgba(15,12,9,.55) 0%,rgba(15,12,9,.2) 40%,rgba(15,12,9,.75) 100%);}
@@ -251,7 +257,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
         <span class="status-dot"></span>
         <span id="statusText">Abierto</span>
       </div>
-      <a href="https://wa.me/5493489236060" target="_blank" class="nav-cta">Hacer Pedido</a>
+      <a href="https://wa.me/5493489236010" target="_blank" class="nav-cta">Hacer Pedido</a>
       <div class="hamburger" id="hamburger" onclick="toggleMobile()">
         <span></span><span></span><span></span>
       </div>
@@ -271,7 +277,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 ═════════════════════════════════ -->
 <section class="parallax-section" id="inicio">
   <div class="parallax-bg" id="bg-fachada" style="background-image:url('Captura_de_pantalla_2026-06-07_160824.png');">
-    <!-- BACKGROUND VIDEO -->
+    <!-- BACKGROUND VIDEO 1 -->
     <video autoplay muted loop playsinline class="video-bg">
       <source src="https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/VIDEO%20TONGOY.mp4" type="video/mp4">
       <source src="https://github.com/NEXOar-art/TONGOY/raw/main/VIDEO%20TONGOY.mp4" type="video/mp4">
@@ -284,7 +290,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
     <p class="hero-sub">Gastronomía de calidad, ambiente cálido<br>y el mejor after work de Campana.</p>
     <div class="hero-actions">
       <a href="#menu" class="btn-gold">Ver Menú</a>
-      <a href="https://wa.me/5493489236060" target="_blank" class="btn-outline">📲 Pedido WhatsApp</a>
+      <a href="https://wa.me/5493489236010" target="_blank" class="btn-outline">📲 Pedido WhatsApp</a>
     </div>
   </div>
   <div class="scroll-ind">Scroll</div>
@@ -334,10 +340,16 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   </div>
 </section>
 <!-- ════════════════════════════════
-     SECCIÓN 5: BEBIDAS
+     SECCIÓN 5: BEBIDAS (VIDEO 2)
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-bebidas">
-  <div class="parallax-bg" id="bg-beb" style="background-image:url('Captura_de_pantalla_2026-06-07_160935.png');"></div>
+  <div class="parallax-bg" id="bg-beb" style="background-image:url('Captura_de_pantalla_2026-06-07_160935.png');">
+    <!-- BACKGROUND VIDEO 2 - Experiencia Cinematográfica -->
+    <video autoplay muted loop playsinline class="video-bg">
+      <source src="https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/VIDEO2TONGOY.mp4" type="video/mp4">
+      <source src="https://github.com/NEXOar-art/TONGOY/raw/main/VIDEO2TONGOY.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="parallax-overlay overlay-bebidas"></div>
   <div class="parallax-content section-callout">
     <p class="sec-label reveal">✦ Carta de tragos</p>
@@ -371,6 +383,15 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
     <div class="menu-grid" id="menuGrid"></div>
   </div>
 </section>
+<!-- ════════════════════════════════
+     BOTÓN RESEÑAS FLOTANTE
+═════════════════════════════════ -->
+<div class="review-float">
+  <a href="https://maps.app.goo.gl/tiv5TK77PuhanHMfA" target="_blank" class="review-btn" id="reviewBtn">
+    <span class="review-stars">★★★★★</span>
+    <span>Dejá tu Reseña</span>
+  </a>
+</div>
 <!-- ════════════════════════════════
      CARRITO FLOTANTE
 ═════════════════════════════════ -->
@@ -461,18 +482,23 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
         <div class="ci-item"><div class="ci-icon">📍</div><div class="ci-txt"><h4>Dirección</h4><p>Campana, Buenos Aires, Argentina</p></div></div>
         <div class="ci-item"><div class="ci-icon">🕐</div><div class="ci-txt"><h4>Horarios</h4><p>Lun–Jue: 07:00 a 23:00 hs<br>Vie–Sáb: 07:00 a 00:30 hs</p></div></div>
         <div class="ci-item"><div class="ci-icon">📞</div><div class="ci-txt"><h4>Take Away</h4><a href="tel:3489236010">3489 236010</a></div></div>
-        <div class="ci-item"><div class="ci-icon">📲</div><div class="ci-txt"><h4>WhatsApp Pedidos</h4><a href="https://wa.me/5493489236060" target="_blank">3489 236060</a></div></div>
+        <div class="ci-item"><div class="ci-icon">📲</div><div class="ci-txt"><h4>WhatsApp Pedidos</h4><a href="https://wa.me/5493489236010" target="_blank">3489 236010</a></div></div>
         <div class="social-row">
-          <a href="https://wa.me/5493489236060" target="_blank" class="soc-btn soc-wa">📱 WhatsApp</a>
+          <a href="https://wa.me/5493489236010" target="_blank" class="soc-btn soc-wa">📱 WhatsApp</a>
           <a href="https://www.instagram.com/tongoycampana/" target="_blank" class="soc-btn soc-ig">📸 Instagram</a>
           <a href="https://www.facebook.com/tongoycampana/" target="_blank" class="soc-btn soc-fb">🔵 Facebook</a>
         </div>
       </div>
-      <a href="https://www.google.com/maps/search/Tongoy+Campana+Buenos+Aires" target="_blank" class="map-block reveal">
-        <span style="font-size:3rem;">📍</span>
-        <strong style="color:var(--cream);font-size:1rem;">Ver en Google Maps</strong>
-        <span>Campana, Buenos Aires</span>
-      </a>
+      <div class="reveal" style="display:flex;flex-direction:column;gap:1rem;">
+        <a href="https://maps.app.goo.gl/tiv5TK77PuhanHMfA" target="_blank" class="map-block" style="flex:1;">
+          <span style="font-size:3rem;">📍</span>
+          <strong style="color:var(--cream);font-size:1rem;">Ver Ubicación en Google Maps</strong>
+          <span>Tongoy Restobar · Campana, Buenos Aires</span>
+        </a>
+        <a href="https://maps.app.goo.gl/tiv5TK77PuhanHMfA" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.5rem;background:linear-gradient(135deg,rgba(255,107,53,.15),rgba(247,147,30,.08));border:1px solid rgba(255,107,53,.4);border-radius:6px;color:var(--cream);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;" onmouseover="this.style.borderColor='#FF6B35';this.style.color='#FF6B35'" onmouseout="this.style.borderColor='rgba(255,107,53,.4)';this.style.color='var(--cream)'">
+          <span style="color:#FFD700;font-size:1rem;">★★★★★</span> Dejá tu Reseña en Google
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -494,9 +520,10 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
       <div class="footer-col">
         <h4>Contacto</h4>
         <a href="tel:3489236010">3489 236010</a>
-        <a href="https://wa.me/5493489236060" target="_blank">WhatsApp</a>
+        <a href="https://wa.me/5493489236010" target="_blank">WhatsApp</a>
         <a href="https://www.instagram.com/tongoycampana/" target="_blank">@tongoycampana</a>
         <a href="https://www.facebook.com/tongoycampana/" target="_blank">Facebook</a>
+        <a href="https://maps.app.goo.gl/tiv5TK77PuhanHMfA" target="_blank">⭐ Reseñas Google</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -537,15 +564,13 @@ let pendingImgId = null;
 // ════════════ STATUS BADGE ════════════
 function checkStatus(){
   const now = new Date();
-  const day = now.getDay(); // 0=sun,1=mon,...,6=sat
+  const day = now.getDay();
   const h = now.getHours(), m = now.getMinutes();
   const mins = h*60+m;
-  // Mon-Thu: 7:00-23:00 | Fri-Sat: 7:00-00:30
   let open = false;
-  const open_min = 7*60; // 420
+  const open_min = 7*60;
   if(day>=1 && day<=4){ open = mins>=open_min && mins<23*60; }
-  else if(day===5||day===6){ open = mins>=open_min || mins<30; } // after midnight before 0:30
-  // Sun closed
+  else if(day===5||day===6){ open = mins>=open_min || mins<30; }
   const badge = document.getElementById('statusBadge');
   const txt = document.getElementById('statusText');
   if(open){
@@ -593,7 +618,6 @@ function renderMenu(){
       </div>
     </div>`;
   }).join('');
-  // apply admin class to grid
   if(adminMode) grid.classList.add('admin-mode'); else grid.classList.remove('admin-mode');
 }
 // ════════════ ADMIN ════════════
@@ -642,7 +666,6 @@ function addToCart(id){
   if(!item) return;
   if(cart[id]) cart[id].qty++; else cart[id]={...item, qty:1};
   updateCartUI();
-  // flash
   const btn = document.querySelector('.cart-btn');
   btn.style.background='#25D366'; setTimeout(()=>btn.style.background='',400);
 }
@@ -678,7 +701,7 @@ function sendOrder(){
   const total=items.reduce((s,i)=>s+i.price*i.qty,0);
   const lines=items.map(i=>`• ${i.qty}x ${i.name} ($${(i.price*i.qty).toLocaleString('es-AR')})`).join('\n');
   const msg=`¡Hola Tongoy! 👋 Quiero hacer un pedido:\n\n${lines}\n\n*TOTAL: $${total.toLocaleString('es-AR')}*\n\n¿Pueden confirmarlo? Gracias 🙌`;
-  window.open(`https://wa.me/5493489236060?text=${encodeURIComponent(msg)}`, '_blank');
+  window.open(`https://wa.me/5493489236010?text=${encodeURIComponent(msg)}`, '_blank');
 }
 // ════════════ MOBILE NAV ════════════
 function toggleMobile(){
@@ -710,7 +733,6 @@ function onScroll(){
       }
     }
   });
-  // reveal
   document.querySelectorAll('.reveal').forEach(el=>{
     if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
   });
@@ -723,4 +745,3 @@ renderMenu();
 </script>
 </body>
 </html>
-
