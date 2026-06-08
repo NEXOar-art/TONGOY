@@ -330,7 +330,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
      SECCIÓN 2: DESAYUNO
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-desayuno">
-  <div class="parallax-bg" id="bg-desayuno" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/Captura%20de%20pantalla%202026-06-07%20222015.png');"></div>
+  <div class="parallax-bg" id="bg-desayuno" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy1.png');"></div>
   <div class="parallax-overlay overlay-desayuno"></div>
   <div class="parallax-content section-callout">
     <p class="sec-label reveal">✦ Comenzá el día</p>
@@ -345,7 +345,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
      SECCIÓN 3: AFTER WORK
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-afterwork">
-  <div class="parallax-bg" id="bg-after" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/Captura%20de%20pantalla%202026-06-07%20160935.png');"></div>
+  <div class="parallax-bg" id="bg-after" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy2.png');"></div>
   <div class="parallax-overlay overlay-after"></div>
   <div class="parallax-content section-callout" style="text-align:left;max-width:650px;margin-left:0;padding-left:5vw;">
     <p class="sec-label reveal">✦ De lunes a sábado</p>
@@ -360,7 +360,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
      SECCIÓN 4: MILANESA
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-mila">
-  <div class="parallax-bg" id="bg-mila" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/Captura%20de%20pantalla%202026-06-07%20161005.png');"></div>
+  <div class="parallax-bg" id="bg-mila" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy3.png');"></div>
   <div class="parallax-overlay overlay-mila"></div>
   <div class="parallax-content section-callout" style="text-align:right;max-width:650px;margin-left:auto;padding-right:5vw;">
     <p class="sec-label reveal">✦ Platos principales</p>
@@ -375,7 +375,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
      SECCIÓN 5: BEBIDAS
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-bebidas">
-  <div class="parallax-bg" id="bg-beb" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/Captura%20de%20pantalla%202026-06-07%20222142.png');"></div>
+  <div class="parallax-bg" id="bg-beb" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy4.png');"></div>
   <div class="parallax-overlay overlay-bebidas"></div>
   <div class="parallax-content section-callout">
     <p class="sec-label reveal">✦ Carta de tragos</p>
@@ -586,15 +586,61 @@ const DEFAULT_MENU = [
 const CATS = [{key:'todos',label:'Todos'},{key:'desayunos',label:'Desayunos'},{key:'platos',label:'Platos'},{key:'bebidas',label:'Bebidas'}];
 const EMOJIS = {'desayunos':'☕','platos':'🍽️','bebidas':'🍹'};
 
-function loadMenu(){
-  try{const s=localStorage.getItem('tongoyMenu');return s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT_MENU));}catch(e){return JSON.parse(JSON.stringify(DEFAULT_MENU));}
-}
-function saveMenu(){localStorage.setItem('tongoyMenu',JSON.stringify(menuData));}
-let menuData = loadMenu();
+const DB_URL = 'https://kvdb.io/TongoyRestobar2026db/menu';
+
+let menuData = [];
 let activeCat = 'todos';
 let cart = {};
 let adminMode = false;
 let pendingImgId = null;
+
+function initMenu(){
+  try {
+    const s = localStorage.getItem('tongoyMenu');
+    menuData = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_MENU));
+  } catch(e) {
+    menuData = JSON.parse(JSON.stringify(DEFAULT_MENU));
+  }
+  renderTabs();
+  renderMenu();
+  syncMenuFromCloud();
+}
+
+async function syncMenuFromCloud(){
+  try {
+    const res = await fetch(DB_URL);
+    if (res.ok) {
+      const cloudData = await res.json();
+      if (Array.isArray(cloudData) && cloudData.length > 0) {
+        menuData = cloudData;
+        try { localStorage.setItem('tongoyMenu', JSON.stringify(menuData)); } catch(e) {}
+        renderMenu();
+        console.log("Menú sincronizado desde la nube.");
+      }
+    }
+  } catch(err) {
+    console.warn("No se pudo conectar a la base de datos en la nube. Usando datos locales:", err);
+  }
+}
+
+async function saveMenu(){
+  try {
+    localStorage.setItem('tongoyMenu', JSON.stringify(menuData));
+  } catch(e) {}
+  
+  if (adminMode) {
+    try {
+      await fetch(DB_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(menuData)
+      });
+      console.log("Menú guardado en la nube.");
+    } catch(err) {
+      console.error("Error guardando menú en la nube:", err);
+    }
+  }
+}
 
 // ════════════ STATUS BADGE ════════════
 function checkStatus(){
@@ -664,6 +710,15 @@ function renderMenu(){
 
 // ════════════ ADMIN ════════════
 function setAdmin(on){
+  if (on && !adminMode) {
+    const pw = prompt("Ingrese la contraseña de administrador para realizar cambios globales:");
+    if (pw !== "tongoy2026") {
+      alert("Contraseña incorrecta. Acceso denegado.");
+      const toggle = document.getElementById('adminToggle');
+      if (toggle) toggle.checked = false;
+      return;
+    }
+  }
   adminMode = on;
   const toggle = document.getElementById('adminToggle');
   if(toggle) toggle.checked = on;
@@ -692,16 +747,51 @@ function openImgPicker(id){
   pendingImgId = id;
   document.getElementById('imgFileInput').click();
 }
+function compressAndSaveImage(file, itemId) {
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      const canvas = document.createElement('canvas');
+      const max_size = 400;
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height) {
+        if (width > max_size) {
+          height *= max_size / width;
+          width = max_size;
+        }
+      } else {
+        if (height > max_size) {
+          width *= max_size / height;
+          height = max_size;
+        }
+      }
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
+      
+      const item = menuData.find(i => i.id === itemId);
+      if (item) {
+        item.img = dataUrl;
+        saveMenu();
+        renderMenu();
+      }
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
 document.getElementById('imgFileInput').addEventListener('change', function(){
   const file = this.files[0];
   if(!file || !pendingImgId) return;
-  const reader = new FileReader();
-  reader.onload = function(e){
-    const item = menuData.find(i=>i.id===pendingImgId);
-    if(item){ item.img = e.target.result; saveMenu(); renderMenu(); }
-    pendingImgId = null;
-  };
-  reader.readAsDataURL(file);
+  compressAndSaveImage(file, pendingImgId);
+  pendingImgId = null;
   this.value='';
 });
 
@@ -742,12 +832,31 @@ function updateCartUI(){
 }
 function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
 function sendOrder(){
-  const items=Object.values(cart);
-  if(!items.length){alert('¡Agregá productos al carrito primero!');return;}
-  const total=items.reduce((s,i)=>s+i.price*i.qty,0);
-  const lines=items.map(i=>`• ${i.qty}x ${i.name} ($${(i.price*i.qty).toLocaleString('es-AR')})`).join('\n');
-  const msg=`¡Hola Tongoy! 👋 Quiero hacer un pedido:\n\n${lines}\n\n*TOTAL: $${total.toLocaleString('es-AR')}*\n\n¿Pueden confirmarlo? Gracias 🙌`;
-  window.open(`https://wa.me/5493489236010?text=${encodeURIComponent(msg)}`, '_blank');
+  const items = Object.values(cart);
+  if(!items.length){ alert('¡Agregá productos al carrito primero!'); return; }
+  
+  const total = items.reduce((s,i)=>s+i.price*i.qty, 0);
+  const dateStr = new Date().toLocaleString('es-AR', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' });
+  
+  const emojiMap = { 'desayunos': '☕', 'platos': '🍽️', 'bebidas': '🍹' };
+  
+  let ticket = `*================================*\n`;
+  ticket    += `     *📋 COMANDA DE PEDIDO 📋*     \n`;
+  ticket    += `*================================*\n`;
+  ticket    += `*Fecha/Hora:* ${dateStr}\n`;
+  ticket    += `*--------------------------------*\n`;
+  
+  items.forEach(i => {
+    const emoji = emojiMap[i.cat] || '🔸';
+    ticket += `${emoji} *${i.qty}x* ${i.name}\n`;
+  });
+  
+  ticket += `*--------------------------------*\n`;
+  ticket += `*💰 TOTAL ESTIMADO:* $${total.toLocaleString('es-AR')}\n`;
+  ticket += `*================================*\n\n`;
+  ticket += `¡Hola Tongoy! 👋 Les comparto mi comanda. ¿Me confirman el pedido? ¡Gracias! 🙌`;
+
+  window.open(`https://wa.me/5493489236010?text=${encodeURIComponent(ticket)}`, '_blank');
 }
 
 // ════════════ MOBILE NAV ════════════
@@ -776,8 +885,14 @@ function onScroll(){
       const parent = node.parentElement;
       const rect = parent.getBoundingClientRect();
       if(rect.bottom>0 && rect.top<window.innerHeight){
+        const viewportHeight = window.innerHeight;
+        const parentHeight = parent.offsetHeight;
+        const progress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + parentHeight)));
+        
         const offset = (rect.top + sy) * speed - sy * speed;
-        node.style.transform = `translateY(${offset*.15}px)`;
+        const scale = 1.15 - (progress * 0.1);
+        
+        node.style.transform = `translateY(${offset*.15}px) scale(${scale})`;
       }
     }
   });
@@ -790,8 +905,7 @@ window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
 // ════════════ INIT ════════════
-renderTabs();
-renderMenu();
+initMenu();
 </script>
 </body>
 </html>
