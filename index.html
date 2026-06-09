@@ -22,7 +22,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .nav-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:62px;}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.12em;color:var(--gold);}
 
-/* STATUS BADGE */
 .status-badge{display:flex;align-items:center;gap:.45rem;padding:.35rem .85rem;border-radius:50px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;border:1px solid transparent;transition:all .4s;}
 .status-open{background:rgba(37,211,102,.12);border-color:rgba(37,211,102,.35);color:#25D366;}
 .status-closed{background:rgba(196,85,43,.12);border-color:rgba(196,85,43,.35);color:#E07050;}
@@ -42,30 +41,73 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .hamburger.open span:nth-child(2){opacity:0;}
 .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-/* MOBILE MENU */
 .mob-menu{display:none;position:fixed;inset:0;background:var(--dark2);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:2rem;padding-top:62px;}
 .mob-menu.open{display:flex;}
 .mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.08em;color:var(--cream);transition:color .2s;}
 .mob-menu a:hover{color:var(--gold);}
 
-/* ───── CINEMATIC PARALLAX SECTIONS ───── */
-.parallax-section{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.parallax-section::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,var(--dark) 0%,transparent 100%);z-index:2;pointer-events:none;}
-.parallax-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--dark) 0%,transparent 100%);z-index:2;pointer-events:none;}
-.parallax-bg{position:absolute;inset:-12%;background-size:cover;background-position:center;background-repeat:no-repeat;will-change:transform;transition:transform .08s ease-out;}
-.parallax-overlay{position:absolute;inset:0;}
+/* ───── HERO VIDEO SECTION ───── */
+#inicio{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+#inicio::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,var(--dark) 0%,transparent 100%);z-index:2;pointer-events:none;}
+#inicio::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--dark) 0%,transparent 100%);z-index:2;pointer-events:none;}
 
-/* BACKGROUND VIDEO */
-.video-bg{width:100%;height:100%;object-fit:cover;pointer-events:none;}
+.hero-video-wrap{position:absolute;inset:0;overflow:hidden;}
+.hero-video-wrap video{
+  width:100%;height:100%;object-fit:cover;pointer-events:none;
+  /* Zoom-out: empieza muy cerca y se aleja */
+  animation: heroZoomOut 7s ease-out forwards;
+  transform-origin: center center;
+}
+@keyframes heroZoomOut{
+  0%   { transform: scale(1.65); }
+  100% { transform: scale(1.0); }
+}
 
-/* Section overlays */
-.overlay-fachada{background:linear-gradient(160deg,rgba(15,12,9,.72) 0%,rgba(201,168,76,.08) 100%);}
-.overlay-desayuno{background:linear-gradient(to bottom,rgba(15,12,9,.55) 0%,rgba(15,12,9,.2) 40%,rgba(15,12,9,.75) 100%);}
-.overlay-after{background:linear-gradient(135deg,rgba(15,12,9,.8) 0%,rgba(45,35,24,.5) 100%);}
-.overlay-mila{background:linear-gradient(to top,rgba(15,12,9,.9) 0%,rgba(15,12,9,.3) 60%,rgba(15,12,9,.6) 100%);}
-.overlay-bebidas{background:linear-gradient(to bottom right,rgba(15,12,9,.7),rgba(139,58,30,.25),rgba(15,12,9,.8));}
+.hero-fallback-bg{
+  position:absolute;inset:0;
+  background-image:url('Captura_de_pantalla_2026-06-07_160824.png');
+  background-size:cover;background-position:center;
+}
 
-.parallax-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:900px;}
+.overlay-fachada{position:absolute;inset:0;background:linear-gradient(160deg,rgba(15,12,9,.68) 0%,rgba(201,168,76,.06) 100%);z-index:1;}
+
+/* ───── PARALLAX SECTIONS (con zoom-out al entrar) ───── */
+.parallax-section{
+  position:relative;height:100vh;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.parallax-section::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;background:linear-gradient(to bottom,var(--dark) 0%,transparent 100%);z-index:3;pointer-events:none;}
+.parallax-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:140px;background:linear-gradient(to top,var(--dark) 0%,transparent 100%);z-index:3;pointer-events:none;}
+
+/* Contenedor de imagen con zoom-out + float */
+.parallax-bg{
+  position:absolute;inset:-8%;
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  will-change:transform;
+  /* Estado inicial: zoom-in esperando entrar al viewport */
+  transform: scale(1.35) translateY(0px);
+  transition: transform 1.4s cubic-bezier(.22,1,.36,1);
+}
+/* Cuando la sección es visible, hace zoom-out suave */
+.parallax-section.in-view .parallax-bg{
+  transform: scale(1.0) translateY(0px);
+  animation: sectionFloat 8s ease-in-out infinite 1.4s;
+}
+/* Floating sutil (solo cuando ya hizo zoom-out) */
+@keyframes sectionFloat{
+  0%,100% { transform: scale(1.0) translateY(0px); }
+  25%     { transform: scale(1.01) translateY(-6px); }
+  50%     { transform: scale(1.02) translateY(0px); }
+  75%     { transform: scale(1.01) translateY(5px); }
+}
+
+.parallax-overlay{position:absolute;inset:0;z-index:1;}
+.overlay-desayuno{background:linear-gradient(to bottom,rgba(15,12,9,.5) 0%,rgba(15,12,9,.15) 40%,rgba(15,12,9,.75) 100%);}
+.overlay-after{background:linear-gradient(135deg,rgba(15,12,9,.78) 0%,rgba(45,35,24,.45) 100%);}
+.overlay-mila{background:linear-gradient(to top,rgba(15,12,9,.9) 0%,rgba(15,12,9,.25) 60%,rgba(15,12,9,.55) 100%);}
+.overlay-bebidas{background:linear-gradient(to bottom right,rgba(15,12,9,.68),rgba(139,58,30,.2),rgba(15,12,9,.78));}
+
+.parallax-content{position:relative;z-index:4;text-align:center;padding:2rem;max-width:900px;}
 
 /* ───── TYPOGRAPHY ───── */
 .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:0;animation:fadeUp .9s forwards;}
@@ -76,18 +118,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .sec-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,7vw,5.5rem);letter-spacing:.06em;line-height:.95;margin-bottom:1rem;}
 .divider{width:36px;height:2px;background:var(--gold);margin:1.2rem auto;}
 
-/* HERO ACTIONS */
 .hero-actions{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .6s forwards;}
 .btn-gold{background:var(--gold);color:var(--dark);padding:.8rem 2.2rem;border-radius:2px;font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;display:inline-block;}
 .btn-gold:hover{background:var(--gold-l);transform:translateY(-2px);}
 .btn-outline{border:1px solid rgba(245,240,232,.4);color:var(--cream);padding:.8rem 2.2rem;border-radius:2px;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;transition:all .2s;display:inline-block;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 
-/* SCROLL INDICATOR */
-.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(245,240,232,.4);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;animation:pulse 2.5s infinite;}
+.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(245,240,232,.4);font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;animation:pulse 2.5s infinite;z-index:4;}
 .scroll-ind::after{content:'';width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);}
 
-/* SECTION CALLOUT TEXT */
 .section-callout{animation:fadeUp 1s .2s both;}
 .callout-desc{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(245,240,232,.7);line-height:1.8;max-width:560px;margin:0 auto 2rem;}
 
@@ -101,7 +140,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .menu-top-left .sec-h{text-align:left;}
 .menu-top-left .divider{margin:1rem 0;}
 
-/* ADMIN TOGGLE */
 .admin-toggle-wrap{display:flex;align-items:center;gap:.6rem;}
 .admin-toggle-wrap label{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 .toggle{position:relative;width:44px;height:24px;}
@@ -133,12 +171,43 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .add-btn{background:var(--gold);color:var(--dark);border:none;width:34px;height:34px;border-radius:2px;font-size:1.3rem;font-weight:700;cursor:pointer;transition:background .2s,transform .12s;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .add-btn:hover{background:var(--gold-l);transform:scale(1.1);}
 
-/* EDIT INPUTS */
 .price-input{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);background:transparent;border:1px solid var(--gold);border-radius:2px;width:100px;padding:.1rem .4rem;letter-spacing:.04em;}
 .name-editable[contenteditable="true"]{outline:none;border-bottom:1px dashed rgba(245,240,232,.4);padding-bottom:2px;}
 .desc-editable[contenteditable="true"]{outline:none;border-bottom:1px dashed rgba(122,110,101,.4);padding-bottom:2px;}
 
-/* ───── CART ───── */
+/* ───── NÚMERO DE MESA ───── */
+.mesa-selector{
+  background:var(--dark2);border:1px solid var(--border);border-radius:6px;
+  padding:1rem 1.2rem;margin-bottom:1.5rem;
+}
+.mesa-selector-title{
+  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem;
+}
+.mesa-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;}
+.mesa-check-wrap{display:flex;align-items:center;gap:.4rem;}
+.mesa-check-wrap input[type="checkbox"]{
+  width:16px;height:16px;accent-color:var(--gold);cursor:pointer;
+}
+.mesa-check-wrap label{font-size:.78rem;color:var(--muted);cursor:pointer;}
+.mesa-select-wrap{display:flex;align-items:center;gap:.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.mesa-select-wrap.visible{opacity:1;pointer-events:all;}
+.mesa-select-wrap label{font-size:.78rem;color:var(--cream);}
+.mesa-num-select{
+  background:var(--char);border:1px solid var(--border);color:var(--cream);
+  padding:.35rem .7rem;border-radius:2px;font-size:.85rem;font-family:'DM Sans',sans-serif;
+  cursor:pointer;min-width:80px;
+}
+.mesa-num-select:focus{outline:none;border-color:var(--gold);}
+.mesa-badge{
+  background:rgba(201,168,76,.12);border:1px solid var(--border);
+  color:var(--gold);padding:.25rem .7rem;border-radius:50px;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  display:none;
+}
+.mesa-badge.visible{display:inline-flex;align-items:center;gap:.3rem;}
+
+/* ───── CARRITO ───── */
 .cart-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:250;}
 .cart-btn{background:var(--gold);color:var(--dark);border:none;padding:.8rem 1.4rem;border-radius:50px;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 6px 28px rgba(201,168,76,.38);transition:all .2s;letter-spacing:.04em;}
 .cart-btn:hover{background:var(--gold-l);transform:translateY(-2px);}
@@ -158,13 +227,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .ci-price{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--gold);min-width:64px;text-align:right;}
 .cart-empty{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;}
 .cart-footer{padding:1rem 1.2rem;border-top:1px solid var(--border);}
+
+/* Mesa en footer del carrito */
+.cart-mesa-info{
+  display:flex;align-items:center;gap:.45rem;padding:.5rem .7rem;
+  background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:4px;
+  margin-bottom:.8rem;font-size:.78rem;color:var(--gold);
+}
+.cart-mesa-info span{font-weight:600;}
+
 .cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;}
 .cart-total span:first-child{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);}
 .cart-total span:last-child{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--gold);letter-spacing:.04em;}
 .btn-wa{width:100%;background:#25D366;color:#fff;border:none;padding:.875rem;border-radius:4px;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.5rem;transition:background .2s;letter-spacing:.05em;text-transform:uppercase;}
 .btn-wa:hover{background:#1EBF5A;}
 
-/* ───── PROMOS ───── */
+/* ───── PROMOCIONES ───── */
 #promociones{background:var(--dark2);padding:5rem 1.5rem;}
 .promos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;}
 .promo-card{border:1px solid var(--border);border-radius:6px;padding:2rem;position:relative;overflow:hidden;}
@@ -219,9 +297,18 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
 @keyframes pulse{0%,100%{opacity:.5;}50%{opacity:1;}}
 
-/* SECTION REVEAL */
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);}
 .reveal.visible{opacity:1;transform:none;}
+
+/* ───── ADMIN ───── */
+.admin-panel{display:none;position:fixed;top:0;left:0;right:0;z-index:400;background:rgba(15,12,9,.97);border-bottom:2px solid var(--gold);padding:1rem 1.5rem;flex-direction:column;gap:.5rem;}
+.admin-panel.open{display:flex;}
+.admin-panel-header{display:flex;justify-content:space-between;align-items:center;}
+.admin-panel-header h2{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.1em;color:var(--gold);}
+.admin-close-full{background:none;border:1px solid var(--border);color:var(--cream);padding:.35rem .9rem;border-radius:2px;cursor:pointer;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;transition:all .2s;}
+.admin-close-full:hover{border-color:var(--gold);color:var(--gold);}
+.admin-hint{font-size:.75rem;color:var(--muted);line-height:1.6;}
+.admin-hint span{color:var(--gold);}
 
 /* ───── RESPONSIVE ───── */
 @media(max-width:900px){
@@ -239,30 +326,26 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   .about-stats{grid-template-columns:1fr 1fr;}
 }
 
-/* ADMIN PANEL */
-.admin-panel{display:none;position:fixed;top:0;left:0;right:0;z-index:400;background:rgba(15,12,9,.97);border-bottom:2px solid var(--gold);padding:1rem 1.5rem;flex-direction:column;gap:.5rem;}
-.admin-panel.open{display:flex;}
-.admin-panel-header{display:flex;justify-content:space-between;align-items:center;}
-.admin-panel-header h2{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.1em;color:var(--gold);}
-.admin-close-full{background:none;border:1px solid var(--border);color:var(--cream);padding:.35rem .9rem;border-radius:2px;cursor:pointer;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;transition:all .2s;}
-.admin-close-full:hover{border-color:var(--gold);color:var(--gold);}
-.admin-hint{font-size:.75rem;color:var(--muted);line-height:1.6;}
-.admin-hint span{color:var(--gold);}
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .hero-video-wrap video{animation:none;transform:scale(1);}
+  .parallax-bg{animation:none !important;transition:none !important;transform:scale(1) !important;}
+}
 </style>
 </head>
 <body>
 
-<!-- ─── ADMIN FLOATING PANEL ─── -->
+<!-- ─── ADMIN PANEL ─── -->
 <div class="admin-panel" id="adminPanel">
   <div class="admin-panel-header">
     <h2>⚙ Modo Administrador Activo</h2>
     <button class="admin-close-full" onclick="setAdmin(false)">Salir del modo admin</button>
   </div>
   <p class="admin-hint">
-    <span>Precios:</span> hacé click sobre el precio para editarlo · 
-    <span>Nombre/Descripción:</span> click para editar directo en la tarjeta · 
+    <span>Precios:</span> hacé click sobre el precio para editarlo ·
+    <span>Nombre/Descripción:</span> click para editar directo en la tarjeta ·
     <span>Foto:</span> usá el botón <span>📷 Cambiar foto</span> en cada tarjeta.
-    Los cambios se guardan automáticamente en el navegador.
+    Los cambios se guardan automáticamente.
   </p>
 </div>
 
@@ -300,18 +383,18 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 </div>
 
 <!-- ════════════════════════════════
-     SECCIÓN 1: FACHADA (HERO)
+     HERO – VIDEO con zoom-out intenso
 ═════════════════════════════════ -->
-<section class="parallax-section" id="inicio">
-  <div class="parallax-bg" id="bg-fachada" style="background-image:url('Captura_de_pantalla_2026-06-07_160824.png');">
-    <!-- BACKGROUND VIDEO -->
-    <video autoplay muted loop playsinline class="video-bg">
+<section id="inicio">
+  <div class="hero-video-wrap">
+    <div class="hero-fallback-bg"></div>
+    <video autoplay muted loop playsinline>
       <source src="https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/VIDEO2TONGOY.mp4" type="video/mp4">
       <source src="https://github.com/NEXOar-art/TONGOY/raw/main/VIDEO2TONGOY.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="parallax-overlay overlay-fachada"></div>
-  <div class="parallax-content">
+  <div class="overlay-fachada"></div>
+  <div class="parallax-content" style="z-index:4;">
     <p class="eyebrow">✦ Restobar · Campana, Buenos Aires</p>
     <h1 class="hero-title">TON<span class="g">GOY</span></h1>
     <p class="hero-sub">Gastronomía de calidad, ambiente cálido<br>y el mejor after work de Campana.</p>
@@ -328,9 +411,14 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 
 <!-- ════════════════════════════════
      SECCIÓN 2: DESAYUNO
+     Imagen específica: desayuno / medialunas / café
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-desayuno">
-  <div class="parallax-bg" id="bg-desayuno" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy1.png');"></div>
+  <div
+    class="parallax-bg"
+    style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy1.png');"
+    aria-hidden="true">
+  </div>
   <div class="parallax-overlay overlay-desayuno"></div>
   <div class="parallax-content section-callout">
     <p class="sec-label reveal">✦ Comenzá el día</p>
@@ -343,9 +431,14 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 
 <!-- ════════════════════════════════
      SECCIÓN 3: AFTER WORK
+     Imagen: ambiente nocturno / bar / tragos
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-afterwork">
-  <div class="parallax-bg" id="bg-after" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy2.png');"></div>
+  <div
+    class="parallax-bg"
+    style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy2.png');"
+    aria-hidden="true">
+  </div>
   <div class="parallax-overlay overlay-after"></div>
   <div class="parallax-content section-callout" style="text-align:left;max-width:650px;margin-left:0;padding-left:5vw;">
     <p class="sec-label reveal">✦ De lunes a sábado</p>
@@ -357,10 +450,15 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 </section>
 
 <!-- ════════════════════════════════
-     SECCIÓN 4: MILANESA
+     SECCIÓN 4: COCINA / PLATOS
+     Imagen: milanesa, platos, comida
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-mila">
-  <div class="parallax-bg" id="bg-mila" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy3.png');"></div>
+  <div
+    class="parallax-bg"
+    style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy3.png');"
+    aria-hidden="true">
+  </div>
   <div class="parallax-overlay overlay-mila"></div>
   <div class="parallax-content section-callout" style="text-align:right;max-width:650px;margin-left:auto;padding-right:5vw;">
     <p class="sec-label reveal">✦ Platos principales</p>
@@ -372,10 +470,15 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 </section>
 
 <!-- ════════════════════════════════
-     SECCIÓN 5: BEBIDAS
+     SECCIÓN 5: BEBIDAS / TRAGOS
+     Imagen: gin, aperol, cocktails
 ═════════════════════════════════ -->
 <section class="parallax-section" id="sec-bebidas">
-  <div class="parallax-bg" id="bg-beb" style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy4.png');"></div>
+  <div
+    class="parallax-bg"
+    style="background-image:url('https://raw.githubusercontent.com/NEXOar-art/TONGOY/main/tongoy4.png');"
+    aria-hidden="true">
+  </div>
   <div class="parallax-overlay overlay-bebidas"></div>
   <div class="parallax-content section-callout">
     <p class="sec-label reveal">✦ Carta de tragos</p>
@@ -406,12 +509,29 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
         </label>
       </div>
     </div>
+
+    <!-- ── SELECTOR DE MESA ── -->
+    <div class="mesa-selector reveal">
+      <div class="mesa-selector-title">🍽️ ¿Estás en el local? (opcional)</div>
+      <div class="mesa-row">
+        <div class="mesa-check-wrap">
+          <input type="checkbox" id="mesaCheck" onchange="toggleMesa(this.checked)">
+          <label for="mesaCheck">Indicar número de mesa</label>
+        </div>
+        <div class="mesa-select-wrap" id="mesaSelectWrap">
+          <label for="mesaNum">Mesa nº</label>
+          <select id="mesaNum" class="mesa-num-select" onchange="updateMesaBadge()">
+            <!-- opciones generadas por JS -->
+          </select>
+        </div>
+        <span class="mesa-badge" id="mesaBadge">🪑 Mesa <span id="mesaBadgeNum">–</span></span>
+      </div>
+    </div>
+
     <div class="cat-tabs" id="tabs"></div>
     <div class="menu-grid" id="menuGrid"></div>
   </div>
 </section>
-
-<!-- BOTÓN RESEÑAS FLOTANTE ELIMINADO POR REQUERIMIENTO VISUAL -->
 
 <!-- ════════════════════════════════
      CARRITO FLOTANTE
@@ -426,6 +546,10 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
       <div class="cart-empty">Tu carrito está vacío.<br>¡Agregá algo del menú!</div>
     </div>
     <div class="cart-footer">
+      <!-- Info de mesa dentro del carrito -->
+      <div class="cart-mesa-info" id="cartMesaInfo" style="display:none;">
+        🪑 Pedido para <span id="cartMesaLabel">–</span>
+      </div>
       <div class="cart-total">
         <span>Total estimado</span>
         <span id="cartTotal">$0</span>
@@ -514,18 +638,18 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
         </div>
       </div>
       <div class="reveal" style="display:flex;flex-direction:column;gap:1rem;">
-        <div class="map-block" style="flex:1; padding:0; overflow:hidden; position:relative; min-height:360px;">
-          <iframe 
+        <div class="map-block" style="flex:1;padding:0;overflow:hidden;position:relative;min-height:360px;">
+          <iframe
             src="https://maps.google.com/maps?q=Av.%20Ing.%20Agust%C3%ADn%20Rocca%20130,%20B2804%20Campana,%20Provincia%20de%20Buenos%20Aires&t=&z=16&ie=UTF8&iwloc=&output=embed"
-            width="100%" 
-            height="100%" 
-            style="border:0; position:absolute; inset:0; filter: grayscale(1) invert(0.92) contrast(1.2) brightness(0.9);" 
-            allowfullscreen="" 
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
+            width="100%" height="100%"
+            style="border:0;position:absolute;inset:0;filter:grayscale(1) invert(0.92) contrast(1.2) brightness(0.9);"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
-        <a href="https://maps.app.goo.gl/tiv5TK77PuhanHMfA" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.5rem;background:linear-gradient(135deg,rgba(255,107,53,.15),rgba(247,147,30,.08));border:1px solid rgba(255,107,53,.4);border-radius:6px;color:var(--cream);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;" onmouseover="this.style.borderColor='#FF6B35';this.style.color='#FF6B35'" onmouseout="this.style.borderColor='rgba(255,107,53,.4)';this.style.color='var(--cream)'">
+        <a href="https://maps.app.goo.gl/tiv5TK77PuhanHMfA" target="_blank"
+           style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.5rem;background:linear-gradient(135deg,rgba(255,107,53,.15),rgba(247,147,30,.08));border:1px solid rgba(255,107,53,.4);border-radius:6px;color:var(--cream);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;"
+           onmouseover="this.style.borderColor='#FF6B35';this.style.color='#FF6B35'"
+           onmouseout="this.style.borderColor='rgba(255,107,53,.4)';this.style.color='var(--cream)'">
           <span style="color:#FFD700;font-size:1rem;">★★★★★</span> Dejá tu Reseña en Google
         </a>
       </div>
@@ -564,11 +688,10 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   </div>
 </footer>
 
-<!-- HIDDEN FILE INPUT -->
 <input type="file" id="imgFileInput" accept="image/*" style="display:none">
 
 <script>
-// ════════════ MENU DATA (persistent via localStorage) ════════════
+// ════════════ MENÚ DATA ════════════
 const DEFAULT_MENU = [
   {id:1,cat:'desayunos',name:'Desayuno Completo',desc:'Café con leche, jugo de naranja exprimido y 2 medialunas artesanales.',price:3200,img:'Captura_de_pantalla_2026-06-07_160653.png'},
   {id:2,cat:'desayunos',name:'Medialunas (x4)',desc:'Medialunas de manteca recién horneadas, tiernas y doradas.',price:1800,img:''},
@@ -585,7 +708,6 @@ const DEFAULT_MENU = [
 ];
 const CATS = [{key:'todos',label:'Todos'},{key:'desayunos',label:'Desayunos'},{key:'platos',label:'Platos'},{key:'bebidas',label:'Bebidas'}];
 const EMOJIS = {'desayunos':'☕','platos':'🍽️','bebidas':'🍹'};
-
 const DB_URL = 'https://kvdb.io/TongoyRestobar2026db/menu';
 
 let menuData = [];
@@ -593,67 +715,60 @@ let activeCat = 'todos';
 let cart = {};
 let adminMode = false;
 let pendingImgId = null;
+let mesaNumero = null; // null = sin mesa
 
-function initMenu(){
-  try {
-    const s = localStorage.getItem('tongoyMenu');
-    menuData = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_MENU));
-  } catch(e) {
-    menuData = JSON.parse(JSON.stringify(DEFAULT_MENU));
-  }
-  renderTabs();
-  renderMenu();
-  syncMenuFromCloud();
-}
-
-async function syncMenuFromCloud(){
-  try {
-    const res = await fetch(DB_URL);
-    if (res.ok) {
-      const cloudData = await res.json();
-      if (Array.isArray(cloudData) && cloudData.length > 0) {
-        menuData = cloudData;
-        try { localStorage.setItem('tongoyMenu', JSON.stringify(menuData)); } catch(e) {}
-        renderMenu();
-        console.log("Menú sincronizado desde la nube.");
-      }
-    }
-  } catch(err) {
-    console.warn("No se pudo conectar a la base de datos en la nube. Usando datos locales:", err);
+// ════════════ MESA ════════════
+function initMesaSelector(){
+  const sel = document.getElementById('mesaNum');
+  for(let i=1;i<=100;i++){
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = i;
+    sel.appendChild(opt);
   }
 }
-
-async function saveMenu(){
-  try {
-    localStorage.setItem('tongoyMenu', JSON.stringify(menuData));
-  } catch(e) {}
-  
-  if (adminMode) {
-    try {
-      await fetch(DB_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(menuData)
-      });
-      console.log("Menú guardado en la nube.");
-    } catch(err) {
-      console.error("Error guardando menú en la nube:", err);
-    }
+function toggleMesa(checked){
+  const wrap = document.getElementById('mesaSelectWrap');
+  const badge = document.getElementById('mesaBadge');
+  if(checked){
+    wrap.classList.add('visible');
+    mesaNumero = parseInt(document.getElementById('mesaNum').value);
+    badge.classList.add('visible');
+    document.getElementById('mesaBadgeNum').textContent = mesaNumero;
+    updateCartMesaInfo();
+  } else {
+    wrap.classList.remove('visible');
+    badge.classList.remove('visible');
+    mesaNumero = null;
+    updateCartMesaInfo();
+  }
+}
+function updateMesaBadge(){
+  mesaNumero = parseInt(document.getElementById('mesaNum').value);
+  document.getElementById('mesaBadgeNum').textContent = mesaNumero;
+  updateCartMesaInfo();
+}
+function updateCartMesaInfo(){
+  const info = document.getElementById('cartMesaInfo');
+  const label = document.getElementById('cartMesaLabel');
+  if(mesaNumero){
+    info.style.display='flex';
+    label.textContent = 'Mesa N° ' + mesaNumero;
+  } else {
+    info.style.display='none';
   }
 }
 
 // ════════════ STATUS BADGE ════════════
 function checkStatus(){
   const now = new Date();
-  const day = now.getDay(); // 0=sun,1=mon,...,6=sat
+  const day = now.getDay();
   const h = now.getHours(), m = now.getMinutes();
   const mins = h*60+m;
-  // Mon-Thu: 7:00-23:00 | Fri-Sat: 7:00-00:30
+  const open_min = 7*60;
   let open = false;
-  const open_min = 7*60; // 420
   if(day>=1 && day<=4){ open = mins>=open_min && mins<23*60; }
-  else if(day===5||day===6){ open = mins>=open_min || mins<30; } // after midnight before 0:30
-  // Sun closed
+  else if(day===5||day===6){ open = mins>=open_min || mins<30; }
   const badge = document.getElementById('statusBadge');
   const txt = document.getElementById('statusText');
   if(open){
@@ -667,15 +782,47 @@ function checkStatus(){
 checkStatus();
 setInterval(checkStatus, 60000);
 
-// ════════════ TABS ════════════
+// ════════════ MENU ════════════
+function initMenu(){
+  try {
+    const s = localStorage.getItem('tongoyMenu');
+    menuData = s ? JSON.parse(s) : JSON.parse(JSON.stringify(DEFAULT_MENU));
+  } catch(e) {
+    menuData = JSON.parse(JSON.stringify(DEFAULT_MENU));
+  }
+  renderTabs();
+  renderMenu();
+  syncMenuFromCloud();
+}
+async function syncMenuFromCloud(){
+  try {
+    const res = await fetch(DB_URL);
+    if(res.ok){
+      const cloudData = await res.json();
+      if(Array.isArray(cloudData) && cloudData.length > 0){
+        menuData = cloudData;
+        try{ localStorage.setItem('tongoyMenu', JSON.stringify(menuData)); } catch(e){}
+        renderMenu();
+      }
+    }
+  } catch(err){ console.warn('Sin conexión nube, usando datos locales.'); }
+}
+async function saveMenu(){
+  try{ localStorage.setItem('tongoyMenu', JSON.stringify(menuData)); } catch(e){}
+  if(adminMode){
+    try{
+      await fetch(DB_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(menuData)});
+    } catch(err){ console.error('Error guardando en nube:',err); }
+  }
+}
+
 function renderTabs(){
   document.getElementById('tabs').innerHTML = CATS.map(c=>
     `<button class="tab ${activeCat===c.key?'active':''}" onclick="setCat('${c.key}')">${c.label}</button>`
   ).join('');
 }
-function setCat(k){activeCat=k;renderTabs();renderMenu();}
+function setCat(k){ activeCat=k; renderTabs(); renderMenu(); }
 
-// ════════════ MENU RENDER ════════════
 function renderMenu(){
   const items = activeCat==='todos' ? menuData : menuData.filter(i=>i.cat===activeCat);
   const grid = document.getElementById('menuGrid');
@@ -703,35 +850,30 @@ function renderMenu(){
       </div>
     </div>`;
   }).join('');
-
-  // apply admin class to grid
   if(adminMode) grid.classList.add('admin-mode'); else grid.classList.remove('admin-mode');
 }
 
 // ════════════ ADMIN ════════════
 function setAdmin(on){
-  if (on && !adminMode) {
-    const pw = prompt("Ingrese la contraseña de administrador para realizar cambios globales:");
-    if (pw !== "tongoy2026") {
+  if(on && !adminMode){
+    const pw = prompt("Contraseña de administrador:");
+    if(pw !== "tongoy2026"){
       alert("Contraseña incorrecta. Acceso denegado.");
-      const toggle = document.getElementById('adminToggle');
-      if (toggle) toggle.checked = false;
+      const t = document.getElementById('adminToggle');
+      if(t) t.checked = false;
       return;
     }
   }
   adminMode = on;
   const toggle = document.getElementById('adminToggle');
   if(toggle) toggle.checked = on;
-  const panel = document.getElementById('adminPanel');
-  panel.classList.toggle('open', on);
-  if(on) document.getElementById('mainNav').style.top='80px';
-  else document.getElementById('mainNav').style.top='0';
+  document.getElementById('adminPanel').classList.toggle('open', on);
+  document.getElementById('mainNav').style.top = on ? '80px' : '0';
   renderMenu();
 }
-
 function updatePrice(id, val){
   const item = menuData.find(i=>i.id===id);
-  if(item){ item.price = Math.max(0,parseInt(val)||0); saveMenu(); renderMenu(); }
+  if(item){ item.price=Math.max(0,parseInt(val)||0); saveMenu(); renderMenu(); }
 }
 function updateName(id, val){
   const item = menuData.find(i=>i.id===id);
@@ -741,85 +883,61 @@ function updateDesc(id, val){
   const item = menuData.find(i=>i.id===id);
   if(item && val.trim()){ item.desc=val.trim(); saveMenu(); }
 }
-
-// IMAGE PICKER
-function openImgPicker(id){
-  pendingImgId = id;
-  document.getElementById('imgFileInput').click();
-}
-function compressAndSaveImage(file, itemId) {
+function openImgPicker(id){ pendingImgId=id; document.getElementById('imgFileInput').click(); }
+function compressAndSaveImage(file, itemId){
   const reader = new FileReader();
-  reader.onload = function(e) {
+  reader.onload = function(e){
     const img = new Image();
-    img.onload = function() {
+    img.onload = function(){
       const canvas = document.createElement('canvas');
       const max_size = 400;
-      let width = img.width;
-      let height = img.height;
-
-      if (width > height) {
-        if (width > max_size) {
-          height *= max_size / width;
-          width = max_size;
-        }
-      } else {
-        if (height > max_size) {
-          width *= max_size / height;
-          height = max_size;
-        }
-      }
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, width, height);
-
+      let w=img.width, h=img.height;
+      if(w>h){ if(w>max_size){ h*=max_size/w; w=max_size; } }
+      else { if(h>max_size){ w*=max_size/h; h=max_size; } }
+      canvas.width=w; canvas.height=h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
       const dataUrl = canvas.toDataURL('image/jpeg', 0.7);
-      
-      const item = menuData.find(i => i.id === itemId);
-      if (item) {
-        item.img = dataUrl;
-        saveMenu();
-        renderMenu();
-      }
+      const item = menuData.find(i=>i.id===itemId);
+      if(item){ item.img=dataUrl; saveMenu(); renderMenu(); }
     };
     img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
-
 document.getElementById('imgFileInput').addEventListener('change', function(){
   const file = this.files[0];
   if(!file || !pendingImgId) return;
   compressAndSaveImage(file, pendingImgId);
-  pendingImgId = null;
-  this.value='';
+  pendingImgId = null; this.value='';
 });
 
-// ════════════ CART ════════════
+// ════════════ CARRITO ════════════
 function addToCart(id){
   const item = menuData.find(i=>i.id===id);
   if(!item) return;
   if(cart[id]) cart[id].qty++; else cart[id]={...item, qty:1};
   updateCartUI();
-  // flash
   const btn = document.querySelector('.cart-btn');
   btn.style.background='#25D366'; setTimeout(()=>btn.style.background='',400);
 }
-function changeQty(id,delta){
+function changeQty(id, delta){
   if(!cart[id]) return;
-  cart[id].qty+=delta;
+  cart[id].qty += delta;
   if(cart[id].qty<=0) delete cart[id];
   updateCartUI();
 }
 function updateCartUI(){
   const items = Object.values(cart);
-  const total = items.reduce((s,i)=>s+i.price*i.qty,0);
-  const count = items.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('cartCount').textContent=count;
-  document.getElementById('cartTotal').textContent='$'+total.toLocaleString('es-AR');
-  const el=document.getElementById('cartItems');
-  if(!items.length){ el.innerHTML='<div class="cart-empty">Tu carrito está vacío.<br>¡Agregá algo del menú!</div>'; return; }
-  el.innerHTML=items.map(it=>`
+  const total = items.reduce((s,i)=>s+i.price*i.qty, 0);
+  const count = items.reduce((s,i)=>s+i.qty, 0);
+  document.getElementById('cartCount').textContent = count;
+  document.getElementById('cartTotal').textContent = '$'+total.toLocaleString('es-AR');
+  const el = document.getElementById('cartItems');
+  if(!items.length){
+    el.innerHTML='<div class="cart-empty">Tu carrito está vacío.<br>¡Agregá algo del menú!</div>';
+    return;
+  }
+  el.innerHTML = items.map(it=>`
     <div class="cart-item">
       <span class="ci-name">${it.name}</span>
       <div class="ci-qty">
@@ -829,28 +947,34 @@ function updateCartUI(){
       </div>
       <span class="ci-price">$${(it.price*it.qty).toLocaleString('es-AR')}</span>
     </div>`).join('');
+  updateCartMesaInfo();
 }
 function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
+
 function sendOrder(){
   const items = Object.values(cart);
   if(!items.length){ alert('¡Agregá productos al carrito primero!'); return; }
-  
   const total = items.reduce((s,i)=>s+i.price*i.qty, 0);
-  const dateStr = new Date().toLocaleString('es-AR', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' });
-  
-  const emojiMap = { 'desayunos': '☕', 'platos': '🍽️', 'bebidas': '🍹' };
-  
+  const dateStr = new Date().toLocaleString('es-AR',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'});
+  const emojiMap = {'desayunos':'☕','platos':'🍽️','bebidas':'🍹'};
+
   let ticket = `*================================*\n`;
   ticket    += `     *📋 COMANDA DE PEDIDO 📋*     \n`;
   ticket    += `*================================*\n`;
   ticket    += `*Fecha/Hora:* ${dateStr}\n`;
-  ticket    += `*--------------------------------*\n`;
-  
-  items.forEach(i => {
+
+  // ── NÚMERO DE MESA (si fue indicado) ──
+  if(mesaNumero){
+    ticket += `🪑 *MESA N° ${mesaNumero}*\n`;
+  } else {
+    ticket += `📦 *PEDIDO PARA LLEVAR / TAKE AWAY*\n`;
+  }
+
+  ticket += `*--------------------------------*\n`;
+  items.forEach(i=>{
     const emoji = emojiMap[i.cat] || '🔸';
     ticket += `${emoji} *${i.qty}x* ${i.name}\n`;
   });
-  
   ticket += `*--------------------------------*\n`;
   ticket += `*💰 TOTAL ESTIMADO:* $${total.toLocaleString('es-AR')}\n`;
   ticket += `*================================*\n\n`;
@@ -869,34 +993,23 @@ function closeMobile(){
   document.getElementById('hamburger').classList.remove('open');
 }
 
-// ════════════ PARALLAX ════════════
-const parallaxBgs = [
-  {el:'bg-fachada',speed:.35},
-  {el:'bg-desayuno',speed:.4},
-  {el:'bg-after',speed:.38},
-  {el:'bg-mila',speed:.42},
-  {el:'bg-beb',speed:.36},
-];
-function onScroll(){
-  const sy = window.scrollY;
-  parallaxBgs.forEach(({el,speed})=>{
-    const node = document.getElementById(el);
-    if(node){
-      const parent = node.parentElement;
-      const rect = parent.getBoundingClientRect();
-      if(rect.bottom>0 && rect.top<window.innerHeight){
-        const viewportHeight = window.innerHeight;
-        const parentHeight = parent.offsetHeight;
-        const progress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + parentHeight)));
-        
-        const offset = (rect.top + sy) * speed - sy * speed;
-        const scale = 1.15 - (progress * 0.1);
-        
-        node.style.transform = `translateY(${offset*.15}px) scale(${scale})`;
-      }
+// ════════════ ZOOM-OUT EN SECCIONES (IntersectionObserver) ════════════
+// Cuando el 20% de la sección entra al viewport → agrega .in-view → dispara el zoom-out + float
+const sectionObserver = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('in-view');
+    } else {
+      // Al salir del viewport, quita la clase para que el próximo scroll vuelva a hacer el efecto
+      entry.target.classList.remove('in-view');
     }
   });
-  // reveal
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.parallax-section').forEach(sec => sectionObserver.observe(sec));
+
+// ════════════ REVEAL SCROLL ════════════
+function onScroll(){
   document.querySelectorAll('.reveal').forEach(el=>{
     if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('visible');
   });
@@ -905,6 +1018,7 @@ window.addEventListener('scroll', onScroll, {passive:true});
 onScroll();
 
 // ════════════ INIT ════════════
+initMesaSelector();
 initMenu();
 </script>
 </body>
