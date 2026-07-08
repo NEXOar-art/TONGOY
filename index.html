@@ -339,7 +339,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
     <span>Precios:</span> click sobre el precio para editarlo ·
     <span>Nombre/Descripción:</span> click para editar ·
     <span>Foto:</span> usá el botón 📷 en cada tarjeta ·
-    <span>Mesas:</span> clickeá en cada mesa para cambiar su estado (libre/ocupada). Los cambios se sincronizan en tiempo real.
+    <span>Mesas:</span> clickeá en cada mesa para RESERVARLA o LIBERARLA. Los cambios se reflejarán en rojo o verde y se sincronizarán en todos los dispositivos.
   </p>
 </div>
  
@@ -542,13 +542,13 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
         <div class="divider" style="margin-left:0;"></div>
       </div>
       <div class="mesas-legend reveal">
-        <div class="leg-item"><div class="leg-dot leg-libre"></div><span>Libre</span></div>
-        <div class="leg-item"><div class="leg-dot leg-ocupada"></div><span>Ocupada</span></div>
+        <div class="leg-item"><div class="leg-dot leg-libre"></div><span>Liberado</span></div>
+        <div class="leg-item"><div class="leg-dot leg-ocupada"></div><span>Reservado</span></div>
       </div>
     </div>
     <div class="mesas-grid reveal" id="mesasGrid"></div>
     <p style="color:var(--muted);font-size:.73rem;margin-top:1.2rem;text-align:center;" id="mesasHint">
-      Solo administradores pueden cambiar el estado de las mesas. Los cambios se sincronizan en tiempo real.
+      Solo administradores pueden reservar o liberar mesas. Los cambios se sincronizan en tiempo real.
     </p>
   </div>
 </section>
@@ -731,12 +731,12 @@ let currentLang = 'es';
 // ══════════════════════════════════════════
 const I18N = {
   es:{
-    admin_password:'Contraseña:',admin_wrong:'Incorrecta',admin_only:'Solo administradores pueden cambiar mesas',
-    notif_libre:'¡Mesa disponible!',notif_pre:'La Mesa Nº',notif_suf:'acaba de quedar libre.',
+    admin_password:'Contraseña:',admin_wrong:'Incorrecta',admin_only:'Solo los administradores pueden reservar o liberar mesas',
+    notif_libre:'¡Mesa Liberada!',notif_pre:'La Mesa Nº',notif_suf:'fue LIBERADA.',
   },
   en:{
-    admin_password:'Password:',admin_wrong:'Wrong',admin_only:'Only administrators can change tables',
-    notif_libre:'Table available!',notif_pre:'Table No.',notif_suf:'is now available.',
+    admin_password:'Password:',admin_wrong:'Wrong',admin_only:'Only administrators can reserve or free tables',
+    notif_libre:'Table Freed!',notif_pre:'Table No.',notif_suf:'was FREED.',
   },
 };
  
@@ -877,7 +877,7 @@ function setupMesasRealtime(){
       const prevEstado = mesasData[id]?.estado;
       mesasData[id] = {estado, updated_at: payload.new.updated_at};
       
-      console.log(`🔄 Mesa ${id}: ${estado===0?'Libre':'Ocupada'}`);
+      console.log(`🔄 Mesa ${id}: ${estado===0?'LIBERADA':'RESERVADA'}`);
       renderMesas();
       initMesaSelector();
       
@@ -944,15 +944,16 @@ function renderMesas(){
   if(!document.getElementById('mesasGrid')) return;
   
   const grid = document.getElementById('mesasGrid');
+  // MODIFICACIÓN: Se actualizan los textos a "LIBERADO" y "RESERVADO" manteniendo la clase de color (libre=verde, ocupada=rojo)
   grid.innerHTML = Array.from({length:TOTAL_MESAS}, (_, i)=>i+1).map(num=>{
     const mesa = mesasData[num]||{estado:0};
     const libre = mesa.estado===0;
     return `
       <div class="mesa-tile ${libre?'libre':'ocupada'} ${adminMode?'admin-mode-edit':''}" 
            onclick="${adminMode?`toggleMesaEstado(${num})`:''}">
-        <div class="mesa-icon">${libre?'🪑':'🔴'}</div>
+        <div class="mesa-icon">${libre?'🟢':'🔴'}</div>
         <div class="mesa-num">${num}</div>
-        <div class="mesa-status-txt">${libre?'Libre':'Ocupada'}</div>
+        <div class="mesa-status-txt">${libre?'LIBERADO':'RESERVADO'}</div>
       </div>
     `;
   }).join('');
@@ -977,7 +978,7 @@ async function toggleMesaEstado(id){
   }
   
   const m = mesasData[id];
-  const newEstado = m.estado===0 ? 1 : 0;
+  const newEstado = m.estado===0 ? 1 : 0; // 0 = Liberado, 1 = Reservado
   
   mesasData[id] = {...m, estado: newEstado, updated_at: new Date().toISOString()};
   renderMesas();
@@ -993,10 +994,10 @@ async function toggleMesaEstado(id){
       if(error){
         console.error('❌ Error:', error);
         updateSyncStatus(false, 'Error guardando');
-        mesasData[id] = m;
+        mesasData[id] = m; // Revertir
         renderMesas();
       } else {
-        console.log(`✅ Mesa ${id} guardada`);
+        console.log(`✅ Mesa ${id} sincronizada (${newEstado===0?'LIBERADA':'RESERVADA'})`);
         updateSyncStatus(true, 'Mesa sincronizada');
       }
     } catch(e){ console.error(e); }
