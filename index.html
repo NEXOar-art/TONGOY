@@ -879,7 +879,7 @@ function setupMesasRealtime(){
       
       console.log(`🔄 Mesa ${id}: ${estado===0?'LIBERADA':'RESERVADA'}`);
       renderMesas();
-      initMesaSelector();
+      initMesaSelector(); // Actualiza el desplegable para todos los usuarios en tiempo real
       
       if(prevEstado===1 && estado===0) showMesaNotif(id);
       updateSyncStatus(true, 'Sincronizado');
@@ -944,7 +944,6 @@ function renderMesas(){
   if(!document.getElementById('mesasGrid')) return;
   
   const grid = document.getElementById('mesasGrid');
-  // MODIFICACIÓN: Se actualizan los textos a "LIBERADO" y "RESERVADO" manteniendo la clase de color (libre=verde, ocupada=rojo)
   grid.innerHTML = Array.from({length:TOTAL_MESAS}, (_, i)=>i+1).map(num=>{
     const mesa = mesasData[num]||{estado:0};
     const libre = mesa.estado===0;
@@ -1100,7 +1099,7 @@ function sendOrder(){
 }
  
 // ══════════════════════════════════════════
-// MESA SELECTOR
+// MESA SELECTOR (Desplegable del usuario)
 // ══════════════════════════════════════════
  
 function toggleMesa(checked){
@@ -1113,11 +1112,25 @@ function toggleMesa(checked){
  
 function initMesaSelector(){
   const select = document.getElementById('mesaNum');
+  // Genera las opciones mostrando si está LIBERADA o RESERVADA y bloquea las reservadas para usuarios normales
   select.innerHTML = Array.from({length:TOTAL_MESAS}, (_,i)=>i+1).map(n=>{
     const estado = mesasData[n]?.estado||0;
-    const marker = estado===0 ? '🟢' : '🔴';
-    return `<option value="${n}">${marker} Mesa ${n}</option>`;
+    const isFree = estado===0;
+    const marker = isFree ? '🟢' : '🔴';
+    const statusText = isFree ? 'LIBERADO' : 'RESERVADO';
+    // Si es admin, permitimos seleccionar cualquier mesa. Si no, bloqueamos las reservadas.
+    const disabled = (isFree || adminMode) ? '' : 'disabled style="color:#E07050; background:var(--dark3);"';
+    return `<option value="${n}" ${disabled}>${marker} Mesa ${n} - ${statusText}</option>`;
   }).join('');
+  
+  // Si la mesa que el usuario tenía seleccionada pasó a estar RESERVADA por el admin, se avisa y se resetea
+  if(mesaNumero && mesasData[mesaNumero] && mesasData[mesaNumero].estado === 1 && !adminMode){
+    mesaNumero = null;
+    document.getElementById('mesaCheck').checked = false;
+    document.getElementById('mesaSelectWrap').classList.remove('visible');
+    updateMesaBadge();
+    alert('⚠️ La mesa que habías seleccionado acaba de ser RESERVADA. Por favor, elegí una mesa LIBERADA.');
+  }
 }
  
 function updateMesaBadge(){
@@ -1161,6 +1174,7 @@ function setAdmin(on){
   renderMenu();
   renderPromos();
   renderMesas();
+  initMesaSelector(); // Refresca el desplegable para que el admin pueda seleccionar todas si necesita probar
 }
  
 function editMenuPrice(id){
