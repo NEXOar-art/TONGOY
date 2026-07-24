@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tongoy – Restobar Campana</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
   --gold:#C9A84C;--gold-l:#E8C96A;--dark:#0F0C09;--dark2:#1A1510;--dark3:#2D2318;
@@ -44,7 +43,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.08em;color:var(--cream);transition:color .2s;}
 .mob-menu a:hover{color:var(--gold);}
  
-/* ── LANGUAGE SWITCHER ─ */
+/* ── LANGUAGE SWITCHER ── */
 .lang-switcher{display:flex;align-items:center;gap:2px;border:1px solid var(--border);border-radius:20px;padding:2px 4px;background:rgba(15,12,9,.6);}
 .lang-btn{background:none;border:none;cursor:pointer;font-size:.65rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:.25rem .45rem;border-radius:16px;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .lang-btn:hover{color:var(--cream);}
@@ -74,7 +73,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .overlay-bebidas{background:linear-gradient(to bottom right,rgba(15,12,9,.68),rgba(139,58,30,.2),rgba(15,12,9,.78));}
 .parallax-content{position:relative;z-index:4;text-align:center;padding:2rem;max-width:900px;}
  
-/* ── TYPOGRAPHY ─ */
+/* ─ TYPOGRAPHY ── */
 .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:0;animation:fadeUp .9s forwards;}
 .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,16vw,12rem);line-height:.88;letter-spacing:.05em;color:var(--cream);margin-bottom:.75rem;opacity:0;animation:fadeUp .9s .2s forwards;}
 .hero-title .g{color:var(--gold);}
@@ -92,7 +91,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .section-callout{animation:fadeUp 1s .2s both;}
 .callout-desc{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(245,240,232,.7);line-height:1.8;max-width:560px;margin:0 auto 2rem;}
  
-/* ─ STRIP ── */
+/* ── STRIP ── */
 .strip{background:var(--gold);padding:.7rem 1.5rem;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.22em;color:var(--dark);}
  
 /* ── MENU SECTION ── */
@@ -133,7 +132,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .name-editable[contenteditable="true"]{outline:none;border-bottom:1px dashed rgba(245,240,232,.4);padding-bottom:2px;}
 .desc-editable[contenteditable="true"]{outline:none;border-bottom:1px dashed rgba(122,110,101,.4);padding-bottom:2px;}
  
-/* ── MESA SELECTOR ─ */
+/* ── MESA SELECTOR ── */
 .mesa-selector{background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;margin-bottom:1.5rem;}
 .mesa-selector-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem;}
 .mesa-required{color:#E07050;}
@@ -224,13 +223,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .mesa-tile.ocupada .mesa-status-txt{color:#E07050;}
 .mesa-tiempo{font-size:.62rem;color:var(--muted);margin-top:.1rem;}
  
-/* Sincronización indicator */
-.sync-indicator{position:fixed;top:75px;right:1.5rem;z-index:350;padding:.5rem 1rem;background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.4);border-radius:20px;font-size:.7rem;color:#25D366;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:.4rem;}
-.sync-dot{width:6px;height:6px;background:#25D366;border-radius:50%;animation:pulse-dot 1.5s infinite;}
-@keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.3;}}
-.sync-indicator.error{background:rgba(224,112,80,.15);border-color:rgba(224,112,80,.4);color:#E07050;}
-.sync-indicator.error .sync-dot{background:#E07050;}
- 
 /* Notificación pop-up */
 .mesa-notif{position:fixed;top:80px;right:1.5rem;z-index:500;background:var(--dark3);border:1px solid #25D366;border-radius:8px;padding:1rem 1.3rem;box-shadow:0 8px 32px rgba(37,211,102,.2);display:flex;align-items:center;gap:.8rem;font-size:.85rem;min-width:240px;max-width:320px;animation:notifIn .4s cubic-bezier(.22,1,.36,1) forwards;}
 .mesa-notif.hide{animation:notifOut .35s ease-in forwards;}
@@ -240,7 +232,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .notif-close{background:none;border:none;color:var(--muted);cursor:pointer;margin-left:auto;font-size:.9rem;}
 .notif-close:hover{color:var(--cream);}
  
-/* ── NOSOTROS ─ */
+/* ── NOSOTROS ── */
 #nosotros{background:var(--dark3);padding:5rem 1.5rem;}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
 .about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
@@ -297,7 +289,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 .admin-hint{font-size:.75rem;color:var(--muted);line-height:1.6;}
 .admin-hint span{color:var(--gold);}
  
-/* ── RESPONSIVE ── */
+/* ─ RESPONSIVE ── */
 @media(max-width:900px){
   .nav-links,.nav-cta{display:none;}
   .hamburger{display:flex;}
@@ -313,7 +305,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   .promos-grid{grid-template-columns:1fr;}
   .about-stats{grid-template-columns:1fr 1fr;}
   .lang-btn{font-size:.58rem;padding:.2rem .35rem;}
-  .sync-indicator{top:auto;bottom:80px;right:1.5rem;}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-video-wrap video{animation:none;transform:scale(1);}
@@ -323,23 +314,17 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 </head>
 <body>
  
-<!-- SYNC INDICATOR -->
-<div class="sync-indicator" id="syncIndicator" style="display:none;">
-  <span class="sync-dot"></span>
-  <span id="syncText">Sincronizando...</span>
-</div>
- 
 <!-- ADMIN PANEL -->
 <div class="admin-panel" id="adminPanel">
   <div class="admin-panel-header">
-    <h2> Modo Administrador Activo</h2>
-    <button class="admin-close-full" onclick="setAdmin(false)">Salir del modo admin</button>
+    <h2 data-i18n="admin_title">⚙ Modo Administrador Activo</h2>
+    <button class="admin-close-full" onclick="setAdmin(false)" data-i18n="admin_exit">Salir del modo admin</button>
   </div>
   <p class="admin-hint">
-    <span>Precios:</span> click sobre el precio para editarlo ·
-    <span>Nombre/Descripción:</span> click para editar ·
-    <span>Foto:</span> usá el botón 📷 en cada tarjeta ·
-    <span>Mesas:</span> clickeá en cada mesa para CAMBIAR ESTADO (LIBERADA ↔ OCUPADA). Los cambios se reflejarán en rojo o verde y se sincronizarán en todos los dispositivos.
+    <span data-i18n="admin_hint_price">Precios:</span> click sobre el precio para editarlo ·
+    <span data-i18n="admin_hint_text">Nombre/Descripción:</span> click para editar ·
+    <span data-i18n="admin_hint_photo">Foto:</span> usá el botón 📷 en cada tarjeta ·
+    <span data-i18n="admin_hint_table">Mesas:</span> clickeá en cada mesa para OCUPARLA (🔴) o LIBERARLA ()
   </p>
 </div>
  
@@ -348,12 +333,12 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   <div class="nav-inner">
     <a href="#inicio" class="logo">Tongoy</a>
     <ul class="nav-links">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#menu">Menú</a></li>
-      <li><a href="#promociones">Promos</a></li>
-      <li><a href="#mesas-panel">Mesas</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
+      <li><a href="#menu" data-i18n="nav_menu">Menú</a></li>
+      <li><a href="#promociones" data-i18n="nav_promos">Promos</a></li>
+      <li><a href="#mesas-panel" data-i18n="nav_tables">Mesas</a></li>
+      <li><a href="#nosotros" data-i18n="nav_about">Nosotros</a></li>
+      <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
     </ul>
     <div class="nav-right">
       <div class="lang-switcher">
@@ -362,9 +347,9 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
       </div>
       <div class="status-badge status-open" id="statusBadge">
         <span class="status-dot"></span>
-        <span id="statusText">Abierto</span>
+        <span id="statusText" data-i18n="status_open">Abierto</span>
       </div>
-      <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" class="nav-cta">Hacer Pedido</a>
+      <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" class="nav-cta" data-i18n="nav_order">Hacer Pedido</a>
       <div class="hamburger" id="hamburger" onclick="toggleMobile()">
         <span></span><span></span><span></span>
       </div>
@@ -374,12 +359,12 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
  
 <!-- MOBILE MENU -->
 <div class="mob-menu" id="mobMenu">
-  <a href="#inicio" onclick="closeMobile()">Inicio</a>
-  <a href="#menu" onclick="closeMobile()">Menú</a>
-  <a href="#promociones" onclick="closeMobile()">Promos</a>
-  <a href="#mesas-panel" onclick="closeMobile()">Mesas</a>
-  <a href="#nosotros" onclick="closeMobile()">Nosotros</a>
-  <a href="#contacto" onclick="closeMobile()">Contacto</a>
+  <a href="#inicio" onclick="closeMobile()" data-i18n="nav_home">Inicio</a>
+  <a href="#menu" onclick="closeMobile()" data-i18n="nav_menu">Menú</a>
+  <a href="#promociones" onclick="closeMobile()" data-i18n="nav_promos">Promos</a>
+  <a href="#mesas-panel" onclick="closeMobile()" data-i18n="nav_tables">Mesas</a>
+  <a href="#nosotros" onclick="closeMobile()" data-i18n="nav_about">Nosotros</a>
+  <a href="#contacto" onclick="closeMobile()" data-i18n="nav_contact">Contacto</a>
 </div>
  
 <!-- HERO – VIDEO -->
@@ -393,30 +378,30 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   </div>
   <div class="overlay-fachada"></div>
   <div class="parallax-content" style="z-index:4;">
-    <p class="eyebrow">✦ Restobar · Campana, Buenos Aires</p>
+    <p class="eyebrow reveal" data-i18n="hero_eyebrow">✦ Restobar · Campana, Buenos Aires</p>
     <h1 class="hero-title">TON<span class="g">GOY</span></h1>
-    <p class="hero-sub">Gastronomía de calidad, ambiente cálido<br>y el mejor after work de Campana.</p>
+    <p class="hero-sub reveal" data-i18n="hero_sub">Gastronomía de calidad, ambiente cálido<br>y el mejor after work de Campana.</p>
     <div class="hero-actions">
-      <a href="#menu" class="btn-gold">Ver Menú</a>
-      <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" class="btn-outline">📲 Pedido WhatsApp</a>
+      <a href="#menu" class="btn-gold reveal" data-i18n="btn_menu">Ver Menú</a>
+      <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" class="btn-outline reveal" data-i18n="btn_whatsapp">📲 Pedido WhatsApp</a>
     </div>
   </div>
-  <div class="scroll-ind">Scroll</div>
+  <div class="scroll-ind" data-i18n="scroll_text">Scroll</div>
 </section>
  
 <!-- STRIP -->
-<div class="strip">🕐 LUN–JUE 07:00 A 23:00 &nbsp;|&nbsp; VIE–SÁB 07:00 A 00:30 &nbsp;|&nbsp; TAKE AWAY 3489-236010</div>
+<div class="strip" data-i18n="strip_hours"> LUN–JUE 07:00 A 23:00 &nbsp;|&nbsp; VIE–SÁB 07:00 A 00:30 &nbsp;|&nbsp; TAKE AWAY 3489-236010</div>
  
 <!-- SECCIONES PARALLAX -->
 <section class="parallax-section" id="sec-desayuno">
   <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1920&q=85&fit=crop');" aria-hidden="true"></div>
   <div class="parallax-overlay overlay-desayuno"></div>
   <div class="parallax-content section-callout">
-    <p class="sec-label reveal">✦ Comenzá el día</p>
-    <h2 class="sec-h reveal">Desayunos<br><span style="color:var(--gold)">& Meriendas</span></h2>
+    <p class="sec-label reveal" data-i18n="sec_breakfast_label">✦ Comenzá el día</p>
+    <h2 class="sec-h reveal" data-i18n="sec_breakfast_title">Desayunos<br><span style="color:var(--gold)">& Meriendas</span></h2>
     <div class="divider reveal"></div>
-    <p class="callout-desc reveal">Desde las 7 de la mañana, el aroma del café recién hecho y las medialunas artesanales te esperan en Tongoy.</p>
-    <a href="#menu" class="btn-gold reveal">Ver Desayunos</a>
+    <p class="callout-desc reveal" data-i18n="sec_breakfast_desc">Desde las 7 de la mañana, el aroma del café recién hecho y las medialunas artesanales te esperan en Tongoy.</p>
+    <a href="#menu" class="btn-gold reveal" data-i18n="btn_see_breakfast">Ver Desayunos</a>
   </div>
 </section>
  
@@ -424,11 +409,11 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=85&fit=crop');" aria-hidden="true"></div>
   <div class="parallax-overlay overlay-after"></div>
   <div class="parallax-content section-callout" style="text-align:left;max-width:650px;margin-left:0;padding-left:5vw;">
-    <p class="sec-label reveal">✦ De lunes a sábado</p>
-    <h2 class="sec-h reveal" style="font-size:clamp(3rem,8vw,6.5rem);">AFTER<br><span style="color:var(--gold)">WORK</span></h2>
+    <p class="sec-label reveal" data-i18n="sec_after_label">✦ De lunes a sábado</p>
+    <h2 class="sec-h reveal" style="font-size:clamp(3rem,8vw,6.5rem);" data-i18n="sec_after_title">AFTER<br><span style="color:var(--gold)">WORK</span></h2>
     <div class="divider reveal" style="margin-left:0;"></div>
-    <p class="callout-desc reveal" style="text-align:left;margin-left:0;">Terminó el trabajo, empieza Tongoy. Tu gin tonic frío, buena música y el mejor ambiente de Campana.</p>
-    <a href="#menu" class="btn-outline reveal">Ver Bebidas</a>
+    <p class="callout-desc reveal" style="text-align:left;margin-left:0;" data-i18n="sec_after_desc">Terminó el trabajo, empieza Tongoy. Tu gin tonic frío, buena música y el mejor ambiente de Campana.</p>
+    <a href="#menu" class="btn-outline reveal" data-i18n="btn_see_drinks">Ver Bebidas</a>
   </div>
 </section>
  
@@ -436,11 +421,11 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&q=85&fit=crop');" aria-hidden="true"></div>
   <div class="parallax-overlay overlay-mila"></div>
   <div class="parallax-content section-callout" style="text-align:right;max-width:650px;margin-left:auto;padding-right:5vw;">
-    <p class="sec-label reveal">✦ Platos principales</p>
-    <h2 class="sec-h reveal" style="font-size:clamp(2.8rem,7vw,5.5rem);">Cocina<br><span style="color:var(--gold)">con alma</span></h2>
+    <p class="sec-label reveal" data-i18n="sec_dishes_label">✦ Platos principales</p>
+    <h2 class="sec-h reveal" style="font-size:clamp(2.8rem,7vw,5.5rem);" data-i18n="sec_dishes_title">Cocina<br><span style="color:var(--gold)">con alma</span></h2>
     <div class="divider reveal" style="margin-left:auto;"></div>
-    <p class="callout-desc reveal" style="text-align:right;margin-left:auto;">Milanesas jugosas, hamburguesas artesanales y ensaladas frescas. Ingredientes seleccionados, recetas con sabor a casa.</p>
-    <a href="#menu" class="btn-gold reveal">Ver Platos</a>
+    <p class="callout-desc reveal" style="text-align:right;margin-left:auto;" data-i18n="sec_dishes_desc">Milanesas jugosas, hamburguesas artesanales y ensaladas frescas. Ingredientes seleccionados, recetas con sabor a casa.</p>
+    <a href="#menu" class="btn-gold reveal" data-i18n="btn_see_dishes">Ver Platos</a>
   </div>
 </section>
  
@@ -448,11 +433,11 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=1920&q=85&fit=crop');" aria-hidden="true"></div>
   <div class="parallax-overlay overlay-bebidas"></div>
   <div class="parallax-content section-callout">
-    <p class="sec-label reveal">✦ Carta de tragos</p>
-    <h2 class="sec-h reveal">Gin Tonic · Aperol<br><span style="color:var(--gold)">Amargo Obrero</span></h2>
+    <p class="sec-label reveal" data-i18n="sec_drinks_label">✦ Carta de tragos</p>
+    <h2 class="sec-h reveal" data-i18n="sec_drinks_title">Gin Tonic · Aperol<br><span style="color:var(--gold)">Amargo Obrero</span></h2>
     <div class="divider reveal"></div>
-    <p class="callout-desc reveal">Cada copa cuenta una historia. Nuestros bartenders combinan los mejores destilados con ingredientes frescos para el trago perfecto.</p>
-    <a href="#menu" class="btn-gold reveal">Ver Bebidas</a>
+    <p class="callout-desc reveal" data-i18n="sec_drinks_desc">Cada copa cuenta una historia. Nuestros bartenders combinan los mejores destilados con ingredientes frescos para el trago perfecto.</p>
+    <a href="#menu" class="btn-gold reveal" data-i18n="btn_see_drinks">Ver Bebidas</a>
   </div>
 </section>
  
@@ -461,13 +446,13 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   <div class="container">
     <div class="menu-top reveal">
       <div class="menu-top-left">
-        <p class="sec-label">✦ Nuestra carta</p>
-        <h2 class="sec-h" style="text-align:left">Menú Digital</h2>
+        <p class="sec-label" data-i18n="menu_label">✦ Nuestra carta</p>
+        <h2 class="sec-h" style="text-align:left" data-i18n="menu_title">Menú Digital</h2>
         <div class="divider" style="margin-left:0;"></div>
-        <p style="color:var(--muted);font-size:.9rem;max-width:420px;line-height:1.7;">Seleccioná tus platos, revisá el carrito y enviá tu pedido directo al local por WhatsApp.</p>
+        <p style="color:var(--muted);font-size:.9rem;max-width:420px;line-height:1.7;" data-i18n="menu_desc">Seleccioná tus platos, revisá el carrito y enviá tu pedido directo al local por WhatsApp.</p>
       </div>
       <div class="admin-toggle-wrap">
-        <label for="adminToggle">Modo Admin</label>
+        <label for="adminToggle" data-i18n="admin_mode">Modo Admin</label>
         <label class="toggle">
           <input type="checkbox" id="adminToggle" onchange="setAdmin(this.checked)">
           <span class="slider-t"></span>
@@ -475,17 +460,17 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
       </div>
     </div>
     <div class="mesa-selector reveal">
-      <div class="mesa-selector-title">️ ¿Estás en el local? <span class="mesa-required">*</span></div>
+      <div class="mesa-selector-title" data-i18n="mesa_title">️ ¿Estás en el local? <span class="mesa-required">*</span></div>
       <div class="mesa-row">
         <div class="mesa-check-wrap">
-          <input type="checkbox" id="mesaCheck" onchange="toggleMesa(this.checked)">
-          <label for="mesaCheck">Indicar número de mesa</label>
+          <input type="checkbox" id="mesaCheck" onchange="toggleMesaInput(this.checked)">
+          <label for="mesaCheck" data-i18n="mesa_checkbox">Indicar número de mesa</label>
         </div>
         <div class="mesa-select-wrap" id="mesaSelectWrap">
-          <label for="mesaNum">Mesa nº</label>
+          <label for="mesaNum" data-i18n="mesa_label">Mesa nº</label>
           <select id="mesaNum" class="mesa-num-select" onchange="updateMesaBadge()"></select>
         </div>
-        <span class="mesa-badge" id="mesaBadge">🪑 <span>Mesa</span> <span id="mesaBadgeNum">–</span></span>
+        <span class="mesa-badge" id="mesaBadge"> <span data-i18n="mesa_badge">Mesa</span> <span id="mesaBadgeNum">–</span></span>
       </div>
     </div>
     <div class="cat-tabs" id="tabs"></div>
@@ -497,36 +482,36 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 <div class="cart-float">
   <div class="cart-panel" id="cartPanel">
     <div class="cart-header">
-      <h3>🛒 Tu Pedido</h3>
+      <h3 data-i18n="cart_title">🛒 Tu Pedido</h3>
       <button class="cart-close" onclick="toggleCart()">✕</button>
     </div>
     <div class="cart-items" id="cartItems">
-      <div class="cart-empty">Tu carrito está vacío.<br>¡Agregá algo del menú!</div>
+      <div class="cart-empty" data-i18n="cart_empty">Tu carrito está vacío.<br>¡Agregá algo del menú!</div>
     </div>
     <div class="cart-footer">
       <div class="cart-mesa-warning" id="cartMesaWarning" style="display:none;">
-        ️ <span>Selecciona una mesa para enviar</span>
+        ️ <span data-i18n="cart_warning">Selecciona una mesa para enviar</span>
       </div>
       <div class="cart-mesa-info" id="cartMesaInfo" style="display:none;">
-         <span>Pedido para</span> <span id="cartMesaLabel">–</span>
+         <span data-i18n="cart_for">Pedido para</span> <span id="cartMesaLabel">–</span>
       </div>
       <div class="cart-total">
-        <span>Total estimado</span>
+        <span data-i18n="cart_total_label">Total estimado</span>
         <span id="cartTotal">$0</span>
       </div>
-      <button class="btn-wa" id="btnSendOrder" onclick="sendOrder()">📲 &nbsp;<span>Enviar Pedido por WhatsApp</span></button>
+      <button class="btn-wa" id="btnSendOrder" onclick="sendOrder()">📲 &nbsp;<span data-i18n="cart_send">Enviar Pedido por WhatsApp</span></button>
     </div>
   </div>
   <button class="cart-btn" onclick="toggleCart()">
-    🛒 <span>Ver Pedido</span> <span class="cart-badge" id="cartCount">0</span>
+     <span data-i18n="cart_view">Ver Pedido</span> <span class="cart-badge" id="cartCount">0</span>
   </button>
 </div>
  
 <!-- PROMOCIONES -->
 <section id="promociones">
   <div class="container">
-    <p class="sec-label reveal">✦ Ofertas especiales</p>
-    <h2 class="sec-h reveal" style="text-align:left">Promociones</h2>
+    <p class="sec-label reveal" data-i18n="promos_label"> Ofertas especiales</p>
+    <h2 class="sec-h reveal" style="text-align:left" data-i18n="promos_title">Promociones</h2>
     <div class="divider reveal" style="margin-left:0;"></div>
     <div class="promos-grid" id="promosGrid"></div>
   </div>
@@ -537,18 +522,18 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   <div class="container">
     <div class="mesas-header reveal">
       <div>
-        <p class="sec-label">✦ Estado del local</p>
-        <h2 class="sec-h" style="text-align:left;font-size:clamp(2rem,5vw,3.5rem);">Mesas en<br><span style="color:var(--gold)">Tiempo Real</span></h2>
+        <p class="sec-label" data-i18n="tables_label">✦ Estado del local</p>
+        <h2 class="sec-h" style="text-align:left;font-size:clamp(2rem,5vw,3.5rem);" data-i18n="tables_title">Mesas en<br><span style="color:var(--gold)">Tiempo Real</span></h2>
         <div class="divider" style="margin-left:0;"></div>
       </div>
       <div class="mesas-legend reveal">
-        <div class="leg-item"><div class="leg-dot leg-libre"></div><span>Liberado</span></div>
-        <div class="leg-item"><div class="leg-dot leg-ocupada"></div><span>Ocupado</span></div>
+        <div class="leg-item"><div class="leg-dot leg-libre"></div><span data-i18n="table_free">Liberada</span></div>
+        <div class="leg-item"><div class="leg-dot leg-ocupada"></div><span data-i18n="table_occupied">Ocupada</span></div>
       </div>
     </div>
     <div class="mesas-grid reveal" id="mesasGrid"></div>
-    <p style="color:var(--muted);font-size:.73rem;margin-top:1.2rem;text-align:center;" id="mesasHint">
-      Solo administradores pueden cambiar el estado de las mesas. Los cambios se sincronizan en tiempo real.
+    <p style="color:var(--muted);font-size:.73rem;margin-top:1.2rem;text-align:center;" id="mesasHint" data-i18n="tables_hint">
+      Solo administradores pueden ocupar o liberar mesas.
     </p>
   </div>
 </section>
@@ -563,16 +548,16 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
         <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600&q=85&fit=crop" alt="Bar Tongoy" loading="lazy">
       </div>
       <div class="reveal">
-        <p class="sec-label">✦ Quiénes somos</p>
-        <h2 class="sec-h" style="text-align:left;font-size:clamp(2rem,4vw,3.5rem);">Un espacio para todos los momentos</h2>
+        <p class="sec-label" data-i18n="about_label">✦ Quiénes somos</p>
+        <h2 class="sec-h" style="text-align:left;font-size:clamp(2rem,4vw,3.5rem);" data-i18n="about_title">Un espacio para todos los momentos</h2>
         <div class="divider" style="margin-left:0;"></div>
-        <p style="color:var(--muted);line-height:1.85;margin-bottom:1rem;font-size:.92rem;">En Tongoy creemos que cada momento merece ser especial. Desde el primer café hasta el último trago del after work, te ofrecemos una experiencia gastronómica única en el corazón de Campana.</p>
-        <p style="color:var(--muted);line-height:1.85;font-size:.92rem;">Cocina de calidad, ingredientes frescos, ambiente cálido y un equipo que pone el corazón en cada plato.</p>
+        <p style="color:var(--muted);line-height:1.85;margin-bottom:1rem;font-size:.92rem;" data-i18n="about_desc1">En Tongoy creemos que cada momento merece ser especial. Desde el primer café hasta el último trago del after work, te ofrecemos una experiencia gastronómica única en el corazón de Campana.</p>
+        <p style="color:var(--muted);line-height:1.85;font-size:.92rem;" data-i18n="about_desc2">Cocina de calidad, ingredientes frescos, ambiente cálido y un equipo que pone el corazón en cada plato.</p>
         <div class="about-stats">
-          <div class="stat"><div class="stat-num">7AM</div><div class="stat-lbl">Abrimos temprano</div></div>
-          <div class="stat"><div class="stat-num">16H</div><div class="stat-lbl">Jornada completa</div></div>
-          <div class="stat"><div class="stat-num">+50</div><div class="stat-lbl">Opciones en carta</div></div>
-          <div class="stat"><div class="stat-num">1</div><div class="stat-lbl">Solo en Campana</div></div>
+          <div class="stat"><div class="stat-num">7AM</div><div class="stat-lbl" data-i18n="stat_early">Abrimos temprano</div></div>
+          <div class="stat"><div class="stat-num">16H</div><div class="stat-lbl" data-i18n="stat_hours">Jornada completa</div></div>
+          <div class="stat"><div class="stat-num">+50</div><div class="stat-lbl" data-i18n="stat_options">Opciones en carta</div></div>
+          <div class="stat"><div class="stat-num">1</div><div class="stat-lbl" data-i18n="stat_unique">Solo en Campana</div></div>
         </div>
       </div>
     </div>
@@ -582,19 +567,19 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="container">
-    <p class="sec-label reveal">✦ Encontranos</p>
-    <h2 class="sec-h reveal" style="text-align:left">Contacto</h2>
+    <p class="sec-label reveal" data-i18n="contact_label">✦ Encontranos</p>
+    <h2 class="sec-h reveal" style="text-align:left" data-i18n="contact_title">Contacto</h2>
     <div class="divider reveal" style="margin-left:0;margin-bottom:3rem;"></div>
     <div class="contact-grid">
       <div class="contact-info reveal">
-        <div class="ci-item"><div class="ci-icon">📍</div><div class="ci-txt"><h4>Dirección</h4><p>Av. Ing. Agustín Rocca 130, B2804 Campana, Provincia de Buenos Aires</p></div></div>
-        <div class="ci-item"><div class="ci-icon"></div><div class="ci-txt"><h4>Horarios</h4><p>Lun–Jue: 07:00 a 23:00 hs<br>Vie–Sáb: 07:00 a 00:30 hs</p></div></div>
-        <div class="ci-item"><div class="ci-icon">📞</div><div class="ci-txt"><h4>Take Away</h4><a href="tel:3489236010">3489 236010</a></div></div>
-        <div class="ci-item"><div class="ci-icon">📲</div><div class="ci-txt"><h4>WhatsApp Pedidos</h4><a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer">3489 236010</a></div></div>
+        <div class="ci-item"><div class="ci-icon">📍</div><div class="ci-txt"><h4 data-i18n="contact_address_title">Dirección</h4><p>Av. Ing. Agustín Rocca 130, B2804 Campana, Provincia de Buenos Aires</p></div></div>
+        <div class="ci-item"><div class="ci-icon">🕐</div><div class="ci-txt"><h4 data-i18n="contact_hours_title">Horarios</h4><p data-i18n="contact_hours">Lun–Jue: 07:00 a 23:00 hs<br>Vie–Sáb: 07:00 a 00:30 hs</p></div></div>
+        <div class="ci-item"><div class="ci-icon">📞</div><div class="ci-txt"><h4 data-i18n="contact_takeaway">Take Away</h4><a href="tel:3489236010">3489 236010</a></div></div>
+        <div class="ci-item"><div class="ci-icon">📲</div><div class="ci-txt"><h4 data-i18n="contact_whatsapp">WhatsApp Pedidos</h4><a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer">3489 236010</a></div></div>
         <div class="social-row">
-          <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" class="soc-btn soc-wa">📱 WhatsApp</a>
-          <a href="https://www.instagram.com/tongoycampana/" target="_blank" rel="noopener noreferrer" class="soc-btn soc-ig"> Instagram</a>
-          <a href="https://www.facebook.com/tongoycampana/" target="_blank" rel="noopener noreferrer" class="soc-btn soc-fb">🔵 Facebook</a>
+          <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" class="soc-btn soc-wa" data-i18n="social_whatsapp">📱 WhatsApp</a>
+          <a href="https://www.instagram.com/tongoycampana/" target="_blank" rel="noopener noreferrer" class="soc-btn soc-ig" data-i18n="social_instagram">📸 Instagram</a>
+          <a href="https://www.facebook.com/tongoycampana/" target="_blank" rel="noopener noreferrer" class="soc-btn soc-fb" data-i18n="social_facebook">🔵 Facebook</a>
         </div>
       </div>
       <div class="reveal" style="display:flex;flex-direction:column;gap:1rem;">
@@ -607,7 +592,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
            style="display:flex;align-items:center;justify-content:center;gap:.6rem;padding:1rem 1.5rem;background:linear-gradient(135deg,rgba(255,107,53,.15),rgba(247,147,30,.08));border:1px solid rgba(255,107,53,.4);border-radius:6px;color:var(--cream);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:all .2s;"
            onmouseover="this.style.borderColor='#FF6B35';this.style.color='#FF6B35'"
            onmouseout="this.style.borderColor='rgba(255,107,53,.4)';this.style.color='var(--cream)'">
-          <span style="color:#FFD700;font-size:1rem;">★★★★★</span> <span>Dejá tu Reseña en Google</span>
+          <span style="color:#FFD700;font-size:1rem;">★★★★★</span> <span data-i18n="google_review">Dejá tu Reseña en Google</span>
         </a>
       </div>
     </div>
@@ -620,27 +605,27 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
     <div class="footer-top">
       <div>
         <div class="footer-logo">Tongoy</div>
-        <div class="footer-tag">Restobar · Campana, Buenos Aires</div>
+        <div class="footer-tag" data-i18n="footer_tag">Restobar · Campana, Buenos Aires</div>
       </div>
       <div class="footer-col">
-        <h4>Carta</h4>
-        <a href="#menu">Desayunos</a>
-        <a href="#menu">Almuerzos</a>
-        <a href="#menu">Bebidas</a>
-        <a href="#menu">After Work</a>
+        <h4 data-i18n="footer_menu">Carta</h4>
+        <a href="#menu" data-i18n="footer_breakfast">Desayunos</a>
+        <a href="#menu" data-i18n="footer_lunch">Almuerzos</a>
+        <a href="#menu" data-i18n="footer_drinks">Bebidas</a>
+        <a href="#menu" data-i18n="footer_after">After Work</a>
       </div>
       <div class="footer-col">
-        <h4>Contacto</h4>
+        <h4 data-i18n="footer_contact">Contacto</h4>
         <a href="tel:3489236010">3489 236010</a>
-        <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" data-i18n="footer_whatsapp">WhatsApp</a>
         <a href="https://www.instagram.com/tongoycampana/" target="_blank" rel="noopener noreferrer">@tongoycampana</a>
-        <a href="https://www.facebook.com/tongoycampana/" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="https://maps.app.goo.gl/tiv5TK77PuhanHMfA" target="_blank" rel="noopener noreferrer">⭐ Reseñas Google</a>
+        <a href="https://www.facebook.com/tongoycampana/" target="_blank" rel="noopener noreferrer" data-i18n="footer_facebook">Facebook</a>
+        <a href="https://maps.app.goo.gl/tiv5TK77PuhanHMfA" target="_blank" rel="noopener noreferrer" data-i18n="footer_reviews">⭐ Reseñas Google</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Tongoy Restobar · Todos los derechos reservados.</p>
-      <p>Lun–Jue 7–23 hs · Vie–Sáb 7–00:30 hs</p>
+      <p data-i18n="footer_copyright">© 2026 Tongoy Restobar · Todos los derechos reservados.</p>
+      <p data-i18n="footer_hours">Lun–Jue 7–23 hs · Vie–Sáb 7–00:30 hs</p>
     </div>
   </div>
 </footer>
@@ -650,195 +635,345 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
  
 <script>
 // ══════════════════════════════════════════
-//  SUPABASE CONFIG
-// ══════════════════════════════════════════
-const SUPA_URL = 'https://fqxhnhxocwfrbnxlaexs.supabase.co';
-const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZxeGhuaHhvY3dmcmJueGxhZXhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI3Mzk4MzgsImV4cCI6MjA0ODMxNTgzOH0.sb_publishable_k2QodTMjH7wS2s1kTRG6hg_5OMQJwOz';
- 
-let supabase_client = null;
-let supabaseOk = false;
-let realtimeChannel = null;
-let realtimeMenuChannel = null;
-let realtimePromosChannel = null;
- 
-function initSupabase(){
-  try {
-    supabase_client = supabase.createClient(SUPA_URL, SUPA_KEY);
-    supabaseOk = true;
-    console.log('✅ Supabase conectado');
-    updateSyncStatus(true, 'Conectado');
-    return true;
-  } catch(e){ 
-    console.error('❌ Error Supabase:', e);
-    updateSyncStatus(false, 'Error');
-    return false;
-  }
+// 🔐 GESTIÓN DE VERSIÓN PARA ACTUALIZACIONES
+// ═════════════════════════════════════════
+const currentVersion = '7.5';
+
+if (localStorage.getItem('appVersion') !== currentVersion) {
+  localStorage.clear();
+  localStorage.setItem('appVersion', currentVersion);
+  console.log(`✅ Cache local limpiada. Nueva versión: ${currentVersion}`);
 }
- 
-function updateSyncStatus(isConnected, text){
-  const ind = document.getElementById('syncIndicator');
-  if(isConnected){
-    ind.className = 'sync-indicator';
-    document.getElementById('syncText').textContent = text;
-    ind.style.display = 'flex';
-  } else {
-    ind.className = 'sync-indicator error';
-    document.getElementById('syncText').textContent = text;
-    ind.style.display = 'flex';
-    setTimeout(()=>{ ind.style.display = 'none'; }, 3000);
-  }
+
+function bumpVersion() {
+  const newVersion = (parseFloat(currentVersion) + 0.1).toFixed(1);
+  localStorage.setItem('appVersion', newVersion);
+  console.log(`🔄 Versión actualizada a: ${newVersion}`);
+  location.reload();
 }
- 
+
 // ══════════════════════════════════════════
-// DATOS Y VARIABLES GLOBALES - MENÚ COMPLETO
+// TRADUCCIONES COMPLETAS
+// ═════════════════════════════════════════
+const I18N = {
+  es: {
+    // Navegación
+    nav_home: 'Inicio',
+    nav_menu: 'Menú',
+    nav_promos: 'Promos',
+    nav_tables: 'Mesas',
+    nav_about: 'Nosotros',
+    nav_contact: 'Contacto',
+    nav_order: 'Hacer Pedido',
+    status_open: 'Abierto',
+    status_closed: 'Cerrado',
+    
+    // Hero
+    hero_eyebrow: '✦ Restobar · Campana, Buenos Aires',
+    hero_sub: 'Gastronomía de calidad, ambiente cálido<br>y el mejor after work de Campana.',
+    btn_menu: 'Ver Menú',
+    btn_whatsapp: '📲 Pedido WhatsApp',
+    scroll_text: 'Scroll',
+    strip_hours: '🕐 LUN–JUE 07:00 A 23:00 &nbsp;|&nbsp; VIE–SÁB 07:00 A 00:30 &nbsp;|&nbsp; TAKE AWAY 3489-236010',
+    
+    // Secciones
+    sec_breakfast_label: '✦ Comenzá el día',
+    sec_breakfast_title: 'Desayunos<br><span style="color:var(--gold)">& Meriendas</span>',
+    sec_breakfast_desc: 'Desde las 7 de la mañana, el aroma del café recién hecho y las medialunas artesanales te esperan en Tongoy.',
+    btn_see_breakfast: 'Ver Desayunos',
+    
+    sec_after_label: '✦ De lunes a sábado',
+    sec_after_title: 'AFTER<br><span style="color:var(--gold)">WORK</span>',
+    sec_after_desc: 'Terminó el trabajo, empieza Tongoy. Tu gin tonic frío, buena música y el mejor ambiente de Campana.',
+    btn_see_drinks: 'Ver Bebidas',
+    
+    sec_dishes_label: '✦ Platos principales',
+    sec_dishes_title: 'Cocina<br><span style="color:var(--gold)">con alma</span>',
+    sec_dishes_desc: 'Milanesas jugosas, hamburguesas artesanales y ensaladas frescas. Ingredientes seleccionados, recetas con sabor a casa.',
+    btn_see_dishes: 'Ver Platos',
+    
+    sec_drinks_label: '✦ Carta de tragos',
+    sec_drinks_title: 'Gin Tonic · Aperol<br><span style="color:var(--gold)">Amargo Obrero</span>',
+    
+    // Menú
+    menu_label: '✦ Nuestra carta',
+    menu_title: 'Menú Digital',
+    menu_desc: 'Seleccioná tus platos, revisá el carrito y enviá tu pedido directo al local por WhatsApp.',
+    admin_mode: 'Modo Admin',
+    
+    // Mesas
+    mesa_title: '️ ¿Estás en el local? <span class="mesa-required">*</span>',
+    mesa_checkbox: 'Indicar número de mesa',
+    mesa_label: 'Mesa nº',
+    mesa_badge: 'Mesa',
+    table_free: 'Liberada',
+    table_occupied: 'Ocupada',
+    tables_label: '✦ Estado del local',
+    tables_title: 'Mesas en<br><span style="color:var(--gold)">Tiempo Real</span>',
+    tables_hint: 'Solo administradores pueden ocupar o liberar mesas.',
+    
+    // Carrito
+    cart_title: ' Tu Pedido',
+    cart_empty: 'Tu carrito está vacío.<br>¡Agregá algo del menú!',
+    cart_warning: 'Selecciona una mesa para enviar',
+    cart_for: 'Pedido para',
+    cart_total_label: 'Total estimado',
+    cart_send: 'Enviar Pedido por WhatsApp',
+    cart_view: 'Ver Pedido',
+    
+    // Promociones
+    promos_label: ' Ofertas especiales',
+    promos_title: 'Promociones',
+    
+    // Nosotros
+    about_label: '✦ Quiénes somos',
+    about_title: 'Un espacio para todos los momentos',
+    about_desc1: 'En Tongoy creemos que cada momento merece ser especial. Desde el primer café hasta el último trago del after work, te ofrecemos una experiencia gastronómica única en el corazón de Campana.',
+    about_desc2: 'Cocina de calidad, ingredientes frescos, ambiente cálido y un equipo que pone el corazón en cada plato.',
+    stat_early: 'Abrimos temprano',
+    stat_hours: 'Jornada completa',
+    stat_options: 'Opciones en carta',
+    stat_unique: 'Solo en Campana',
+    
+    // Contacto
+    contact_label: '✦ Encontranos',
+    contact_title: 'Contacto',
+    contact_address_title: 'Dirección',
+    contact_hours_title: 'Horarios',
+    contact_hours: 'Lun–Jue: 07:00 a 23:00 hs<br>Vie–Sáb: 07:00 a 00:30 hs',
+    contact_takeaway: 'Take Away',
+    contact_whatsapp: 'WhatsApp Pedidos',
+    social_whatsapp: ' WhatsApp',
+    social_instagram: '📸 Instagram',
+    social_facebook: ' Facebook',
+    google_review: 'Dejá tu Reseña en Google',
+    
+    // Footer
+    footer_tag: 'Restobar · Campana, Buenos Aires',
+    footer_menu: 'Carta',
+    footer_breakfast: 'Desayunos',
+    footer_lunch: 'Almuerzos',
+    footer_drinks: 'Bebidas',
+    footer_after: 'After Work',
+    footer_contact: 'Contacto',
+    footer_whatsapp: 'WhatsApp',
+    footer_facebook: 'Facebook',
+    footer_reviews: '⭐ Reseñas Google',
+    footer_copyright: '© 2026 Tongoy Restobar · Todos los derechos reservados.',
+    footer_hours: 'Lun–Jue 7–23 hs · Vie–Sáb 7–00:30 hs',
+    
+    // Admin
+    admin_title: '⚙ Modo Administrador Activo',
+    admin_exit: 'Salir del modo admin',
+    admin_hint_price: 'Precios:',
+    admin_hint_text: 'Nombre/Descripción:',
+    admin_hint_photo: 'Foto:',
+    admin_hint_table: 'Mesas:',
+    
+    // Mensajes
+    admin_password: 'Contraseña:',
+    admin_wrong: 'Incorrecta',
+    admin_only: 'Solo los administradores pueden ocupar o liberar mesas',
+    notif_occupied: '¡Mesa Ocupada!',
+    notif_free: '¡Mesa Liberada!',
+    notif_pre: 'La Mesa Nº',
+    notif_suf: 'cambió de estado.',
+    select_table: 'Seleccionar mesa...'
+  },
+  en: {
+    // Navigation
+    nav_home: 'Home',
+    nav_menu: 'Menu',
+    nav_promos: 'Promos',
+    nav_tables: 'Tables',
+    nav_about: 'About Us',
+    nav_contact: 'Contact',
+    nav_order: 'Order Now',
+    status_open: 'Open',
+    status_closed: 'Closed',
+    
+    // Hero
+    hero_eyebrow: '✦ Restobar · Campana, Buenos Aires',
+    hero_sub: 'Quality gastronomy, warm atmosphere<br>and the best after work in Campana.',
+    btn_menu: 'View Menu',
+    btn_whatsapp: '📲 WhatsApp Order',
+    scroll_text: 'Scroll',
+    strip_hours: '🕐 MON–THU 07:00 TO 23:00 &nbsp;|&nbsp; FRI–SAT 07:00 TO 00:30 &nbsp;|&nbsp; TAKE AWAY 3489-236010',
+    
+    // Sections
+    sec_breakfast_label: '✦ Start your day',
+    sec_breakfast_title: 'Breakfast<br><span style="color:var(--gold)">& Snacks</span>',
+    sec_breakfast_desc: 'From 7 in the morning, the aroma of freshly made coffee and artisanal croissants await you at Tongoy.',
+    btn_see_breakfast: 'View Breakfast',
+    
+    sec_after_label: '✦ Monday to Saturday',
+    sec_after_title: 'AFTER<br><span style="color:var(--gold)">WORK</span>',
+    sec_after_desc: 'Work is over, Tongoy begins. Your cold gin tonic, good music and the best atmosphere in Campana.',
+    btn_see_drinks: 'View Drinks',
+    
+    sec_dishes_label: '✦ Main dishes',
+    sec_dishes_title: 'Kitchen<br><span style="color:var(--gold)">with soul</span>',
+    sec_dishes_desc: 'Juicy milanesas, artisanal hamburgers and fresh salads. Selected ingredients, recipes with home flavor.',
+    btn_see_dishes: 'View Dishes',
+    
+    sec_drinks_label: '✦ Drink menu',
+    sec_drinks_title: 'Gin Tonic · Aperol<br><span style="color:var(--gold)">Amargo Obrero</span>',
+    
+    // Menu
+    menu_label: ' Our menu',
+    menu_title: 'Digital Menu',
+    menu_desc: 'Select your dishes, review the cart and send your order directly to the venue via WhatsApp.',
+    admin_mode: 'Admin Mode',
+    
+    // Tables
+    mesa_title: '🍽️ Are you at the venue? <span class="mesa-required">*</span>',
+    mesa_checkbox: 'Indicate table number',
+    mesa_label: 'Table nº',
+    mesa_badge: 'Table',
+    table_free: 'Free',
+    table_occupied: 'Occupied',
+    tables_label: '✦ Venue status',
+    tables_title: 'Tables in<br><span style="color:var(--gold)">Real Time</span>',
+    tables_hint: 'Only administrators can occupy or free tables.',
+    
+    // Cart
+    cart_title: '🛒 Your Order',
+    cart_empty: 'Your cart is empty.<br>Add something from the menu!',
+    cart_warning: 'Select a table to send',
+    cart_for: 'Order for',
+    cart_total_label: 'Estimated total',
+    cart_send: 'Send Order via WhatsApp',
+    cart_view: 'View Order',
+    
+    // Promotions
+    promos_label: '✦ Special offers',
+    promos_title: 'Promotions',
+    
+    // About
+    about_label: '✦ Who we are',
+    about_title: 'A space for all moments',
+    about_desc1: 'At Tongoy we believe that every moment deserves to be special. From the first coffee to the last after work drink, we offer you a unique gastronomic experience in the heart of Campana.',
+    about_desc2: 'Quality cuisine, fresh ingredients, warm atmosphere and a team that puts their heart into every dish.',
+    stat_early: 'We open early',
+    stat_hours: 'Full day',
+    stat_options: 'Menu options',
+    stat_unique: 'Only in Campana',
+    
+    // Contact
+    contact_label: '✦ Find us',
+    contact_title: 'Contact',
+    contact_address_title: 'Address',
+    contact_hours_title: 'Hours',
+    contact_hours: 'Mon–Thu: 07:00 to 23:00<br>Fri–Sat: 07:00 to 00:30',
+    contact_takeaway: 'Take Away',
+    contact_whatsapp: 'WhatsApp Orders',
+    social_whatsapp: ' WhatsApp',
+    social_instagram: '📸 Instagram',
+    social_facebook: '🔵 Facebook',
+    google_review: 'Leave your Google Review',
+    
+    // Footer
+    footer_tag: 'Restobar · Campana, Buenos Aires',
+    footer_menu: 'Menu',
+    footer_breakfast: 'Breakfast',
+    footer_lunch: 'Lunch',
+    footer_drinks: 'Drinks',
+    footer_after: 'After Work',
+    footer_contact: 'Contact',
+    footer_whatsapp: 'WhatsApp',
+    footer_facebook: 'Facebook',
+    footer_reviews: '⭐ Google Reviews',
+    footer_copyright: '© 2026 Tongoy Restobar · All rights reserved.',
+    footer_hours: 'Mon–Thu 7–23 · Fri–Sat 7–00:30',
+    
+    // Admin
+    admin_title: '⚙ Admin Mode Active',
+    admin_exit: 'Exit admin mode',
+    admin_hint_price: 'Prices:',
+    admin_hint_text: 'Name/Description:',
+    admin_hint_photo: 'Photo:',
+    admin_hint_table: 'Tables:',
+    
+    // Messages
+    admin_password: 'Password:',
+    admin_wrong: 'Incorrect',
+    admin_only: 'Only administrators can occupy or free tables',
+    notif_occupied: 'Table Occupied!',
+    notif_free: 'Table Freed!',
+    notif_pre: 'Table No.',
+    notif_suf: 'status changed.',
+    select_table: 'Select table...'
+  }
+};
+
+let currentLang = localStorage.getItem('lang') || 'es';
+
+function t(key) {
+  return I18N[currentLang][key] || I18N['es'][key] || key;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  document.documentElement.setAttribute('data-lang', lang);
+  
+  // Actualizar botones
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.remove('active');
+    if(btn.textContent.toLowerCase() === lang) btn.classList.add('active');
+  });
+  
+  // Aplicar traducciones
+  applyTranslations();
+  
+  // Re-renderizar contenido dinámico
+  renderMenu();
+  renderPromos();
+  renderMesas();
+  initMesaSelector();
+  updateCartUI();
+}
+
+function applyTranslations() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if(I18N[currentLang][key]) {
+      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = t(key);
+      } else {
+        el.innerHTML = t(key);
+      }
+    }
+  });
+}
+
 // ══════════════════════════════════════════
+// DATOS Y VARIABLES GLOBALES
+// ═════════════════════════════════════════
 const DEFAULT_MENU = [
-  // DESAYUNOS Y CAFETERÍA
   {id:1,cat:'desayunos',name:'Desayuno Completo',desc:'Café con leche, jugo de naranja exprimido y 2 medialunas artesanales.',price:3200,img:''},
   {id:2,cat:'desayunos',name:'Medialunas (x4)',desc:'Medialunas de manteca recién horneadas, tiernas y doradas.',price:1800,img:''},
   {id:3,cat:'desayunos',name:'Café con Leche',desc:'Espresso doble con leche cremosa. Arte latte en cada taza.',price:900,img:''},
   {id:4,cat:'desayunos',name:'Jugo de Naranja',desc:'Naranja exprimida al momento, natural y fresca.',price:700,img:''},
-  {id:5,cat:'desayunos',name:'Café',desc:'Café espresso intenso, de aroma profundo y sabor equilibrado.',price:600,img:''},
-  {id:6,cat:'desayunos',name:'Cortado',desc:'Café espresso suavizado con un toque de leche caliente.',price:700,img:''},
-  {id:7,cat:'desayunos',name:'Flat White',desc:'Doble espresso con leche microespumada y sabor intenso.',price:950,img:''},
-  {id:8,cat:'desayunos',name:'Capuccino',desc:'Café espresso con leche vaporizada y espuma sedosa, coronado con cacao.',price:950,img:''},
-  {id:9,cat:'desayunos',name:'Lágrima',desc:'Leche caliente con apenas un toque de café, suave y liviana.',price:650,img:''},
-  {id:10,cat:'desayunos',name:'Submarino',desc:'Leche caliente servida con barra de chocolate para fundir en el momento.',price:1100,img:''},
-  {id:11,cat:'desayunos',name:'Mate Cocido',desc:'Tetera con agua caliente y saquito de yerba mate, de sabor suave y tradicional.',price:550,img:''},
-  {id:12,cat:'desayunos',name:'Té',desc:'Tetera con agua caliente + saquito de té a elección.',price:550,img:''},
-  
-  // PLATOS PRINCIPALES
-  {id:13,cat:'platos',name:'Milanesa Napolitana',desc:'Milanesa tierna con salsa de tomate, jamón, queso fundido y papas fritas.',price:5800,img:''},
-  {id:14,cat:'platos',name:'Hamburguesa Tongoy',desc:'Pan artesanal, medallón 200g, cheddar fundido y papas fritas.',price:5200,img:''},
-  {id:15,cat:'platos',name:'Ensalada César',desc:'Lechuga romana, pollo grillado, tomate cherry, huevo y aderezo.',price:4100,img:''},
-  {id:16,cat:'platos',name:'Ensalada Completa',desc:'Rúcula, zanahoria, atún, huevo, tomate y oliva.',price:3800,img:''},
-  
-  // PIZZAS
-  {id:17,cat:'pizzas',name:'Muzzarella',desc:'Salsa de tomate y Muzzarella.',price:4200,img:''},
-  {id:18,cat:'pizzas',name:'Jamón y Morrón',desc:'Salsa de tomate, Muzzarella, Jamón Cocido y Morrón.',price:4800,img:''},
-  {id:19,cat:'pizzas',name:'Cuatro Quesos',desc:'Salsa de tomate, Muzzarella, Queso Azul, Queso Dambo y Queso Reggianito.',price:5400,img:''},
-  {id:20,cat:'pizzas',name:'Fugazzeta',desc:'Muzzarella, Cebolla y orégano.',price:4600,img:''},
-  {id:21,cat:'pizzas',name:'Crudo y Rúcula',desc:'Salsa de tomate, Muzzarella, Jamón Crudo, Rúcula y láminas de Parmesano.',price:5600,img:''},
-  {id:22,cat:'pizzas',name:'La Clásica de Tongoy',desc:'Salsa de tomate, Muzzarella, Matambre de carne y aceitunas negras.',price:5200,img:''},
-  
-  // ENSALADAS
-  {id:23,cat:'ensaladas',name:'Caésar Clásica',desc:'Lechuga, parmesano, croutons, aderezo y pollo grillado.',price:4100,img:''},
-  {id:24,cat:'ensaladas',name:'Tongoy',desc:'Colchón de verdes, arroz, cherrys, cebolla morada, jamón, queso en hebras y pollo crispy.',price:4500,img:''},
-  {id:25,cat:'ensaladas',name:'Primavera',desc:'Rúcula, nueces, tomates confitados, atún, huevo duro, zanahoria rallada.',price:4300,img:''},
-  
-  // VINOS TINTOS
-  {id:26,cat:'vinos',name:'Un Mundo Chiquito',desc:'Tinto joven, frutado y de perfil amable. 750ml.',price:3200,img:''},
-  {id:27,cat:'vinos',name:'Trivento',desc:'Equilibrado y expresivo, con notas de fruta madura y final suave. 750ml.',price:3800,img:''},
-  {id:28,cat:'vinos',name:'Nicasia Blend',desc:'Blend intenso y estructurado, de gran carácter y complejidad. 750ml.',price:4500,img:''},
-  
-  // VINOS BLANCOS
-  {id:29,cat:'vinos',name:'Santa Julia (Chenin Dulce Natural)',desc:'Blanco fresco y levemente dulce, ideal para quienes buscan suavidad. 750ml.',price:3200,img:''},
-  {id:30,cat:'vinos',name:'Alambrado (Chardonnay)',desc:'Blanco equilibrado, con buena acidez y notas frutales. 750ml.',price:3600,img:''},
-  {id:31,cat:'vinos',name:'Trivento (White Malbec Orgánico)',desc:'Blanco original y aromático, de perfil fresco y moderno. 750ml.',price:3900,img:''},
-  
-  // ESPUMANTES
-  {id:32,cat:'vinos',name:'Espumante',desc:'Espumante brut. 750ml.',price:3500,img:''},
-  
-  // CERVEZAS
-  {id:33,cat:'cervezas',name:'Stella Artois 330ml',desc:'Cerveza rubia lager premium.',price:1200,img:''},
-  {id:34,cat:'cervezas',name:'Stella Artois 1L',desc:'Cerveza rubia lager premium.',price:3200,img:''},
-  {id:35,cat:'cervezas',name:'Corona 330ml',desc:'Cerveza mexicana lager.',price:1100,img:''},
-  {id:36,cat:'cervezas',name:'Corona Cero Alcohol 330ml',desc:'Cerveza sin alcohol.',price:1100,img:''},
-  {id:37,cat:'cervezas',name:'Corona 710ml',desc:'Cerveza mexicana lager.',price:2100,img:''},
-  {id:38,cat:'cervezas',name:'Lata de Cerveza 473ml',desc:'Cerveza lata.',price:1400,img:''},
-  
-  // APERITIVOS Y CLÁSICOS
-  {id:39,cat:'aperitivos',name:'Gancia',desc:'Gancia + Sprite + rodaja de limón.',price:2200,img:''},
-  {id:40,cat:'aperitivos',name:'Fernet',desc:'Fernet Branca + Coca-Cola.',price:2400,img:''},
-  {id:41,cat:'aperitivos',name:'Vermut Rosso',desc:'Vermut rosso + soda + rodaja de naranja o limón.',price:2100,img:''},
-  {id:42,cat:'aperitivos',name:'Campari Tonic',desc:'Campari + agua tónica.',price:2300,img:''},
-  {id:43,cat:'aperitivos',name:'Campari',desc:'Campari + jugo de naranja.',price:2300,img:''},
-  {id:44,cat:'aperitivos',name:'Aperol Spritz',desc:'Aperol + espumante + soda.',price:3100,img:''},
-  {id:45,cat:'aperitivos',name:'Cynar',desc:'Cynar + pomelo o soda + rodaja de pomelo.',price:2300,img:''},
-  {id:46,cat:'aperitivos',name:'Amargo Obrero',desc:'Amargo Obrero + pomelo o soda.',price:2400,img:''},
-  
-  // CLÁSICOS
-  {id:47,cat:'clasicos',name:'Tinto de Verano',desc:'Vino tinto + Sprite + hielo + cítricos.',price:2400,img:''},
-  {id:48,cat:'clasicos',name:'Cuba Libre',desc:'Ron Bacardi + Coca-Cola + lima.',price:2600,img:''},
-  {id:49,cat:'clasicos',name:'Mojito',desc:'Ron Bacardi + lima + menta + almíbar + soda.',price:2800,img:''},
-  {id:50,cat:'clasicos',name:'Whiskola',desc:'Whisky + Coca-Cola.',price:2700,img:''},
-  {id:51,cat:'clasicos',name:'Negroni',desc:'Gin + Campari + vermut rosso.',price:2900,img:''},
-  
-  // GIN TONIC
-  {id:52,cat:'gin',name:'Gin Tonic',desc:'Gin + agua tónica + limón / naranja / pomelo.',price:2800,img:''},
-  {id:53,cat:'gin',name:'Gordon\'s / Brighton',desc:'Gin tonic con Gordon\'s o Brighton.',price:2800,img:''},
-  {id:54,cat:'gin',name:'Beefeater',desc:'Gin tonic con Beefeater.',price:3200,img:''},
-  {id:55,cat:'gin',name:'Bombay Sapphire',desc:'Gin tonic con Bombay Sapphire.',price:3400,img:''},
-  
-  // LICORES
-  {id:56,cat:'licores',name:'Amarula',desc:'Licor de crema y marula.',price:2200,img:''},
-  {id:57,cat:'licores',name:'Baileys',desc:'Licor de crema irlandesa.',price:2200,img:''},
-  {id:58,cat:'licores',name:'Jägermeister',desc:'Licor de hierbas alemán.',price:2200,img:''},
-  
-  // WHISKY
-  {id:59,cat:'whisky',name:'Jameson',desc:'Whisky irlandés.',price:2800,img:''},
-  {id:60,cat:'whisky',name:'Jack Daniel\'s',desc:'Whisky Tennessee.',price:2800,img:''},
-  {id:61,cat:'whisky',name:'Chivas Regal',desc:'Whisky escocés.',price:3200,img:''},
-  {id:62,cat:'whisky',name:'Johnnie Walker Red',desc:'Whisky escocés.',price:2800,img:''},
-  {id:63,cat:'whisky',name:'Johnnie Walker Black',desc:'Whisky escocés 12 años.',price:3400,img:''},
-  {id:64,cat:'whisky',name:'Johnnie Walker Double Black',desc:'Whisky escocés.',price:3600,img:''},
-  
-  // VODKA
-  {id:65,cat:'vodka',name:'Smirnoff',desc:'Vodka ruso.',price:2600,img:''},
-  {id:66,cat:'vodka',name:'Smirnoff Saborizado',desc:'Vodka con sabor.',price:2800,img:''},
-  {id:67,cat:'vodka',name:'Absolut',desc:'Vodka sueco.',price:2800,img:''},
-  {id:68,cat:'vodka',name:'Absolut Saborizado',desc:'Vodka con sabor.',price:3000,img:''},
-  
-  // SIN ALCOHOL
-  {id:69,cat:'sin_alcohol',name:'Agua Mineral 500ml',desc:'Agua sin gas.',price:600,img:''},
-  {id:70,cat:'sin_alcohol',name:'Agua con Gas 500ml',desc:'Agua gasificada.',price:600,img:''},
-  {id:71,cat:'sin_alcohol',name:'Agua Saborizada 500ml',desc:'Pomelo / Manzana / Pera.',price:700,img:''},
-  {id:72,cat:'sin_alcohol',name:'Gaseosa 500ml',desc:'Coca-Cola, Sprite, etc.',price:700,img:''},
-  {id:73,cat:'sin_alcohol',name:'Jugo de Naranja Natural',desc:'Jugo exprimido natural.',price:900,img:''},
-  {id:74,cat:'sin_alcohol',name:'Vaso Limonada',desc:'Menta y jengibre, opcional almíbar.',price:800,img:''},
-  {id:75,cat:'sin_alcohol',name:'Jarra Limonada 1lt',desc:'Menta y jengibre, opcional almíbar.',price:2400,img:''},
+  {id:5,cat:'platos',name:'Milanesa Napolitana',desc:'Milanesa tierna con salsa de tomate, jamón, queso fundido y papas fritas.',price:5800,img:''},
+  {id:6,cat:'platos',name:'Hamburguesa Tongoy',desc:'Pan artesanal, medallón 200g, cheddar fundido y papas fritas.',price:5200,img:''},
+  {id:7,cat:'platos',name:'Ensalada César',desc:'Lechuga romana, pollo grillado, tomate cherry, huevo y aderezo.',price:4100,img:''},
+  {id:8,cat:'platos',name:'Ensalada Completa',desc:'Rúcula, zanahoria, atún, huevo, tomate y oliva.',price:3800,img:''},
+  {id:9,cat:'bebidas',name:'Gin Tonic',desc:'Gin premium con agua tónica artesanal y rodajas de limón.',price:2800,img:''},
+  {id:10,cat:'bebidas',name:'Aperol Spritz',desc:'Aperol, espumante y rodaja de naranja. Refrescante y elegante.',price:3100,img:''},
+  {id:11,cat:'bebidas',name:'Amargo Obrero',desc:'Fernet, amaro y soda. El clásico con un toque Tongoy.',price:2400,img:''},
+  {id:12,cat:'bebidas',name:'Gaseosas',desc:'Coca-Cola, Sprite o agua mineral. Bien fría.',price:900,img:''},
 ];
-
 const DEFAULT_PROMOS = [
   {id:'p1',badge:'After Work',name:'Combo After Work',desc:'Gin Tonic + tabla de quesos y fiambres para dos. Lunes a viernes de 18 a 21 hs.',price:8500,img:''},
   {id:'p2',badge:'Desayuno',name:'Desayuno Completo',desc:'Café con leche + jugo de naranja + 2 medialunas artesanales. De 7 a 11 hs.',price:3200,img:''},
   {id:'p3',badge:'Almuerzo',name:'Menú del Día',desc:'Plato principal + bebida + postre del día. Con ingredientes frescos.',price:6900,img:''},
 ];
-
 const TOTAL_MESAS = 20;
-const CATS = [
-  {key:'todos',label:'Todos'},
-  {key:'desayunos',label:'Desayunos'},
-  {key:'platos',label:'Platos'},
-  {key:'pizzas',label:'Pizzas'},
-  {key:'ensaladas',label:'Ensaladas'},
-  {key:'vinos',label:'Vinos'},
-  {key:'cervezas',label:'Cervezas'},
-  {key:'aperitivos',label:'Aperitivos'},
-  {key:'clasicos',label:'Clásicos'},
-  {key:'gin',label:'Gin Tonic'},
-  {key:'licores',label:'Licores'},
-  {key:'whisky',label:'Whisky'},
-  {key:'vodka',label:'Vodka'},
-  {key:'sin_alcohol',label:'Sin Alcohol'}
-];
+const CATS = [{key:'todos',label:'Todos'},{key:'desayunos',label:'Desayunos'},{key:'platos',label:'Platos'},{key:'bebidas',label:'Bebidas'}];
+const EMOJIS = {'desayunos':'','platos':'🍽️','bebidas':'🍹'};
 
-const EMOJIS = {
-  'desayunos':'☕',
-  'platos':'🍽️',
-  'pizzas':'🍕',
-  'ensaladas':'🥗',
-  'vinos':'',
-  'cervezas':'',
-  'aperitivos':'🍸',
-  'clasicos':'',
-  'gin':'🍸',
-  'licores':'🥃',
-  'whisky':'🥃',
-  'vodka':'🍸',
-  'sin_alcohol':'🥤'
-};
- 
 let menuData   = [];
 let promosData = [];
 let mesasData  = {};
@@ -848,198 +983,61 @@ let adminMode  = false;
 let pendingImgId   = null;
 let pendingPromoId = null;
 let mesaNumero = null;
-let currentLang = 'es';
- 
+
 // ══════════════════════════════════════════
-// TRADUCCIONES
-// ══════════════════════════════════════════
-const I18N = {
-  es:{
-    admin_password:'Contraseña de administrador:',
-    admin_wrong:'Contraseña incorrecta',
-    admin_only:'Solo los administradores pueden cambiar el estado de las mesas',
-    notif_libre:'¡Mesa Liberada!',
-    notif_ocupada:'¡Mesa Ocupada!',
-    notif_pre:'La Mesa Nº',
-    notif_suf:'cambió de estado.',
-  },
-  en:{
-    admin_password:'Admin password:',
-    admin_wrong:'Wrong password',
-    admin_only:'Only administrators can change table status',
-    notif_libre:'Table Freed!',
-    notif_ocupada:'Table Occupied!',
-    notif_pre:'Table No.',
-    notif_suf:'status changed.',
-  },
-};
- 
-function t(key){ return (I18N[currentLang] && I18N[currentLang][key]) ? I18N[currentLang][key] : (I18N['es'][key] || key); }
- 
-// ══════════════════════════════════════════
-// INICIALIZACIÓN Y SETUP
-// ══════════════════════════════════════════
- 
-async function init(){
-  initSupabase();
-  
-  // Cargar datos
-  await loadMenuData();
-  await loadPromosData();
-  await initMesas();
-  
-  // Renderizar
+// INICIALIZACIÓN
+// ═════════════════════════════════════════
+
+function init(){
+  loadData();
+  setLang(currentLang);
   renderTabs();
   renderMenu();
   renderPromos();
-  
-  // Scroll reveal
+  renderMesas();
   observeReveals();
   updateStatus();
   setInterval(updateStatus, 60000);
+  console.log('✅ App iniciada - Versión:', currentVersion, '- Idioma:', currentLang);
+}
+
+function loadData(){
+  const savedMenu = localStorage.getItem('tongoy_menu');
+  const savedPromos = localStorage.getItem('tongoy_promos');
+  const savedMesas = localStorage.getItem('tongoy_mesas');
   
-  console.log('✅ App iniciada - Menú completo cargado con', menuData.length, 'productos');
-}
- 
-async function loadMenuData(){
-  if(supabaseOk){
-    try {
-      const {data, error} = await supabase_client.from('tongoy_menu').select('*').order('id');
-      if(!error && data?.length){
-        menuData = data;
-        console.log('✅ Menú cargado desde BD:', menuData.length, 'productos');
-        setupMenuRealtime();
-        return;
-      } else {
-        console.log('️ No hay datos en BD, usando menú por defecto');
-      }
-    } catch(e){ 
-      console.warn('Error cargando menú de BD:', e);
-    }
-  }
-  menuData = DEFAULT_MENU;
-  console.log('✅ Usando menú por defecto con', menuData.length, 'productos');
-}
- 
-async function loadPromosData(){
-  if(supabaseOk){
-    try {
-      const {data, error} = await supabase_client.from('tongoy_promos').select('*').order('id');
-      if(!error && data?.length){
-        promosData = data;
-        console.log('✅ Promos cargadas desde BD');
-        setupPromosRealtime();
-        return;
-      }
-    } catch(e){ console.warn('Usando promos por defecto'); }
-  }
-  promosData = DEFAULT_PROMOS;
-}
- 
-async function initMesas(){
-  for(let i=1;i<=TOTAL_MESAS;i++) mesasData[i]={estado:0,updated_at:null};
-  
-  if(supabaseOk){
-    try {
-      const {data,error} = await supabase_client.from('tongoy_mesas').select('*').order('id');
-      if(error) throw error;
-      if(data && data.length > 0){
-        data.forEach(r=>{ mesasData[r.id]={estado:r.estado,updated_at:r.updated_at}; });
-        console.log('✅ Mesas cargadas desde BD');
-      } else {
-        // Si no hay mesas en la BD, inicializarlas
-        console.log('⚠️ Inicializando mesas en BD...');
-        for(let i=1;i<=TOTAL_MESAS;i++){
-          await supabase_client.from('tongoy_mesas').upsert({id:i,estado:0,updated_at:new Date().toISOString()});
-        }
-      }
-    } catch(e){ 
-      console.error('❌ Error mesas:', e); 
-    }
-    
-    setupMesasRealtime();
+  if(savedMenu){
+    menuData = JSON.parse(savedMenu);
+  } else {
+    menuData = JSON.parse(JSON.stringify(DEFAULT_MENU));
+    saveData();
   }
   
-  renderMesas();
-  initMesaSelector();
-}
- 
-// ══════════════════════════════════════════
-// REALTIME - CAMBIOS EN TIEMPO REAL
-// ══════════════════════════════════════════
- 
-function setupMenuRealtime(){
-  if(!supabaseOk || realtimeMenuChannel) return;
+  if(savedPromos){
+    promosData = JSON.parse(savedPromos);
+  } else {
+    promosData = JSON.parse(JSON.stringify(DEFAULT_PROMOS));
+    saveData();
+  }
   
-  realtimeMenuChannel = supabase_client
-    .channel('public:tongoy_menu')
-    .on('postgres_changes', {event:'*', schema:'public', table:'tongoy_menu'}, (payload)=>{
-      const item = payload.new || payload.old;
-      if(payload.eventType === 'UPDATE' || payload.eventType === 'INSERT'){
-        const idx = menuData.findIndex(m=>m.id===item.id);
-        if(idx>=0) menuData[idx]=item;
-        else menuData.push(item);
-      } else if(payload.eventType === 'DELETE'){
-        menuData = menuData.filter(m=>m.id!==item.id);
-      }
-      renderMenu();
-      updateSyncStatus(true, 'Sincronizado');
-      console.log('🔄 Menú actualizado');
-    })
-    .subscribe(status=>{ 
-      console.log('📡 Menu Realtime:', status); 
-    });
+  if(savedMesas){
+    mesasData = JSON.parse(savedMesas);
+  } else {
+    for(let i=1;i<=TOTAL_MESAS;i++) mesasData[i]={estado:0};
+    saveData();
+  }
 }
- 
-function setupPromosRealtime(){
-  if(!supabaseOk || realtimePromosChannel) return;
-  
-  realtimePromosChannel = supabase_client
-    .channel('public:tongoy_promos')
-    .on('postgres_changes', {event:'*', schema:'public', table:'tongoy_promos'}, (payload)=>{
-      const item = payload.new || payload.old;
-      if(payload.eventType === 'UPDATE' || payload.eventType === 'INSERT'){
-        const idx = promosData.findIndex(p=>p.id===item.id);
-        if(idx>=0) promosData[idx]=item;
-        else promosData.push(item);
-      } else if(payload.eventType === 'DELETE'){
-        promosData = promosData.filter(p=>p.id!==item.id);
-      }
-      renderPromos();
-      updateSyncStatus(true, 'Sincronizado');
-      console.log('🔄 Promos actualizado');
-    })
-    .subscribe(status=>{ 
-      console.log('📡 Promos Realtime:', status); 
-    });
+
+function saveData(){
+  localStorage.setItem('tongoy_menu', JSON.stringify(menuData));
+  localStorage.setItem('tongoy_promos', JSON.stringify(promosData));
+  localStorage.setItem('tongoy_mesas', JSON.stringify(mesasData));
 }
- 
-function setupMesasRealtime(){
-  if(!supabaseOk || realtimeChannel) return;
-  
-  realtimeChannel = supabase_client
-    .channel('public:tongoy_mesas')
-    .on('postgres_changes', {event:'UPDATE', schema:'public', table:'tongoy_mesas'}, (payload)=>{
-      const {id, estado} = payload.new;
-      const prevEstado = mesasData[id]?.estado;
-      mesasData[id] = {estado, updated_at: payload.new.updated_at};
-      
-      console.log(`🔄 Mesa ${id}: ${estado===0?'LIBERADA':'OCUPADA'}`);
-      renderMesas();
-      initMesaSelector(); // Actualiza el desplegable para todos los usuarios en tiempo real
-      
-      if(prevEstado!==estado) showMesaNotif(id, estado);
-      updateSyncStatus(true, 'Sincronizado');
-    })
-    .subscribe(status=>{ 
-      console.log('📡 Mesas Realtime:', status); 
-    });
-}
- 
+
 // ══════════════════════════════════════════
-// FUNCIONES DE RENDERIZADO
+// RENDERIZADO
 // ═════════════════════════════════════════
- 
+
 function renderMenu(){
   if(!document.getElementById('menuGrid')) return;
   
@@ -1051,11 +1049,11 @@ function renderMenu(){
     <div class="menu-card">
       <div class="card-img-wrap">
         ${item.img ? `<img src="${item.img}" alt="${item.name}" loading="lazy">` : `<div class="card-emoji">${EMOJIS[item.cat]||'🍽️'}</div>`}
-        <button class="admin-img-btn" onclick="editMenuImg(${item.id})">📷 Cambiar</button>
+        <button class="admin-img-btn" onclick="editMenuImg(${item.id})"> Cambiar</button>
       </div>
       <div class="card-body">
-        <div class="card-name">${item.name}</div>
-        <div class="card-desc">${item.desc}</div>
+        <div class="card-name" ${adminMode?'contenteditable="true" onblur="updateMenuItem('+item.id+',\'name\',this.innerText)"':''}>${item.name}</div>
+        <div class="card-desc" ${adminMode?'contenteditable="true" onblur="updateMenuItem('+item.id+',\'desc\',this.innerText)"':''}>${item.desc}</div>
         <div class="card-footer">
           <div class="card-price" onclick="adminMode && editMenuPrice(${item.id})" style="user-select:none;">$${item.price.toLocaleString()}</div>
           <button class="add-btn" onclick="addToCart(${item.id}, '${item.name.replace(/'/g, "\\'")}', ${item.price})">+</button>
@@ -1064,7 +1062,7 @@ function renderMenu(){
     </div>
   `).join('');
 }
- 
+
 function renderPromos(){
   if(!document.getElementById('promosGrid')) return;
   
@@ -1076,9 +1074,9 @@ function renderPromos(){
         <button class="promo-admin-img-btn" onclick="editPromoImg('${item.id}')">📷 Cambiar</button>
       </div>
       <div class="promo-body">
-        <div class="promo-badge">${item.badge}</div>
-        <div class="promo-name">${item.name}</div>
-        <div class="promo-desc">${item.desc}</div>
+        <div class="promo-badge" ${adminMode?'contenteditable="true" onblur="updatePromoItem(\''+item.id+'\',\'badge\',this.innerText)"':''}>${item.badge}</div>
+        <div class="promo-name" ${adminMode?'contenteditable="true" onblur="updatePromoItem(\''+item.id+'\',\'name\',this.innerText)"':''}>${item.name}</div>
+        <div class="promo-desc" ${adminMode?'contenteditable="true" onblur="updatePromoItem(\''+item.id+'\',\'desc\',this.innerText)"':''}>${item.desc}</div>
         <div class="promo-footer">
           <div class="promo-price" onclick="adminMode && editPromoPrice('${item.id}')" style="user-select:none;">$${item.price.toLocaleString()}</div>
         </div>
@@ -1086,7 +1084,7 @@ function renderPromos(){
     </div>
   `).join('');
 }
- 
+
 function renderMesas(){
   if(!document.getElementById('mesasGrid')) return;
   
@@ -1100,12 +1098,12 @@ function renderMesas(){
            title="${adminMode?'Click para cambiar estado':''}">
         <div class="mesa-icon">${libre?'🟢':'🔴'}</div>
         <div class="mesa-num">${num}</div>
-        <div class="mesa-status-txt">${libre?'LIBERADA':'OCUPADA'}</div>
+        <div class="mesa-status-txt">${libre?t('table_free'):t('table_occupied')}</div>
       </div>
     `;
   }).join('');
 }
- 
+
 function renderTabs(){
   if(!document.getElementById('tabs')) return;
   const tabs = document.getElementById('tabs');
@@ -1113,69 +1111,55 @@ function renderTabs(){
     <button class="tab ${activeCat===c.key?'active':''}" onclick="setCategory('${c.key}')">${c.label}</button>
   `).join('');
 }
- 
+
+function updateMenuItem(id, field, value){
+  const item = menuData.find(m=>m.id===id);
+  if(item){
+    item[field] = value;
+    saveData();
+    bumpVersion();
+  }
+}
+
+function updatePromoItem(id, field, value){
+  const item = promosData.find(p=>p.id===id);
+  if(item){
+    item[field] = value;
+    saveData();
+    bumpVersion();
+  }
+}
+
 // ══════════════════════════════════════════
 // MESAS - ADMIN CONTROL
-// ══════════════════════════════════════════
- 
-async function toggleMesaEstado(id){
+// ═════════════════════════════════════════
+
+function toggleMesaEstado(id){
   if(!adminMode){
     alert(t('admin_only'));
     return;
   }
   
   const m = mesasData[id];
-  const newEstado = m.estado===0 ? 1 : 0; // 0 = Liberada, 1 = Ocupada
+  const newEstado = m.estado===0 ? 1 : 0;
   
-  // Actualizar localmente primero
-  mesasData[id] = {...m, estado: newEstado, updated_at: new Date().toISOString()};
+  mesasData[id] = {...m, estado: newEstado};
+  saveData();
   renderMesas();
-  
-  if(supabaseOk){
-    try {
-      const {error} = await supabase_client.from('tongoy_mesas').upsert({
-        id: id,
-        estado: newEstado,
-        updated_at: new Date().toISOString()
-      });
-      
-      if(error){
-        console.error('❌ Error guardando mesa:', error);
-        updateSyncStatus(false, 'Error guardando');
-        // Revertir cambio local
-        mesasData[id] = m;
-        renderMesas();
-        alert('Error al guardar el estado de la mesa');
-      } else {
-        console.log(`✅ Mesa ${id} sincronizada (${newEstado===0?'LIBERADA':'OCUPADA'})`);
-        updateSyncStatus(true, 'Mesa sincronizada');
-      }
-    } catch(e){ 
-      console.error('❌ Error:', e);
-      alert('Error de conexión');
-    }
-  } else {
-    console.log('⚠️ Sin conexión a BD, cambio solo local');
-  }
-  
+  initMesaSelector();
   showMesaNotif(id, newEstado);
 }
- 
-// ══════════════════════════════════════════
+
+// ═════════════════════════════════════════
 // CARRITO
-// ══════════════════════════════════════════
- 
+// ═════════════════════════════════════════
+
 function addToCart(id, name, price){
   if(!cart[id]) cart[id] = {name, price, qty: 0};
   cart[id].qty++;
   updateCartUI();
-  
-  // Animación del botón
-  const btn = event.target;
-  btn.style.transform = 'scale(1.3)';
-  setTimeout(()=>btn.style.transform = 'scale(1)', 200);
 }
- 
+
 function updateCartUI(){
   const items = Object.values(cart).filter(i=>i.qty>0);
   const count = items.reduce((s,i)=>s+i.qty,0);
@@ -1186,26 +1170,24 @@ function updateCartUI(){
   
   const cartItems = document.getElementById('cartItems');
   if(items.length===0){
-    cartItems.innerHTML = '<div class="cart-empty">Tu carrito está vacío.<br>¡Agregá algo del menú!</div>';
+    cartItems.innerHTML = `<div class="cart-empty">${t('cart_empty')}</div>`;
   } else {
-    cartItems.innerHTML = items.map((item,idx)=>{
-      const itemId = Object.keys(cart)[idx];
-      return `
+    cartItems.innerHTML = items.map((item,idx)=>`
       <div class="cart-item">
         <div class="ci-name">${item.name}</div>
         <div class="ci-qty">
-          <button class="qty-btn" onclick="modifyQty('${itemId}',-1)">−</button>
+          <button class="qty-btn" onclick="modifyQty('${Object.keys(cart)[Object.values(cart).indexOf(item)]}',-1)">−</button>
           <span>${item.qty}</span>
-          <button class="qty-btn" onclick="modifyQty('${itemId}',1)">+</button>
+          <button class="qty-btn" onclick="modifyQty('${Object.keys(cart)[Object.values(cart).indexOf(item)]}',1)">+</button>
         </div>
         <div class="ci-price">$${(item.price*item.qty).toLocaleString()}</div>
       </div>
-    `}).join('');
+    `).join('');
   }
   
   updateSendButtonState();
 }
- 
+
 function modifyQty(id, delta){
   if(cart[id]){
     cart[id].qty = Math.max(0, cart[id].qty + delta);
@@ -1213,9 +1195,9 @@ function modifyQty(id, delta){
     updateCartUI();
   }
 }
- 
+
 function toggleCart(){ document.getElementById('cartPanel').classList.toggle('open'); }
- 
+
 function updateSendButtonState(){
   const hasItems = Object.values(cart).some(i=>i.qty>0);
   const btn = document.getElementById('btnSendOrder');
@@ -1230,109 +1212,113 @@ function updateSendButtonState(){
     btn.disabled = false;
     warning.style.display = 'none';
     info.style.display = 'flex';
-    document.getElementById('cartMesaLabel').textContent = `Mesa ${mesaNumero}`;
+    document.getElementById('cartMesaLabel').textContent = `${t('mesa_badge')} ${mesaNumero}`;
   } else {
     btn.disabled = false;
     warning.style.display = 'none';
     info.style.display = 'none';
   }
 }
- 
+
 function sendOrder(){
   if(!mesaNumero){
-    alert('Por favor selecciona una mesa');
+    alert(t('cart_warning').replace('Selecciona una mesa para enviar', 'Por favor indicá tu número de mesa'));
     return;
   }
   
   const items = Object.values(cart).filter(i=>i.qty>0);
   if(items.length===0){
-    alert('Tu carrito está vacío');
+    alert(t('cart_empty').replace('<br>¡Agregá algo del menú!', ''));
     return;
   }
   
-  const total = items.reduce((s,i)=>s+(i.price*i.qty),0);
-  const text = `*Hola! 🍽️ Quiero hacer un pedido:*\n\n` + 
-    items.map(i=>`• ${i.qty}x ${i.name} - $${i.price.toLocaleString()}`).join('\n') + 
-    `\n\n📍 *Mesa ${mesaNumero}*\n*Total: $${total.toLocaleString()}*`;
-    
+  const text = `Hola! 🍽️ Quiero hacer un pedido:\n\n${items.map(i=>`${i.qty}x ${i.name} - $${i.price.toLocaleString()}`).join('\n')}\n\n📍 ${t('mesa_badge')} ${mesaNumero}\nTotal: $${items.reduce((s,i)=>s+(i.price*i.qty),0).toLocaleString()}`;
   window.open(`https://wa.me/5493489236010?text=${encodeURIComponent(text)}`);
   
-  // Limpiar carrito
   cart = {};
   mesaNumero = null;
   document.getElementById('mesaCheck').checked = false;
   document.getElementById('mesaSelectWrap').classList.remove('visible');
   updateCartUI();
   updateSendButtonState();
-  toggleCart();
 }
- 
+
 // ══════════════════════════════════════════
-// MESA SELECTOR (Desplegable del usuario)
-// ══════════════════════════════════════════
- 
-function toggleMesa(checked){
+// MESA SELECTOR - SINCRONIZADO CON ESTADO
+// ═════════════════════════════════════════
+
+function toggleMesaInput(checked){
   document.getElementById('mesaSelectWrap').classList.toggle('visible', checked);
   if(!checked){
     mesaNumero = null;
     updateMesaBadge();
   }
 }
- 
+
 function initMesaSelector(){
   const select = document.getElementById('mesaNum');
-  // Genera las opciones mostrando si está LIBERADA o OCUPADA
-  select.innerHTML = '<option value="">Seleccionar...</option>' + 
-    Array.from({length:TOTAL_MESAS}, (_,i)=>i+1).map(n=>{
+  
+  // Mostrar SOLO mesas ocupadas (rojas) para clientes
+  // El admin puede ver todas
+  const options = Array.from({length:TOTAL_MESAS}, (_,i)=>i+1).map(n=>{
     const estado = mesasData[n]?.estado||0;
-    const isFree = estado===0;
-    const marker = isFree ? '' : '🔴';
-    const statusText = isFree ? 'LIBERADA' : 'OCUPADA';
-    // Si es admin, permitimos seleccionar cualquier mesa. Si no, bloqueamos las ocupadas.
-    const disabled = (isFree || adminMode) ? '' : 'disabled';
-    const style = (!isFree && !adminMode) ? 'style="color:#E07050;"' : '';
-    return `<option value="${n}" ${disabled} ${style}>${marker} Mesa ${n} - ${statusText}</option>`;
+    const isOcupada = estado===1;
+    const marker = isOcupada ? '🔴' : '🟢';
+    const statusText = isOcupada ? t('table_occupied') : t('table_free');
+    
+    // Si es admin, puede seleccionar cualquier mesa
+    // Si es cliente, SOLO puede seleccionar mesas OCUPADAS
+    const disabled = (adminMode || isOcupada) ? '' : 'disabled';
+    const style = (!isOcupada && !adminMode) ? 'style="color:#7A6E65; opacity:0.5;"' : '';
+    
+    return `<option value="${n}" ${disabled} ${style}>${marker} ${t('mesa_badge')} ${n} - ${statusText}</option>`;
   }).join('');
   
-  // Si la mesa que el usuario tenía seleccionada pasó a estar OCUPADA por el admin, se avisa y se resetea
-  if(mesaNumero && mesasData[mesaNumero] && mesasData[mesaNumero].estado === 1 && !adminMode){
+  select.innerHTML = `<option value="">${t('select_table')}</option>` + options;
+  
+  // Verificar si la mesa seleccionada sigue estando ocupada
+  if(mesaNumero && mesasData[mesaNumero] && mesasData[mesaNumero].estado === 0 && !adminMode){
     mesaNumero = null;
     document.getElementById('mesaCheck').checked = false;
     document.getElementById('mesaSelectWrap').classList.remove('visible');
     updateMesaBadge();
-    alert('⚠️ La mesa que habías seleccionado acaba de ser OCUPADA. Por favor, elegí una mesa LIBERADA.');
+    alert('⚠️ La mesa que habías seleccionado fue liberada. Por favor, seleccioná una mesa ocupada.');
   }
 }
- 
+
 function updateMesaBadge(){
+  const select = document.getElementById('mesaNum');
   const badge = document.getElementById('mesaBadge');
-  if(mesaNumero){
+  const val = parseInt(select.value);
+  
+  if(val && val>=1 && val<=TOTAL_MESAS){
+    // Verificar que esté ocupada si no es admin
+    if(!adminMode && mesasData[val] && mesasData[val].estado !== 1){
+      alert('⚠️ Esta mesa no está ocupada. Por favor seleccioná una mesa marcada como ocupada (🔴).');
+      select.value = '';
+      mesaNumero = null;
+      badge.classList.remove('visible');
+      updateSendButtonState();
+      return;
+    }
+    mesaNumero = val;
     badge.classList.add('visible');
     document.getElementById('mesaBadgeNum').textContent = mesaNumero;
   } else {
+    mesaNumero = null;
     badge.classList.remove('visible');
   }
   updateSendButtonState();
 }
- 
-document.addEventListener('change', (e)=>{
-  if(e.target.id==='mesaNum'){
-    const val = parseInt(e.target.value);
-    if(val){
-      mesaNumero = val;
-      updateMesaBadge();
-    }
-  }
-});
- 
-// ══════════════════════════════════════════
+
+// ═════════════════════════════════════════
 // ADMIN
-// ══════════════════════════════════════════
- 
+// ════════════════════════════════════════
+
 function setAdmin(on){
   if(on){
     const pwd = prompt(t('admin_password'));
-    if(pwd!=='tongoyhome' && pwd!=='administrador'){
+    if(pwd!=='tongoyhome'){
       alert(t('admin_wrong'));
       document.getElementById('adminToggle').checked = false;
       return;
@@ -1347,140 +1333,91 @@ function setAdmin(on){
   renderMenu();
   renderPromos();
   renderMesas();
-  initMesaSelector(); // Refresca el desplegable para que el admin pueda seleccionar todas si necesita probar
+  initMesaSelector();
   
-  if(on){
-    console.log('✅ MODO ADMINISTRADOR ACTIVADO');
-  } else {
-    console.log('️ MODO ADMINISTRADOR DESACTIVADO');
-  }
+  if(on) console.log('✅ MODO ADMINISTRADOR ACTIVADO');
+  else console.log('⚠️ MODO ADMINISTRADOR DESACTIVADO');
 }
- 
+
 function editMenuPrice(id){
   const item = menuData.find(m=>m.id===id);
   const newPrice = prompt(`Nuevo precio para "${item.name}":`, item.price);
   if(newPrice && !isNaN(newPrice)){
     item.price = parseInt(newPrice);
-    saveMenuData();
+    saveData();
     renderMenu();
+    bumpVersion();
   }
 }
- 
+
 function editPromoPrice(id){
   const item = promosData.find(p=>p.id===id);
   const newPrice = prompt(`Nuevo precio para "${item.name}":`, item.price);
   if(newPrice && !isNaN(newPrice)){
     item.price = parseInt(newPrice);
-    savePromosData();
+    saveData();
     renderPromos();
+    bumpVersion();
   }
 }
- 
-async function saveMenuData(){
-  if(!supabaseOk) {
-    alert('Sin conexión a base de datos. Los cambios no se guardarán.');
-    return;
-  }
-  try {
-    updateSyncStatus(true, 'Guardando...');
-    for(let item of menuData){
-      await supabase_client.from('tongoy_menu').upsert(item);
-    }
-    updateSyncStatus(true, 'Menú guardado');
-    console.log('✅ Menú sincronizado');
-  } catch(e){ 
-    console.error('❌ Error guardando menú:', e); 
-    updateSyncStatus(false, 'Error al guardar');
-  }
-}
- 
-async function savePromosData(){
-  if(!supabaseOk) {
-    alert('Sin conexión a base de datos.');
-    return;
-  }
-  try {
-    updateSyncStatus(true, 'Guardando...');
-    for(let item of promosData){
-      await supabase_client.from('tongoy_promos').upsert(item);
-    }
-    updateSyncStatus(true, 'Promos guardadas');
-    console.log('✅ Promos sincronizadas');
-  } catch(e){ 
-    console.error('❌ Error guardando promos:', e);
-    updateSyncStatus(false, 'Error al guardar');
-  }
-}
- 
+
 function editMenuImg(id){ pendingImgId=id; document.getElementById('imgFileInput').click(); }
 function editPromoImg(id){ pendingPromoId=id; document.getElementById('promoImgFileInput').click(); }
- 
-document.getElementById('imgFileInput').addEventListener('change', async (e)=>{
+
+document.getElementById('imgFileInput').addEventListener('change', (e)=>{
   const file = e.target.files[0];
   if(!file || !pendingImgId) return;
   
-  // Verificar tamaño (max 5MB)
-  if(file.size > 5 * 1024 * 1024){
-    alert('La imagen es muy pesada. Máximo 5MB.');
-    return;
-  }
-  
   const reader = new FileReader();
-  reader.onload = async (evt)=>{
+  reader.onload = (evt)=>{
     const dataUrl = evt.target.result;
     const item = menuData.find(m=>m.id===pendingImgId);
     if(item){
       item.img = dataUrl;
+      saveData();
       renderMenu();
-      await saveMenuData();
-      console.log('✅ Imagen guardada para producto', pendingImgId);
+      bumpVersion();
     }
-  };
-  reader.onerror = () => {
-    alert('Error al leer la imagen');
   };
   reader.readAsDataURL(file);
   pendingImgId = null;
-  e.target.value = ''; // Reset input
 });
- 
-document.getElementById('promoImgFileInput').addEventListener('change', async (e)=>{
+
+document.getElementById('promoImgFileInput').addEventListener('change', (e)=>{
   const file = e.target.files[0];
   if(!file || !pendingPromoId) return;
   
-  if(file.size > 5 * 1024 * 1024){
-    alert('La imagen es muy pesada. Máximo 5MB.');
-    return;
-  }
-  
   const reader = new FileReader();
-  reader.onload = async (evt)=>{
+  reader.onload = (evt)=>{
     const dataUrl = evt.target.result;
     const item = promosData.find(p=>p.id===pendingPromoId);
     if(item){
       item.img = dataUrl;
+      saveData();
       renderPromos();
-      await savePromosData();
-      console.log('✅ Imagen guardada para promo', pendingPromoId);
+      bumpVersion();
     }
-  };
-  reader.onerror = () => {
-    alert('Error al leer la imagen');
   };
   reader.readAsDataURL(file);
   pendingPromoId = null;
-  e.target.value = ''; // Reset input
 });
- 
-// ══════════════════════════════════════════
+
+// ═════════════════════════════════════════
 // FUNCIONES AUXILIARES
-// ══════════════════════════════════════════
- 
+// ════════════════════════════════════════
+
 function setCategory(cat){ activeCat=cat; renderTabs(); renderMenu(); }
-function setLang(lang){ currentLang=lang; document.documentElement.lang=lang; }
-function toggleMobile(){ document.getElementById('hamburger').classList.toggle('open'); document.getElementById('mobMenu').classList.toggle('open'); }
-function closeMobile(){ document.getElementById('hamburger').classList.remove('open'); document.getElementById('mobMenu').classList.remove('open'); }
- 
+
+function toggleMobile(){ 
+  document.getElementById('hamburger').classList.toggle('open'); 
+  document.getElementById('mobMenu').classList.toggle('open'); 
+}
+
+function closeMobile(){ 
+  document.getElementById('hamburger').classList.remove('open'); 
+  document.getElementById('mobMenu').classList.remove('open'); 
+}
+
 function updateStatus(){
   const now = new Date();
   const day = now.getDay();
@@ -1490,30 +1427,27 @@ function updateStatus(){
   
   let open = false;
   if(day>=1 && day<=4){ open = timeNum>=7 && timeNum<23; }
-  else if(day===5 || day===6){ open = timeNum>=7 && timeNum<24.5; }
+  else if(day===5 || day===0){ open = timeNum>=7 && timeNum<24.5; }
   else { open = timeNum>=7 && timeNum<24.5; }
   
   const badge = document.getElementById('statusBadge');
   badge.className = `status-badge ${open?'status-open':'status-closed'}`;
-  document.getElementById('statusText').textContent = open ? 'Abierto' : 'Cerrado';
+  document.getElementById('statusText').textContent = open ? t('status_open') : t('status_closed');
 }
- 
+
 function showMesaNotif(num, estado){
   const notif = document.createElement('div');
   notif.className = 'mesa-notif';
-  const estadoText = estado===0 ? t('notif_libre') : t('notif_ocupada');
+  const texto = estado===1 ? t('notif_occupied') : t('notif_free');
   notif.innerHTML = `
-    <span class="notif-icon">${estado===0?'✅':''}</span>
-    <span>${t('notif_pre')} ${num} - ${estadoText}</span>
+    <span class="notif-icon">${estado===1?'🔴':'✅'}</span>
+    <span>${t('notif_pre')} ${num} - ${texto}</span>
     <button class="notif-close" onclick="this.parentElement.remove()">✕</button>
   `;
   document.body.appendChild(notif);
-  setTimeout(()=>{ 
-    notif.classList.add('hide'); 
-    setTimeout(()=>notif.remove(), 350); 
-  }, 4000);
+  setTimeout(()=>{ notif.classList.add('hide'); setTimeout(()=>notif.remove(), 350); }, 3000);
 }
- 
+
 function observeReveals(){
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
@@ -1525,10 +1459,10 @@ function observeReveals(){
   }, {threshold:.3});
   document.querySelectorAll('.parallax-section').forEach(el=>secObs.observe(el));
 }
- 
-// ══════════════════════════════════════════
+
+// ═════════════════════════════════════════
 // INICIAR APP
-// ══════════════════════════════════════════
+// ════════════════════════════════════════
 window.addEventListener('load', init);
 </script>
 </body>
