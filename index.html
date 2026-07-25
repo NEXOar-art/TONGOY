@@ -49,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .lang-btn:hover{color:var(--cream);}
 .lang-btn.active{background:var(--gold);color:var(--dark);}
  
-/* ─ HERO ── */
+/* ── HERO ── */
 #inicio{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 #inicio::before{content:'';position:absolute;top:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,var(--dark) 0%,transparent 100%);z-index:2;pointer-events:none;}
 #inicio::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--dark) 0%,transparent 100%);z-index:2;pointer-events:none;}
@@ -73,7 +73,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .overlay-bebidas{background:linear-gradient(to bottom right,rgba(15,12,9,.68),rgba(139,58,30,.2),rgba(15,12,9,.78));}
 .parallax-content{position:relative;z-index:4;text-align:center;padding:2rem;max-width:900px;}
  
-/* ─ TYPOGRAPHY ── */
+/* ── TYPOGRAPHY ── */
 .eyebrow{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:0;animation:fadeUp .9s forwards;}
 .hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,16vw,12rem);line-height:.88;letter-spacing:.05em;color:var(--cream);margin-bottom:.75rem;opacity:0;animation:fadeUp .9s .2s forwards;}
 .hero-title .g{color:var(--gold);}
@@ -94,7 +94,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 /* ── STRIP ── */
 .strip{background:var(--gold);padding:.7rem 1.5rem;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.22em;color:var(--dark);}
  
-/* ── MENU SECTION ─ */
+/* ── MENU SECTION ── */
 #menu{background:var(--dark3);padding:5rem 1.5rem;}
 .container{max-width:1280px;margin:0 auto;}
 .menu-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem;}
@@ -124,29 +124,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .card-name{font-weight:600;font-size:.95rem;margin-bottom:.25rem;}
 .card-desc{color:var(--muted);font-size:.78rem;line-height:1.55;margin-bottom:.8rem;}
 .card-footer{display:flex;justify-content:space-between;align-items:center;gap:.5rem;}
-.card-price{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;color:var(--gold);letter-spacing:.04em;cursor:default;}
-.admin-mode .card-price{cursor:pointer;border-bottom:1px dashed var(--gold);padding-bottom:1px;}
+.card-price{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;color:var(--gold);letter-spacing:.04em;}
 .add-btn{background:var(--gold);color:var(--dark);border:none;width:34px;height:34px;border-radius:2px;font-size:1.3rem;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .add-btn:hover{background:var(--gold-l);transform:scale(1.1);}
-.price-input{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);background:transparent;border:1px solid var(--gold);border-radius:2px;width:100px;padding:.1rem .4rem;letter-spacing:.04em;}
-.name-editable[contenteditable="true"]{outline:none;border-bottom:1px dashed rgba(245,240,232,.4);padding-bottom:2px;}
-.desc-editable[contenteditable="true"]{outline:none;border-bottom:1px dashed rgba(122,110,101,.4);padding-bottom:2px;}
- 
-/* ── MESA SELECTOR ── */
-.mesa-selector{background:var(--dark2);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;margin-bottom:1.5rem;}
-.mesa-selector-title{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem;}
-.mesa-required{color:#E07050;}
-.mesa-row{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;}
-.mesa-check-wrap{display:flex;align-items:center;gap:.4rem;}
-.mesa-check-wrap input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:pointer;}
-.mesa-check-wrap label{font-size:.78rem;color:var(--muted);cursor:pointer;}
-.mesa-select-wrap{display:flex;align-items:center;gap:.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
-.mesa-select-wrap.visible{opacity:1;pointer-events:all;}
-.mesa-select-wrap label{font-size:.78rem;color:var(--cream);}
-.mesa-num-select{background:var(--char);border:1px solid var(--border);color:var(--cream);padding:.35rem .7rem;border-radius:2px;font-size:.85rem;font-family:'DM Sans',sans-serif;cursor:pointer;min-width:80px;}
-.mesa-num-select:focus{outline:none;border-color:var(--gold);}
-.mesa-badge{background:rgba(201,168,76,.12);border:1px solid var(--border);color:var(--gold);padding:.25rem .7rem;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:none;}
-.mesa-badge.visible{display:inline-flex;align-items:center;gap:.3rem;}
  
 /* ── CARRITO ── */
 .cart-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:250;}
@@ -168,9 +148,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .ci-price{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--gold);min-width:64px;text-align:right;}
 .cart-empty{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;line-height:1.6;}
 .cart-footer{padding:1rem 1.2rem;border-top:1px solid var(--border);}
-.cart-mesa-info{display:flex;align-items:center;gap:.45rem;padding:.5rem .7rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:4px;margin-bottom:.8rem;font-size:.78rem;color:var(--gold);}
-.cart-mesa-info span{font-weight:600;}
-.cart-mesa-warning{display:flex;align-items:center;gap:.45rem;padding:.5rem .7rem;background:rgba(224,112,80,.08);border:1px solid rgba(224,112,80,.3);border-radius:4px;margin-bottom:.8rem;font-size:.78rem;color:#E07050;}
 .cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;}
 .cart-total span:first-child{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);}
 .cart-total span:last-child{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--gold);letter-spacing:.04em;}
@@ -188,49 +165,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .promo-img-wrap img{width:100%;height:100%;object-fit:cover;filter:brightness(.82) saturate(1.1);transition:transform .4s,filter .4s;}
 .promo-card:hover .promo-img-wrap img{transform:scale(1.04);filter:brightness(.95) saturate(1.2);}
 .promo-img-emoji{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--gold);}
-.promo-admin-img-btn{position:absolute;bottom:.5rem;right:.5rem;background:rgba(15,12,9,.85);border:1px solid var(--gold);color:var(--gold);font-size:.68rem;padding:.3rem .6rem;border-radius:2px;cursor:pointer;display:none;letter-spacing:.06em;text-transform:uppercase;z-index:3;}
-.admin-mode-promos .promo-admin-img-btn{display:block;}
 .promo-body{padding:1.5rem;}
 .promo-badge{display:inline-block;background:var(--rust);color:#fff;padding:.22rem .7rem;border-radius:2px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.85rem;}
 .promo-name{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;letter-spacing:.05em;margin-bottom:.5rem;}
 .promo-desc{color:var(--muted);font-size:.83rem;line-height:1.65;margin-bottom:1rem;}
 .promo-footer{display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
 .promo-price{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;color:var(--gold);}
-.promo-price-input{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;color:var(--gold);background:transparent;border:1px solid var(--gold);border-radius:2px;width:130px;padding:.1rem .4rem;letter-spacing:.04em;}
-.admin-mode-promos .promo-badge[contenteditable="true"],.admin-mode-promos .promo-name[contenteditable="true"],.admin-mode-promos .promo-desc[contenteditable="true"]{outline:none;border-bottom:1px dashed rgba(201,168,76,.5);padding-bottom:2px;}
- 
-/* ── MESAS PANEL ── */
-#mesas-panel{background:var(--dark3);padding:5rem 1.5rem;}
-.mesas-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;}
-.mesas-legend{display:flex;gap:1.2rem;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;}
-.leg-item{display:flex;align-items:center;gap:.4rem;}
-.leg-dot{width:10px;height:10px;border-radius:50%;}
-.leg-libre{background:#25D366;}
-.leg-ocupada{background:#E07050;}
-.mesas-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:.85rem;}
-.mesa-tile{background:var(--dark2);border:1.5px solid var(--border);border-radius:8px;padding:.9rem .6rem;display:flex;flex-direction:column;align-items:center;gap:.4rem;cursor:default;transition:all .28s;position:relative;overflow:hidden;}
-.mesa-tile::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s;pointer-events:none;}
-.mesa-tile.libre{border-color:rgba(37,211,102,.35);}
-.mesa-tile.libre::after{background:radial-gradient(circle at 50% 0%,rgba(37,211,102,.08),transparent 70%);opacity:1;}
-.mesa-tile.ocupada{border-color:rgba(224,112,80,.35);}
-.mesa-tile.ocupada::after{background:radial-gradient(circle at 50% 0%,rgba(224,112,80,.08),transparent 70%);opacity:1;}
-.mesa-tile.admin-mode-edit:hover{cursor:pointer;transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.35);}
-.mesa-icon{font-size:1.6rem;transition:transform .25s;}
-.mesa-tile.admin-mode-edit:hover .mesa-icon{transform:scale(1.15);}
-.mesa-num{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.06em;}
-.mesa-status-txt{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;}
-.mesa-tile.libre .mesa-status-txt{color:#25D366;}
-.mesa-tile.ocupada .mesa-status-txt{color:#E07050;}
-.mesa-tiempo{font-size:.62rem;color:var(--muted);margin-top:.1rem;}
- 
-/* Notificación pop-up */
-.mesa-notif{position:fixed;top:80px;right:1.5rem;z-index:500;background:var(--dark3);border:1px solid #25D366;border-radius:8px;padding:1rem 1.3rem;box-shadow:0 8px 32px rgba(37,211,102,.2);display:flex;align-items:center;gap:.8rem;font-size:.85rem;min-width:240px;max-width:320px;animation:notifIn .4s cubic-bezier(.22,1,.36,1) forwards;}
-.mesa-notif.hide{animation:notifOut .35s ease-in forwards;}
-@keyframes notifIn{from{opacity:0;transform:translateX(40px);}to{opacity:1;transform:translateX(0);}}
-@keyframes notifOut{to{opacity:0;transform:translateX(40px);}}
-.notif-icon{font-size:1.5rem;flex-shrink:0;}
-.notif-close{background:none;border:none;color:var(--muted);cursor:pointer;margin-left:auto;font-size:.9rem;}
-.notif-close:hover{color:var(--cream);}
  
 /* ── NOSOTROS ── */
 #nosotros{background:var(--dark3);padding:5rem 1.5rem;}
@@ -273,7 +213,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding-top:1.5rem;border-top:1px solid var(--border);}
 .footer-bottom p{color:var(--muted);font-size:.73rem;}
  
-/* ─ ANIMATIONS ── */
+/* ── ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
 @keyframes pulse{0%,100%{opacity:.5;}50%{opacity:1;}}
 .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.22,1,.36,1),transform .9s cubic-bezier(.22,1,.36,1);}
@@ -286,17 +226,16 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 .admin-panel-header h2{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.1em;color:var(--gold);}
 .admin-close-full{background:none;border:1px solid var(--border);color:var(--cream);padding:.35rem .9rem;border-radius:2px;cursor:pointer;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;transition:all .2s;}
 .admin-close-full:hover{border-color:var(--gold);color:var(--gold);}
-.admin-hint{font-size:.75rem;color:var(--muted);line-height:1.6;}
+.admin-hint{font-size:.8rem;color:var(--cream);line-height:1.6;}
 .admin-hint span{color:var(--gold);}
  
-/* ─ RESPONSIVE ── */
+/* ── RESPONSIVE ── */
 @media(max-width:900px){
   .nav-links,.nav-cta{display:none;}
   .hamburger{display:flex;}
   .about-grid,.contact-grid{grid-template-columns:1fr;}
   .about-imgs img:first-child{aspect-ratio:4/3;}
   .parallax-content{padding:1.5rem;}
-  .mesas-grid{grid-template-columns:repeat(auto-fill,minmax(80px,1fr));}
 }
 @media(max-width:600px){
   .cart-panel{right:.75rem;left:.75rem;width:auto;bottom:5rem;}
@@ -317,18 +256,15 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
 <!-- ADMIN PANEL -->
 <div class="admin-panel" id="adminPanel">
   <div class="admin-panel-header">
-    <h2 data-i18n="admin_title"> Modo Administrador Activo</h2>
+    <h2 data-i18n="admin_title">⚙ Modo Administrador Activo</h2>
     <button class="admin-close-full" onclick="setAdmin(false)" data-i18n="admin_exit">Salir del modo admin</button>
   </div>
   <p class="admin-hint">
-    <span data-i18n="admin_hint_price">Precios:</span> click sobre el precio para editarlo ·
-    <span data-i18n="admin_hint_text">Nombre/Descripción:</span> click para editar ·
-    <span data-i18n="admin_hint_photo">Foto:</span> usá el botón 📷 en cada tarjeta ·
-    <span data-i18n="admin_hint_table">Mesas:</span> clickeá en cada mesa para OCUPARLA (🔴) o LIBERARLA (🟢)
-  </p>
-  <p class="admin-hint" style="margin-top:1rem;color:var(--gold);">
-    📊 <strong>Base de Datos:</strong> Los cambios se guardan en Google Sheets. 
-    <a href="https://docs.google.com/spreadsheets/d/1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI/edit?usp=sharing" target="_blank" style="color:var(--gold-l);text-decoration:underline;">Abrir Google Sheets</a>
+    📊 <strong>Base de Datos:</strong> Todos los productos, precios e imágenes se cargan directamente desde Google Sheets.
+    <br><br>
+    <a href="https://docs.google.com/spreadsheets/d/1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI/edit?usp=sharing" target="_blank" style="color:var(--gold-l);text-decoration:underline; font-weight:bold; font-size: 1rem;">📝 Abrir Google Sheets para Editar</a>
+    <br><br>
+    <em style="font-size: 0.75rem; color: var(--muted);">Nota: Después de guardar cambios en la hoja de cálculo, recarga esta página (F5) para ver las actualizaciones.</em>
   </p>
 </div>
  
@@ -340,7 +276,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
       <li><a href="#inicio" data-i18n="nav_home">Inicio</a></li>
       <li><a href="#menu" data-i18n="nav_menu">Menú</a></li>
       <li><a href="#promociones" data-i18n="nav_promos">Promos</a></li>
-      <li><a href="#mesas-panel" data-i18n="nav_tables">Mesas</a></li>
       <li><a href="#nosotros" data-i18n="nav_about">Nosotros</a></li>
       <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
     </ul>
@@ -366,7 +301,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   <a href="#inicio" onclick="closeMobile()" data-i18n="nav_home">Inicio</a>
   <a href="#menu" onclick="closeMobile()" data-i18n="nav_menu">Menú</a>
   <a href="#promociones" onclick="closeMobile()" data-i18n="nav_promos">Promos</a>
-  <a href="#mesas-panel" onclick="closeMobile()" data-i18n="nav_tables">Mesas</a>
   <a href="#nosotros" onclick="closeMobile()" data-i18n="nav_about">Nosotros</a>
   <a href="#contacto" onclick="closeMobile()" data-i18n="nav_contact">Contacto</a>
 </div>
@@ -413,7 +347,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=85&fit=crop');" aria-hidden="true"></div>
   <div class="parallax-overlay overlay-after"></div>
   <div class="parallax-content section-callout" style="text-align:left;max-width:650px;margin-left:0;padding-left:5vw;">
-    <p class="sec-label reveal" data-i18n="sec_after_label"> De lunes a sábado</p>
+    <p class="sec-label reveal" data-i18n="sec_after_label">✦ De lunes a sábado</p>
     <h2 class="sec-h reveal" style="font-size:clamp(3rem,8vw,6.5rem);" data-i18n="sec_after_title">AFTER<br><span style="color:var(--gold)">WORK</span></h2>
     <div class="divider reveal" style="margin-left:0;"></div>
     <p class="callout-desc reveal" style="text-align:left;margin-left:0;" data-i18n="sec_after_desc">Terminó el trabajo, empieza Tongoy. Tu gin tonic frío, buena música y el mejor ambiente de Campana.</p>
@@ -463,20 +397,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
         </label>
       </div>
     </div>
-    <div class="mesa-selector reveal">
-      <div class="mesa-selector-title" data-i18n="mesa_title">🍽️ ¿Estás en el local? <span class="mesa-required">*</span></div>
-      <div class="mesa-row">
-        <div class="mesa-check-wrap">
-          <input type="checkbox" id="mesaCheck" onchange="toggleMesaInput(this.checked)">
-          <label for="mesaCheck" data-i18n="mesa_checkbox">Indicar número de mesa</label>
-        </div>
-        <div class="mesa-select-wrap" id="mesaSelectWrap">
-          <label for="mesaNum" data-i18n="mesa_label">Mesa nº</label>
-          <select id="mesaNum" class="mesa-num-select" onchange="updateMesaBadge()"></select>
-        </div>
-        <span class="mesa-badge" id="mesaBadge">🪑 <span data-i18n="mesa_badge">Mesa</span> <span id="mesaBadgeNum">–</span></span>
-      </div>
-    </div>
     <div class="cat-tabs" id="tabs"></div>
     <div class="menu-grid" id="menuGrid"></div>
   </div>
@@ -493,12 +413,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
       <div class="cart-empty" data-i18n="cart_empty">Tu carrito está vacío.<br>¡Agregá algo del menú!</div>
     </div>
     <div class="cart-footer">
-      <div class="cart-mesa-warning" id="cartMesaWarning" style="display:none;">
-        ⚠️ <span data-i18n="cart_warning">Selecciona una mesa para enviar</span>
-      </div>
-      <div class="cart-mesa-info" id="cartMesaInfo" style="display:none;">
-        🪑 <span data-i18n="cart_for">Pedido para</span> <span id="cartMesaLabel">–</span>
-      </div>
       <div class="cart-total">
         <span data-i18n="cart_total_label">Total estimado</span>
         <span id="cartTotal">$0</span>
@@ -518,27 +432,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
     <h2 class="sec-h reveal" style="text-align:left" data-i18n="promos_title">Promociones</h2>
     <div class="divider reveal" style="margin-left:0;"></div>
     <div class="promos-grid" id="promosGrid"></div>
-  </div>
-</section>
- 
-<!-- PANEL DE MESAS EN TIEMPO REAL -->
-<section id="mesas-panel">
-  <div class="container">
-    <div class="mesas-header reveal">
-      <div>
-        <p class="sec-label" data-i18n="tables_label">✦ Estado del local</p>
-        <h2 class="sec-h" style="text-align:left;font-size:clamp(2rem,5vw,3.5rem);" data-i18n="tables_title">Mesas en<br><span style="color:var(--gold)">Tiempo Real</span></h2>
-        <div class="divider" style="margin-left:0;"></div>
-      </div>
-      <div class="mesas-legend reveal">
-        <div class="leg-item"><div class="leg-dot leg-libre"></div><span data-i18n="table_free">Liberada</span></div>
-        <div class="leg-item"><div class="leg-dot leg-ocupada"></div><span data-i18n="table_occupied">Ocupada</span></div>
-      </div>
-    </div>
-    <div class="mesas-grid reveal" id="mesasGrid"></div>
-    <p style="color:var(--muted);font-size:.73rem;margin-top:1.2rem;text-align:center;" id="mesasHint" data-i18n="tables_hint">
-      Solo administradores pueden ocupar o liberar mesas.
-    </p>
   </div>
 </section>
  
@@ -577,11 +470,11 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
     <div class="contact-grid">
       <div class="contact-info reveal">
         <div class="ci-item"><div class="ci-icon">📍</div><div class="ci-txt"><h4 data-i18n="contact_address_title">Dirección</h4><p>Av. Ing. Agustín Rocca 130, B2804 Campana, Provincia de Buenos Aires</p></div></div>
-        <div class="ci-item"><div class="ci-icon"></div><div class="ci-txt"><h4 data-i18n="contact_hours_title">Horarios</h4><p data-i18n="contact_hours">Lun–Jue: 07:00 a 23:00 hs<br>Vie–Sáb: 07:00 a 00:30 hs</p></div></div>
+        <div class="ci-item"><div class="ci-icon">🕐</div><div class="ci-txt"><h4 data-i18n="contact_hours_title">Horarios</h4><p data-i18n="contact_hours">Lun–Jue: 07:00 a 23:00 hs<br>Vie–Sáb: 07:00 a 00:30 hs</p></div></div>
         <div class="ci-item"><div class="ci-icon">📞</div><div class="ci-txt"><h4 data-i18n="contact_takeaway">Take Away</h4><a href="tel:3489236010">3489 236010</a></div></div>
         <div class="ci-item"><div class="ci-icon">📲</div><div class="ci-txt"><h4 data-i18n="contact_whatsapp">WhatsApp Pedidos</h4><a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer">3489 236010</a></div></div>
         <div class="social-row">
-          <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" class="soc-btn soc-wa" data-i18n="social_whatsapp"> WhatsApp</a>
+          <a href="https://wa.me/5493489236010" target="_blank" rel="noopener noreferrer" class="soc-btn soc-wa" data-i18n="social_whatsapp">📱 WhatsApp</a>
           <a href="https://www.instagram.com/tongoycampana/" target="_blank" rel="noopener noreferrer" class="soc-btn soc-ig" data-i18n="social_instagram">📸 Instagram</a>
           <a href="https://www.facebook.com/tongoycampana/" target="_blank" rel="noopener noreferrer" class="soc-btn soc-fb" data-i18n="social_facebook">🔵 Facebook</a>
         </div>
@@ -634,20 +527,17 @@ footer{background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1
   </div>
 </footer>
  
-<input type="file" id="imgFileInput" accept="image/*" style="display:none">
-<input type="file" id="promoImgFileInput" accept="image/*" style="display:none">
- 
 <script>
 // ═════════════════════════════════════════
 // 🔐 GOOGLE SHEETS CONFIGURATION
 // ═════════════════════════════════════════
-const GOOGLE_SHEETS_URL = 'https://docs.google.com/spreadsheets/d/1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI';
 const SHEET_ID = '1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI';
+const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit?usp=sharing`;
 
 // ══════════════════════════════════════════
 //  GESTIÓN DE VERSIÓN PARA ACTUALIZACIONES
 // ═════════════════════════════════════════
-const currentVersion = '7.7';
+const currentVersion = '8.0';
 
 if (localStorage.getItem('appVersion') !== currentVersion) {
   localStorage.clear();
@@ -655,239 +545,96 @@ if (localStorage.getItem('appVersion') !== currentVersion) {
   console.log(`✅ Cache local limpiada. Nueva versión: ${currentVersion}`);
 }
 
-function bumpVersion() {
-  const newVersion = (parseFloat(currentVersion) + 0.1).toFixed(1);
-  localStorage.setItem('appVersion', newVersion);
-  console.log(`🔄 Versión actualizada a: ${newVersion}`);
-  location.reload();
-}
-
 // ══════════════════════════════════════════
 // TRADUCCIONES COMPLETAS
 // ═════════════════════════════════════════
 const I18N = {
   es: {
-    nav_home: 'Inicio',
-    nav_menu: 'Menú',
-    nav_promos: 'Promos',
-    nav_tables: 'Mesas',
-    nav_about: 'Nosotros',
-    nav_contact: 'Contacto',
-    nav_order: 'Hacer Pedido',
-    status_open: 'Abierto',
-    status_closed: 'Cerrado',
+    nav_home: 'Inicio', nav_menu: 'Menú', nav_promos: 'Promos', nav_about: 'Nosotros', nav_contact: 'Contacto', nav_order: 'Hacer Pedido',
+    status_open: 'Abierto', status_closed: 'Cerrado',
     hero_eyebrow: '✦ Restobar · Campana, Buenos Aires',
     hero_sub: 'Gastronomía de calidad, ambiente cálido<br>y el mejor after work de Campana.',
-    btn_menu: 'Ver Menú',
-    btn_whatsapp: '📲 Pedido WhatsApp',
-    scroll_text: 'Scroll',
-    strip_hours: ' LUN–JUE 07:00 A 23:00 &nbsp;|&nbsp; VIE–SÁB 07:00 A 00:30 &nbsp;|&nbsp; TAKE AWAY 3489-236010',
-    sec_breakfast_label: '✦ Comenzá el día',
-    sec_breakfast_title: 'Desayunos<br><span style="color:var(--gold)">& Meriendas</span>',
-    sec_breakfast_desc: 'Desde las 7 de la mañana, el aroma del café recién hecho y las medialunas artesanales te esperan en Tongoy.',
-    btn_see_breakfast: 'Ver Desayunos',
-    sec_after_label: '✦ De lunes a sábado',
-    sec_after_title: 'AFTER<br><span style="color:var(--gold)">WORK</span>',
-    sec_after_desc: 'Terminó el trabajo, empieza Tongoy. Tu gin tonic frío, buena música y el mejor ambiente de Campana.',
-    btn_see_drinks: 'Ver Bebidas',
-    sec_dishes_label: '✦ Platos principales',
-    sec_dishes_title: 'Cocina<br><span style="color:var(--gold)">con alma</span>',
-    sec_dishes_desc: 'Milanesas jugosas, hamburguesas artesanales y ensaladas frescas. Ingredientes seleccionados, recetas con sabor a casa.',
-    btn_see_dishes: 'Ver Platos',
-    sec_drinks_label: '✦ Carta de tragos',
-    sec_drinks_title: 'Gin Tonic · Aperol<br><span style="color:var(--gold)">Amargo Obrero</span>',
+    btn_menu: 'Ver Menú', btn_whatsapp: '📲 Pedido WhatsApp', scroll_text: 'Scroll',
+    strip_hours: '🕐 LUN–JUE 07:00 A 23:00 &nbsp;|&nbsp; VIE–SÁB 07:00 A 00:30 &nbsp;|&nbsp; TAKE AWAY 3489-236010',
+    sec_breakfast_label: '✦ Comenzá el día', sec_breakfast_title: 'Desayunos<br><span style="color:var(--gold)">& Meriendas</span>',
+    sec_breakfast_desc: 'Desde las 7 de la mañana, el aroma del café recién hecho y las medialunas artesanales te esperan en Tongoy.', btn_see_breakfast: 'Ver Desayunos',
+    sec_after_label: '✦ De lunes a sábado', sec_after_title: 'AFTER<br><span style="color:var(--gold)">WORK</span>',
+    sec_after_desc: 'Terminó el trabajo, empieza Tongoy. Tu gin tonic frío, buena música y el mejor ambiente de Campana.', btn_see_drinks: 'Ver Bebidas',
+    sec_dishes_label: '✦ Platos principales', sec_dishes_title: 'Cocina<br><span style="color:var(--gold)">con alma</span>',
+    sec_dishes_desc: 'Milanesas jugosas, hamburguesas artesanales y ensaladas frescas. Ingredientes seleccionados, recetas con sabor a casa.', btn_see_dishes: 'Ver Platos',
+    sec_drinks_label: '✦ Carta de tragos', sec_drinks_title: 'Gin Tonic · Aperol<br><span style="color:var(--gold)">Amargo Obrero</span>',
     sec_drinks_desc: 'Cada copa cuenta una historia. Nuestros bartenders combinan los mejores destilados con ingredientes frescos para el trago perfecto.',
-    menu_label: '✦ Nuestra carta',
-    menu_title: 'Menú Digital',
-    menu_desc: 'Seleccioná tus platos, revisá el carrito y enviá tu pedido directo al local por WhatsApp.',
-    admin_mode: 'Modo Admin',
-    mesa_title: '🍽️ ¿Estás en el local? <span class="mesa-required">*</span>',
-    mesa_checkbox: 'Indicar número de mesa',
-    mesa_label: 'Mesa nº',
-    mesa_badge: 'Mesa',
-    table_free: 'Liberada',
-    table_occupied: 'Ocupada',
-    tables_label: '✦ Estado del local',
-    tables_title: 'Mesas en<br><span style="color:var(--gold)">Tiempo Real</span>',
-    tables_hint: 'Solo administradores pueden ocupar o liberar mesas.',
-    cart_title: '🛒 Tu Pedido',
-    cart_empty: 'Tu carrito está vacío.<br>¡Agregá algo del menú!',
-    cart_warning: 'Selecciona una mesa para enviar',
-    cart_for: 'Pedido para',
-    cart_total_label: 'Total estimado',
-    cart_send: 'Enviar Pedido por WhatsApp',
-    cart_view: 'Ver Pedido',
-    promos_label: '✦ Ofertas especiales',
-    promos_title: 'Promociones',
-    about_label: '✦ Quiénes somos',
-    about_title: 'Un espacio para todos los momentos',
+    menu_label: '✦ Nuestra carta', menu_title: 'Menú Digital',
+    menu_desc: 'Seleccioná tus platos, revisá el carrito y enviá tu pedido directo al local por WhatsApp.', admin_mode: 'Modo Admin',
+    cart_title: '🛒 Tu Pedido', cart_empty: 'Tu carrito está vacío.<br>¡Agregá algo del menú!',
+    cart_total_label: 'Total estimado', cart_send: 'Enviar Pedido por WhatsApp', cart_view: 'Ver Pedido',
+    promos_label: '✦ Ofertas especiales', promos_title: 'Promociones',
+    about_label: '✦ Quiénes somos', about_title: 'Un espacio para todos los momentos',
     about_desc1: 'En Tongoy creemos que cada momento merece ser especial. Desde el primer café hasta el último trago del after work, te ofrecemos una experiencia gastronómica única en el corazón de Campana.',
     about_desc2: 'Cocina de calidad, ingredientes frescos, ambiente cálido y un equipo que pone el corazón en cada plato.',
-    stat_early: 'Abrimos temprano',
-    stat_hours: 'Jornada completa',
-    stat_options: 'Opciones en carta',
-    stat_unique: 'Solo en Campana',
-    contact_label: '✦ Encontranos',
-    contact_title: 'Contacto',
-    contact_address_title: 'Dirección',
-    contact_hours_title: 'Horarios',
-    contact_hours: 'Lun–Jue: 07:00 a 23:00 hs<br>Vie–Sáb: 07:00 a 00:30 hs',
-    contact_takeaway: 'Take Away',
-    contact_whatsapp: 'WhatsApp Pedidos',
-    social_whatsapp: '📱 WhatsApp',
-    social_instagram: '📸 Instagram',
-    social_facebook: '🔵 Facebook',
-    google_review: 'Dejá tu Reseña en Google',
-    footer_tag: 'Restobar · Campana, Buenos Aires',
-    footer_menu: 'Carta',
-    footer_breakfast: 'Desayunos',
-    footer_lunch: 'Almuerzos',
-    footer_drinks: 'Bebidas',
-    footer_after: 'After Work',
-    footer_contact: 'Contacto',
-    footer_whatsapp: 'WhatsApp',
-    footer_facebook: 'Facebook',
-    footer_reviews: '⭐ Reseñas Google',
-    footer_copyright: '© 2026 Tongoy Restobar · Todos los derechos reservados.',
-    footer_hours: 'Lun–Jue 7–23 hs · Vie–Sáb 7–00:30 hs',
-    admin_title: '⚙ Modo Administrador Activo',
-    admin_exit: 'Salir del modo admin',
-    admin_hint_price: 'Precios:',
-    admin_hint_text: 'Nombre/Descripción:',
-    admin_hint_photo: 'Foto:',
-    admin_hint_table: 'Mesas:',
-    admin_password: 'Contraseña:',
-    admin_wrong: 'Incorrecta',
-    admin_only: 'Solo los administradores pueden ocupar o liberar mesas',
-    notif_occupied: '¡Mesa Ocupada!',
-    notif_free: '¡Mesa Liberada!',
-    notif_pre: 'La Mesa Nº',
-    notif_suf: 'cambió de estado.',
-    select_table: 'Seleccionar mesa...'
+    stat_early: 'Abrimos temprano', stat_hours: 'Jornada completa', stat_options: 'Opciones en carta', stat_unique: 'Solo en Campana',
+    contact_label: '✦ Encontranos', contact_title: 'Contacto', contact_address_title: 'Dirección', contact_hours_title: 'Horarios',
+    contact_hours: 'Lun–Jue: 07:00 a 23:00 hs<br>Vie–Sáb: 07:00 a 00:30 hs', contact_takeaway: 'Take Away', contact_whatsapp: 'WhatsApp Pedidos',
+    social_whatsapp: '📱 WhatsApp', social_instagram: '📸 Instagram', social_facebook: '🔵 Facebook', google_review: 'Dejá tu Reseña en Google',
+    footer_tag: 'Restobar · Campana, Buenos Aires', footer_menu: 'Carta', footer_breakfast: 'Desayunos', footer_lunch: 'Almuerzos',
+    footer_drinks: 'Bebidas', footer_after: 'After Work', footer_contact: 'Contacto', footer_whatsapp: 'WhatsApp',
+    footer_facebook: 'Facebook', footer_reviews: '⭐ Reseñas Google',
+    footer_copyright: '© 2026 Tongoy Restobar · Todos los derechos reservados.', footer_hours: 'Lun–Jue 7–23 hs · Vie–Sáb 7–00:30 hs',
+    admin_title: '⚙ Modo Administrador Activo', admin_exit: 'Salir del modo admin',
+    admin_password: 'Contraseña:', admin_wrong: 'Incorrecta'
   },
   en: {
-    nav_home: 'Home',
-    nav_menu: 'Menu',
-    nav_promos: 'Promos',
-    nav_tables: 'Tables',
-    nav_about: 'About Us',
-    nav_contact: 'Contact',
-    nav_order: 'Order Now',
-    status_open: 'Open',
-    status_closed: 'Closed',
+    nav_home: 'Home', nav_menu: 'Menu', nav_promos: 'Promos', nav_about: 'About Us', nav_contact: 'Contact', nav_order: 'Order Now',
+    status_open: 'Open', status_closed: 'Closed',
     hero_eyebrow: '✦ Restobar · Campana, Buenos Aires',
     hero_sub: 'Quality gastronomy, warm atmosphere<br>and the best after work in Campana.',
-    btn_menu: 'View Menu',
-    btn_whatsapp: ' WhatsApp Order',
-    scroll_text: 'Scroll',
+    btn_menu: 'View Menu', btn_whatsapp: '📲 WhatsApp Order', scroll_text: 'Scroll',
     strip_hours: '🕐 MON–THU 07:00 TO 23:00 &nbsp;|&nbsp; FRI–SAT 07:00 TO 00:30 &nbsp;|&nbsp; TAKE AWAY 3489-236010',
-    sec_breakfast_label: '✦ Start your day',
-    sec_breakfast_title: 'Breakfast<br><span style="color:var(--gold)">& Snacks</span>',
-    sec_breakfast_desc: 'From 7 in the morning, the aroma of freshly made coffee and artisanal croissants await you at Tongoy.',
-    btn_see_breakfast: 'View Breakfast',
-    sec_after_label: '✦ Monday to Saturday',
-    sec_after_title: 'AFTER<br><span style="color:var(--gold)">WORK</span>',
-    sec_after_desc: 'Work is over, Tongoy begins. Your cold gin tonic, good music and the best atmosphere in Campana.',
-    btn_see_drinks: 'View Drinks',
-    sec_dishes_label: '✦ Main dishes',
-    sec_dishes_title: 'Kitchen<br><span style="color:var(--gold)">with soul</span>',
-    sec_dishes_desc: 'Juicy milanesas, artisanal hamburgers and fresh salads. Selected ingredients, recipes with home flavor.',
-    btn_see_dishes: 'View Dishes',
-    sec_drinks_label: '✦ Drink menu',
-    sec_drinks_title: 'Gin Tonic · Aperol<br><span style="color:var(--gold)">Amargo Obrero</span>',
+    sec_breakfast_label: '✦ Start your day', sec_breakfast_title: 'Breakfast<br><span style="color:var(--gold)">& Snacks</span>',
+    sec_breakfast_desc: 'From 7 in the morning, the aroma of freshly made coffee and artisanal croissants await you at Tongoy.', btn_see_breakfast: 'View Breakfast',
+    sec_after_label: '✦ Monday to Saturday', sec_after_title: 'AFTER<br><span style="color:var(--gold)">WORK</span>',
+    sec_after_desc: 'Work is over, Tongoy begins. Your cold gin tonic, good music and the best atmosphere in Campana.', btn_see_drinks: 'View Drinks',
+    sec_dishes_label: '✦ Main dishes', sec_dishes_title: 'Kitchen<br><span style="color:var(--gold)">with soul</span>',
+    sec_dishes_desc: 'Juicy milanesas, artisanal hamburgers and fresh salads. Selected ingredients, recipes with home flavor.', btn_see_dishes: 'View Dishes',
+    sec_drinks_label: '✦ Drink menu', sec_drinks_title: 'Gin Tonic · Aperol<br><span style="color:var(--gold)">Amargo Obrero</span>',
     sec_drinks_desc: 'Every glass tells a story. Our bartenders combine the best spirits with fresh ingredients for the perfect drink.',
-    menu_label: '✦ Our menu',
-    menu_title: 'Digital Menu',
-    menu_desc: 'Select your dishes, review the cart and send your order directly to the venue via WhatsApp.',
-    admin_mode: 'Admin Mode',
-    mesa_title: '🍽️ Are you at the venue? <span class="mesa-required">*</span>',
-    mesa_checkbox: 'Indicate table number',
-    mesa_label: 'Table nº',
-    mesa_badge: 'Table',
-    table_free: 'Free',
-    table_occupied: 'Occupied',
-    tables_label: '✦ Venue status',
-    tables_title: 'Tables in<br><span style="color:var(--gold)">Real Time</span>',
-    tables_hint: 'Only administrators can occupy or free tables.',
-    cart_title: '🛒 Your Order',
-    cart_empty: 'Your cart is empty.<br>Add something from the menu!',
-    cart_warning: 'Select a table to send',
-    cart_for: 'Order for',
-    cart_total_label: 'Estimated total',
-    cart_send: 'Send Order via WhatsApp',
-    cart_view: 'View Order',
-    promos_label: '✦ Special offers',
-    promos_title: 'Promotions',
-    about_label: '✦ Who we are',
-    about_title: 'A space for all moments',
+    menu_label: '✦ Our menu', menu_title: 'Digital Menu',
+    menu_desc: 'Select your dishes, review the cart and send your order directly to the venue via WhatsApp.', admin_mode: 'Admin Mode',
+    cart_title: '🛒 Your Order', cart_empty: 'Your cart is empty.<br>Add something from the menu!',
+    cart_total_label: 'Estimated total', cart_send: 'Send Order via WhatsApp', cart_view: 'View Order',
+    promos_label: '✦ Special offers', promos_title: 'Promotions',
+    about_label: '✦ Who we are', about_title: 'A space for all moments',
     about_desc1: 'At Tongoy we believe that every moment deserves to be special. From the first coffee to the last after work drink, we offer you a unique gastronomic experience in the heart of Campana.',
     about_desc2: 'Quality cuisine, fresh ingredients, warm atmosphere and a team that puts their heart into every dish.',
-    stat_early: 'We open early',
-    stat_hours: 'Full day',
-    stat_options: 'Menu options',
-    stat_unique: 'Only in Campana',
-    contact_label: '✦ Find us',
-    contact_title: 'Contact',
-    contact_address_title: 'Address',
-    contact_hours_title: 'Hours',
-    contact_hours: 'Mon–Thu: 07:00 to 23:00<br>Fri–Sat: 07:00 to 00:30',
-    contact_takeaway: 'Take Away',
-    contact_whatsapp: 'WhatsApp Orders',
-    social_whatsapp: '📱 WhatsApp',
-    social_instagram: '📸 Instagram',
-    social_facebook: '🔵 Facebook',
-    google_review: 'Leave your Google Review',
-    footer_tag: 'Restobar · Campana, Buenos Aires',
-    footer_menu: 'Menu',
-    footer_breakfast: 'Breakfast',
-    footer_lunch: 'Lunch',
-    footer_drinks: 'Drinks',
-    footer_after: 'After Work',
-    footer_contact: 'Contact',
-    footer_whatsapp: 'WhatsApp',
-    footer_facebook: 'Facebook',
-    footer_reviews: '⭐ Google Reviews',
-    footer_copyright: '© 2026 Tongoy Restobar · All rights reserved.',
-    footer_hours: 'Mon–Thu 7–23 · Fri–Sat 7–00:30',
-    admin_title: '⚙ Admin Mode Active',
-    admin_exit: 'Exit admin mode',
-    admin_hint_price: 'Prices:',
-    admin_hint_text: 'Name/Description:',
-    admin_hint_photo: 'Photo:',
-    admin_hint_table: 'Tables:',
-    admin_password: 'Password:',
-    admin_wrong: 'Incorrect',
-    admin_only: 'Only administrators can occupy or free tables',
-    notif_occupied: 'Table Occupied!',
-    notif_free: 'Table Freed!',
-    notif_pre: 'Table No.',
-    notif_suf: 'status changed.',
-    select_table: 'Select table...'
+    stat_early: 'We open early', stat_hours: 'Full day', stat_options: 'Menu options', stat_unique: 'Only in Campana',
+    contact_label: '✦ Find us', contact_title: 'Contact', contact_address_title: 'Address', contact_hours_title: 'Hours',
+    contact_hours: 'Mon–Thu: 07:00 to 23:00<br>Fri–Sat: 07:00 to 00:30', contact_takeaway: 'Take Away', contact_whatsapp: 'WhatsApp Orders',
+    social_whatsapp: '📱 WhatsApp', social_instagram: '📸 Instagram', social_facebook: '🔵 Facebook', google_review: 'Leave your Google Review',
+    footer_tag: 'Restobar · Campana, Buenos Aires', footer_menu: 'Menu', footer_breakfast: 'Breakfast', footer_lunch: 'Lunch',
+    footer_drinks: 'Drinks', footer_after: 'After Work', footer_contact: 'Contact', footer_whatsapp: 'WhatsApp',
+    footer_facebook: 'Facebook', footer_reviews: '⭐ Google Reviews',
+    footer_copyright: '© 2026 Tongoy Restobar · All rights reserved.', footer_hours: 'Mon–Thu 7–23 · Fri–Sat 7–00:30',
+    admin_title: '⚙ Admin Mode Active', admin_exit: 'Exit admin mode',
+    admin_password: 'Password:', admin_wrong: 'Incorrect'
   }
 };
 
 let currentLang = localStorage.getItem('lang') || 'es';
 
-function t(key) {
-  return I18N[currentLang][key] || I18N['es'][key] || key;
-}
+function t(key) { return I18N[currentLang][key] || I18N['es'][key] || key; }
 
 function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('lang', lang);
   document.documentElement.lang = lang;
   document.documentElement.setAttribute('data-lang', lang);
-  
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.remove('active');
     if(btn.textContent.toLowerCase() === lang) btn.classList.add('active');
   });
-  
   applyTranslations();
   renderMenu();
   renderPromos();
-  renderMesas();
-  initMesaSelector();
   updateCartUI();
 }
 
@@ -895,11 +642,7 @@ function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if(I18N[currentLang][key]) {
-      if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = t(key);
-      } else {
-        el.innerHTML = t(key);
-      }
+      el.innerHTML = t(key);
     }
   });
 }
@@ -926,22 +669,17 @@ const DEFAULT_PROMOS = [
   {id:'p2',badge:'Desayuno',name:'Desayuno Completo',desc:'Café con leche + jugo de naranja + 2 medialunas artesanales. De 7 a 11 hs.',price:3200,img:''},
   {id:'p3',badge:'Almuerzo',name:'Menú del Día',desc:'Plato principal + bebida + postre del día. Con ingredientes frescos.',price:6900,img:''},
 ];
-const TOTAL_MESAS = 20;
 const CATS = [{key:'todos',label:'Todos'},{key:'desayunos',label:'Desayunos'},{key:'platos',label:'Platos'},{key:'bebidas',label:'Bebidas'}];
 const EMOJIS = {'desayunos':'☕','platos':'🍽️','bebidas':'🍹'};
 
 let menuData   = [];
 let promosData = [];
-let mesasData  = {};
 let activeCat  = 'todos';
 let cart       = {};
 let adminMode  = false;
-let pendingImgId   = null;
-let pendingPromoId = null;
-let mesaNumero = null;
 
 // ══════════════════════════════════════════
-// INICIALIZACIÓN
+// INICIALIZACIÓN Y GOOGLE SHEETS
 // ═════════════════════════════════════════
 
 async function init(){
@@ -950,20 +688,14 @@ async function init(){
   renderTabs();
   renderMenu();
   renderPromos();
-  renderMesas();
   observeReveals();
   updateStatus();
   setInterval(updateStatus, 60000);
   console.log('✅ App iniciada - Versión:', currentVersion, '- Idioma:', currentLang);
 }
 
-// ══════════════════════════════════════════
-// GOOGLE SHEETS INTEGRATION
-// ═════════════════════════════════════════
-
 async function loadDataFromSheets(){
   try {
-    // Intentar cargar desde Google Sheets
     const menuUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Menu`;
     const promosUrl = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Promos`;
     
@@ -972,54 +704,30 @@ async function loadDataFromSheets(){
       fetch(promosUrl).then(r => r.text())
     ]);
     
-    // Parsear respuesta de Google Sheets
     menuData = parseGoogleSheetsResponse(menuResponse, 'menu');
     promosData = parseGoogleSheetsResponse(promosResponse, 'promos');
     
     if(menuData.length > 0 && promosData.length > 0){
-      console.log('✅ Datos cargados desde Google Sheets');
-    } else {
-      throw new Error('No hay datos en Google Sheets');
+      console.log('✅ Datos cargados exitosamente desde Google Sheets');
+      return;
     }
+    throw new Error('No hay datos válidos en Google Sheets');
   } catch(error) {
-    console.warn('⚠️ Usando datos locales:', error.message);
-    // Si falla Google Sheets, usar localStorage o defaults
-    const savedMenu = localStorage.getItem('tongoy_menu');
-    const savedPromos = localStorage.getItem('tongoy_promos');
-    
-    if(savedMenu){
-      menuData = JSON.parse(savedMenu);
-    } else {
-      menuData = JSON.parse(JSON.stringify(DEFAULT_MENU));
-    }
-    
-    if(savedPromos){
-      promosData = JSON.parse(savedPromos);
-    } else {
-      promosData = JSON.parse(JSON.stringify(DEFAULT_PROMOS));
-    }
-  }
-  
-  // Cargar mesas desde localStorage
-  const savedMesas = localStorage.getItem('tongoy_mesas');
-  if(savedMesas){
-    mesasData = JSON.parse(savedMesas);
-  } else {
-    for(let i=1;i<=TOTAL_MESAS;i++) mesasData[i]={estado:0};
-    saveMesasData();
+    console.warn('⚠️ Usando datos locales de respaldo:', error.message);
+    menuData = JSON.parse(JSON.stringify(DEFAULT_MENU));
+    promosData = JSON.parse(JSON.stringify(DEFAULT_PROMOS));
   }
 }
 
 function parseGoogleSheetsResponse(response, type){
   try {
-    // Extraer JSON de la respuesta de Google Sheets
     const jsonText = response.match(/google\.visualization\.Query\.setResponse\(([\s\S\w]+)\);/)[1];
     const data = JSON.parse(jsonText);
     
     if(type === 'menu'){
       return data.table.rows.map((row, index) => ({
         id: index + 1,
-        cat: row.c[0]?.v || 'desayunos',
+        cat: (row.c[0]?.v || 'desayunos').toString().toLowerCase().trim(),
         name: row.c[1]?.v || '',
         desc: row.c[2]?.v || '',
         price: parseInt(row.c[3]?.v) || 0,
@@ -1041,17 +749,12 @@ function parseGoogleSheetsResponse(response, type){
   }
 }
 
-function saveMesasData(){
-  localStorage.setItem('tongoy_mesas', JSON.stringify(mesasData));
-}
-
 // ══════════════════════════════════════════
 // RENDERIZADO
 // ═════════════════════════════════════════
 
 function renderMenu(){
   if(!document.getElementById('menuGrid')) return;
-  
   const grid = document.getElementById('menuGrid');
   const cat = activeCat==='todos' ? null : activeCat;
   const filtered = cat ? menuData.filter(m=>m.cat===cat) : menuData;
@@ -1060,13 +763,12 @@ function renderMenu(){
     <div class="menu-card">
       <div class="card-img-wrap">
         ${item.img ? `<img src="${item.img}" alt="${item.name}" loading="lazy">` : `<div class="card-emoji">${EMOJIS[item.cat]||'🍽️'}</div>`}
-        <button class="admin-img-btn" onclick="editMenuImg(${item.id})">📷 Cambiar</button>
       </div>
       <div class="card-body">
-        <div class="card-name" ${adminMode?'contenteditable="true" onblur="updateMenuItem('+item.id+',\'name\',this.innerText)"':''}>${item.name}</div>
-        <div class="card-desc" ${adminMode?'contenteditable="true" onblur="updateMenuItem('+item.id+',\'desc\',this.innerText)"':''}>${item.desc}</div>
+        <div class="card-name">${item.name}</div>
+        <div class="card-desc">${item.desc}</div>
         <div class="card-footer">
-          <div class="card-price" onclick="adminMode && editMenuPrice(${item.id})" style="user-select:none;">$${item.price.toLocaleString()}</div>
+          <div class="card-price">$${item.price.toLocaleString()}</div>
           <button class="add-btn" onclick="addToCart(${item.id}, '${item.name.replace(/'/g, "\\'")}', ${item.price})">+</button>
         </div>
       </div>
@@ -1076,43 +778,22 @@ function renderMenu(){
 
 function renderPromos(){
   if(!document.getElementById('promosGrid')) return;
-  
   const grid = document.getElementById('promosGrid');
   grid.innerHTML = promosData.map(item=>`
     <div class="promo-card">
       <div class="promo-img-wrap">
-        ${item.img ? `<img src="${item.img}" alt="${item.name}" loading="lazy">` : `<div class="promo-img-emoji"></div>`}
-        <button class="promo-admin-img-btn" onclick="editPromoImg('${item.id}')">📷 Cambiar</button>
+        ${item.img ? `<img src="${item.img}" alt="${item.name}" loading="lazy">` : `<div class="promo-img-emoji">🎉</div>`}
       </div>
       <div class="promo-body">
-        <div class="promo-badge" ${adminMode?'contenteditable="true" onblur="updatePromoItem(\''+item.id+'\',\'badge\',this.innerText)"':''}>${item.badge}</div>
-        <div class="promo-name" ${adminMode?'contenteditable="true" onblur="updatePromoItem(\''+item.id+'\',\'name\',this.innerText)"':''}>${item.name}</div>
-        <div class="promo-desc" ${adminMode?'contenteditable="true" onblur="updatePromoItem(\''+item.id+'\',\'desc\',this.innerText)"':''}>${item.desc}</div>
+        <div class="promo-badge">${item.badge}</div>
+        <div class="promo-name">${item.name}</div>
+        <div class="promo-desc">${item.desc}</div>
         <div class="promo-footer">
-          <div class="promo-price" onclick="adminMode && editPromoPrice('${item.id}')" style="user-select:none;">$${item.price.toLocaleString()}</div>
+          <div class="promo-price">$${item.price.toLocaleString()}</div>
         </div>
       </div>
     </div>
   `).join('');
-}
-
-function renderMesas(){
-  if(!document.getElementById('mesasGrid')) return;
-  
-  const grid = document.getElementById('mesasGrid');
-  grid.innerHTML = Array.from({length:TOTAL_MESAS}, (_, i)=>i+1).map(num=>{
-    const mesa = mesasData[num]||{estado:0};
-    const libre = mesa.estado===0;
-    return `
-      <div class="mesa-tile ${libre?'libre':'ocupada'} ${adminMode?'admin-mode-edit':''}" 
-           onclick="${adminMode?`toggleMesaEstado(${num})`:''}"
-           title="${adminMode?'Click para cambiar estado':''}">
-        <div class="mesa-icon">${libre?'':'🔴'}</div>
-        <div class="mesa-num">${num}</div>
-        <div class="mesa-status-txt">${libre?t('table_free'):t('table_occupied')}</div>
-      </div>
-    `;
-  }).join('');
 }
 
 function renderTabs(){
@@ -1125,45 +806,6 @@ function renderTabs(){
   tabs.innerHTML = CATS.map(c=>`
     <button class="tab ${activeCat===c.key?'active':''}" onclick="setCategory('${c.key}')">${labels[currentLang][c.key]}</button>
   `).join('');
-}
-
-function updateMenuItem(id, field, value){
-  const item = menuData.find(m=>m.id===id);
-  if(item){
-    item[field] = value;
-    // Guardar en localStorage como backup
-    localStorage.setItem('tongoy_menu', JSON.stringify(menuData));
-    console.log('💾 Cambios guardados localmente. Para persistir, editar en Google Sheets');
-  }
-}
-
-function updatePromoItem(id, field, value){
-  const item = promosData.find(p=>p.id===id);
-  if(item){
-    item[field] = value;
-    // Guardar en localStorage como backup
-    localStorage.setItem('tongoy_promos', JSON.stringify(promosData));
-    console.log('💾 Cambios guardados localmente. Para persistir, editar en Google Sheets');
-  }
-}
-
-// ══════════════════════════════════════════
-// MESAS - ADMIN CONTROL
-// ═════════════════════════════════════════
-
-function toggleMesaEstado(id){
-  if(!adminMode){
-    alert(t('admin_only'));
-    return;
-  }
-  
-  const m = mesasData[id];
-  const newEstado = m.estado===0 ? 1 : 0;
-  
-  mesasData[id] = {...m, estado: newEstado};
-  saveMesasData();
-  renderMesas();
-  showMesaNotif(id, newEstado);
 }
 
 // ═════════════════════════════════════════
@@ -1216,91 +858,25 @@ function toggleCart(){ document.getElementById('cartPanel').classList.toggle('op
 
 function updateSendButtonState(){
   const hasItems = Object.values(cart).some(i=>i.qty>0);
-  const btn = document.getElementById('btnSendOrder');
-  const warning = document.getElementById('cartMesaWarning');
-  const info = document.getElementById('cartMesaInfo');
-  
-  if(hasItems && !mesaNumero){
-    btn.disabled = true;
-    warning.style.display = 'flex';
-    info.style.display = 'none';
-  } else if(hasItems && mesaNumero){
-    btn.disabled = false;
-    warning.style.display = 'none';
-    info.style.display = 'flex';
-    document.getElementById('cartMesaLabel').textContent = `${t('mesa_badge')} ${mesaNumero}`;
-  } else {
-    btn.disabled = false;
-    warning.style.display = 'none';
-    info.style.display = 'none';
-  }
+  document.getElementById('btnSendOrder').disabled = !hasItems;
 }
 
 function sendOrder(){
-  if(!mesaNumero){
-    alert(t('cart_warning').replace('Selecciona una mesa para enviar', 'Por favor indicá tu número de mesa'));
-    return;
-  }
-  
   const items = Object.values(cart).filter(i=>i.qty>0);
-  if(items.length===0){
-    alert(t('cart_empty').replace('<br>¡Agregá algo del menú!', ''));
-    return;
-  }
+  if(items.length===0) return;
   
-  const text = `Hola! ️ Quiero hacer un pedido:\n\n${items.map(i=>`${i.qty}x ${i.name} - $${i.price.toLocaleString()}`).join('\n')}\n\n📍 ${t('mesa_badge')} ${mesaNumero}\nTotal: $${items.reduce((s,i)=>s+(i.price*i.qty),0).toLocaleString()}`;
+  const total = items.reduce((s,i)=>s+(i.price*i.qty),0);
+  const text = `Hola! 🍽️ Quiero hacer un pedido:\n\n${items.map(i=>`${i.qty}x ${i.name} - $${i.price.toLocaleString()}`).join('\n')}\n\nTotal: $${total.toLocaleString()}`;
   window.open(`https://wa.me/5493489236010?text=${encodeURIComponent(text)}`);
   
   cart = {};
-  mesaNumero = null;
-  document.getElementById('mesaCheck').checked = false;
-  document.getElementById('mesaSelectWrap').classList.remove('visible');
   updateCartUI();
-  updateSendButtonState();
-}
-
-// ══════════════════════════════════════════
-// MESA SELECTOR - SIN CONDICIONES
-// ═════════════════════════════════════════
-
-function toggleMesaInput(checked){
-  document.getElementById('mesaSelectWrap').classList.toggle('visible', checked);
-  if(!checked){
-    mesaNumero = null;
-    updateMesaBadge();
-  }
-}
-
-function initMesaSelector(){
-  const select = document.getElementById('mesaNum');
-  
-  // Mostrar TODAS las mesas sin importar el estado - SIN CONDICIONES
-  const options = Array.from({length:TOTAL_MESAS}, (_,i)=>i+1).map(n=>{
-    return `<option value="${n}">${t('mesa_badge')} ${n}</option>`;
-  }).join('');
-  
-  select.innerHTML = `<option value="">${t('select_table')}</option>` + options;
-}
-
-function updateMesaBadge(){
-  const select = document.getElementById('mesaNum');
-  const badge = document.getElementById('mesaBadge');
-  const val = parseInt(select.value);
-  
-  if(val && val>=1 && val<=TOTAL_MESAS){
-    mesaNumero = val;
-    badge.classList.add('visible');
-    document.getElementById('mesaBadgeNum').textContent = mesaNumero;
-  } else {
-    mesaNumero = null;
-    badge.classList.remove('visible');
-  }
-  updateSendButtonState();
+  toggleCart();
 }
 
 // ═════════════════════════════════════════
 // ADMIN
-// ════════════════════════════════════════
+// ═════════════════════════════════════════
 
 function setAdmin(on){
   if(on){
@@ -1310,91 +886,21 @@ function setAdmin(on){
       document.getElementById('adminToggle').checked = false;
       return;
     }
-    
-    // Abrir Google Sheets en nueva pestaña
-    window.open(GOOGLE_SHEETS_URL, '_blank');
-    alert('📊 Google Sheets abierto. Editá los datos allí y recargá la página para ver los cambios.');
+    window.open(SHEET_URL, '_blank');
   }
   
   adminMode = on;
   document.getElementById('adminToggle').checked = on;
   document.getElementById('adminPanel').classList.toggle('open', on);
   document.body.classList.toggle('admin-mode', on);
-  document.getElementById('promosGrid').parentElement.classList.toggle('admin-mode-promos', on);
-  renderMenu();
-  renderPromos();
-  renderMesas();
   
-  if(on) console.log('✅ MODO ADMINISTRADOR ACTIVADO - Google Sheets disponible');
-  else console.log('️ MODO ADMINISTRADOR DESACTIVADO');
+  if(on) console.log('✅ MODO ADMINISTRADOR ACTIVADO - Google Sheets abierto');
+  else console.log('⚠️ MODO ADMINISTRADOR DESACTIVADO');
 }
-
-function editMenuPrice(id){
-  const item = menuData.find(m=>m.id===id);
-  const newPrice = prompt(`Nuevo precio para "${item.name}":`, item.price);
-  if(newPrice && !isNaN(newPrice)){
-    item.price = parseInt(newPrice);
-    localStorage.setItem('tongoy_menu', JSON.stringify(menuData));
-    renderMenu();
-    alert('💾 Cambio guardado localmente. Para hacerlo permanente, editá en Google Sheets');
-  }
-}
-
-function editPromoPrice(id){
-  const item = promosData.find(p=>p.id===id);
-  const newPrice = prompt(`Nuevo precio para "${item.name}":`, item.price);
-  if(newPrice && !isNaN(newPrice)){
-    item.price = parseInt(newPrice);
-    localStorage.setItem('tongoy_promos', JSON.stringify(promosData));
-    renderPromos();
-    alert('💾 Cambio guardado localmente. Para hacerlo permanente, editá en Google Sheets');
-  }
-}
-
-function editMenuImg(id){ pendingImgId=id; document.getElementById('imgFileInput').click(); }
-function editPromoImg(id){ pendingPromoId=id; document.getElementById('promoImgFileInput').click(); }
-
-document.getElementById('imgFileInput').addEventListener('change', (e)=>{
-  const file = e.target.files[0];
-  if(!file || !pendingImgId) return;
-  
-  const reader = new FileReader();
-  reader.onload = (evt)=>{
-    const dataUrl = evt.target.result;
-    const item = menuData.find(m=>m.id===pendingImgId);
-    if(item){
-      item.img = dataUrl;
-      localStorage.setItem('tongoy_menu', JSON.stringify(menuData));
-      renderMenu();
-      alert('💾 Imagen guardada localmente. Para hacerla permanente, subila a Google Sheets');
-    }
-  };
-  reader.readAsDataURL(file);
-  pendingImgId = null;
-});
-
-document.getElementById('promoImgFileInput').addEventListener('change', (e)=>{
-  const file = e.target.files[0];
-  if(!file || !pendingPromoId) return;
-  
-  const reader = new FileReader();
-  reader.onload = (evt)=>{
-    const dataUrl = evt.target.result;
-    const item = promosData.find(p=>p.id===pendingPromoId);
-    if(item){
-      item.img = dataUrl;
-      localStorage.setItem('tongoy_promos', JSON.stringify(promosData));
-      renderPromos();
-      alert('💾 Imagen guardada localmente. Para hacerla permanente, subila a Google Sheets');
-    }
-  };
-  reader.readAsDataURL(file);
-  pendingPromoId = null;
-});
 
 // ═════════════════════════════════════════
 // FUNCIONES AUXILIARES
-// ════════════════════════════════════════
+// ═════════════════════════════════════════
 
 function setCategory(cat){ activeCat=cat; renderTabs(); renderMenu(); }
 
@@ -1425,19 +931,6 @@ function updateStatus(){
   document.getElementById('statusText').textContent = open ? t('status_open') : t('status_closed');
 }
 
-function showMesaNotif(num, estado){
-  const notif = document.createElement('div');
-  notif.className = 'mesa-notif';
-  const texto = estado===1 ? t('notif_occupied') : t('notif_free');
-  notif.innerHTML = `
-    <span class="notif-icon">${estado===1?'🔴':'✅'}</span>
-    <span>${t('notif_pre')} ${num} - ${texto}</span>
-    <button class="notif-close" onclick="this.parentElement.remove()">✕</button>
-  `;
-  document.body.appendChild(notif);
-  setTimeout(()=>{ notif.classList.add('hide'); setTimeout(()=>notif.remove(), 350); }, 3000);
-}
-
 function observeReveals(){
   const obs = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
@@ -1452,7 +945,7 @@ function observeReveals(){
 
 // ═════════════════════════════════════════
 // INICIAR APP
-// ════════════════════════════════════════
+// ═════════════════════════════════════════
 window.addEventListener('load', init);
 </script>
 </body>
