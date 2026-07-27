@@ -25,7 +25,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:60;
 .scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:600;pointer-events:none;
   background:linear-gradient(90deg,var(--gold),var(--gold-l));box-shadow:0 0 10px rgba(201,168,76,.7);}
 
-/* ── NAV ── */
+/* ── NAV ─ */
 nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:all .3s;}
 .nav-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:62px;}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.12em;color:var(--gold);}
@@ -125,7 +125,44 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .subcat-tabs.visible{opacity:1;max-height:120px;margin-bottom:2rem;}
 .sub-tab{padding:.35rem .85rem;border:1px solid rgba(201,168,76,.35);background:transparent;color:var(--muted);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:50px;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .sub-tab.active,.sub-tab:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:700;}
+
+/* ── MENU EDITORIAL SECTIONS ── */
+.menu-sections{display:flex;flex-direction:column;gap:3.6rem;}
+.menu-section{position:relative;}
+.menu-section-head{position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.4rem 1.6rem;padding-bottom:1.4rem;margin-bottom:2rem;cursor:default;}
+.msh-index{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,5rem);line-height:.78;letter-spacing:.04em;color:rgba(201,168,76,.16);transition:color .4s,text-shadow .4s;}
+.menu-section-head:hover .msh-index{color:rgba(201,168,76,.32);text-shadow:0 0 26px rgba(201,168,76,.18);}
+.msh-center{min-width:0;}
+.msh-titlerow{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;}
+.msh-emoji{font-size:1.5rem;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4));}
+.msh-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.9rem,4.4vw,3rem);letter-spacing:.06em;color:var(--cream);line-height:.95;transition:letter-spacing .35s;}
+.menu-section-head:hover .msh-title{letter-spacing:.09em;}
+.msh-desc{font-family:'Playfair Display',serif;font-style:italic;font-size:.86rem;color:var(--muted);margin-top:.35rem;}
+.msh-meta{display:flex;flex-direction:column;align-items:flex-end;gap:.05rem;text-align:right;}
+.msh-count{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;line-height:.9;color:var(--gold);letter-spacing:.04em;}
+.msh-countlabel{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.msh-underline{position:absolute;left:0;bottom:0;height:2px;width:100%;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.18) 62%,transparent);transform:scaleX(0);transform-origin:left;transition:transform 1s .15s cubic-bezier(.22,1,.36,1);}
+.menu-section-head.in .msh-underline{transform:scaleX(1);}
+
+.menu-subsection{margin-top:.4rem;}
+.menu-subsection + .menu-subsection{margin-top:1.9rem;}
+.menu-subsection-head{display:flex;align-items:center;gap:.7rem;margin:1.5rem 0 1.05rem;}
+.mssh-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 9px rgba(201,168,76,.65);flex-shrink:0;}
+.mssh-name{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;white-space:nowrap;}
+.mssh-rule{flex:1;height:1px;background:linear-gradient(90deg,rgba(201,168,76,.55),transparent);transform-origin:left;transform:scaleX(0);transition:transform .85s .15s cubic-bezier(.22,1,.36,1);}
+.menu-subsection-head.in .mssh-rule{transform:scaleX(1);}
+.mssh-count{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--muted);letter-spacing:.06em;}
+
 .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.2rem;}
+
+/* reveal-on-scroll for menu blocks & cards (animation-based so hover transitions stay crisp) */
+.mhead-reveal{opacity:0;}
+.mhead-reveal.in{animation:headReveal .7s cubic-bezier(.22,1,.36,1) forwards;}
+@keyframes headReveal{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.mcard-reveal{opacity:0;}
+.mcard-reveal.in{animation:cardReveal .6s cubic-bezier(.22,1,.36,1) forwards;animation-delay:var(--d,0ms);}
+@keyframes cardReveal{from{opacity:0;transform:translateY(26px) scale(.985);}to{opacity:1;transform:none;}}
+
 .menu-card{background:var(--dark2);border:1px solid var(--border);border-radius:6px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .25s,box-shadow .35s;position:relative;}
 .menu-card:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(201,168,76,.6);box-shadow:0 18px 40px rgba(0,0,0,.5),0 0 0 1px rgba(201,168,76,.15);}
 .menu-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0) 0%,rgba(201,168,76,.08) 100%);opacity:0;transition:opacity .3s;pointer-events:none;z-index:1;}
@@ -147,6 +184,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .add-btn:hover{background:var(--gold-l);transform:scale(1.1);}
 .add-btn.added{background:#25D366;animation:addPulse .4s ease;}
 @keyframes addPulse{0%{transform:scale(1);}50%{transform:scale(1.35);}100%{transform:scale(1);}}
+.menu-empty{grid-column:1/-1;text-align:center;padding:3.5rem 1rem;color:var(--muted);font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;}
 
 /* ── CARRITO ── */
 .cart-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:250;}
@@ -278,12 +316,17 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
   .promos-grid{grid-template-columns:1fr;}
   .about-stats{grid-template-columns:1fr 1fr;}
   .lang-btn{font-size:.58rem;padding:.2rem .35rem;}
+  .menu-section-head{grid-template-columns:auto 1fr;gap:.3rem .9rem;}
+  .msh-meta{grid-column:1 / -1;flex-direction:row;align-items:baseline;justify-content:flex-start;gap:.5rem;text-align:left;margin-top:.2rem;}
+  .msh-desc{display:none;}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-video-wrap video{animation:none;transform:scale(1);}
   .parallax-bg{transition:none !important;transform:scale(1) !important;}
   .menu-card{transition:none !important;}
   .menu-card:hover{transform:none !important;}
+  .mhead-reveal,.mcard-reveal{opacity:1 !important;animation:none !important;}
+  .msh-underline,.mssh-rule{transform:scaleX(1) !important;transition:none !important;}
 }
 </style>
 </head>
@@ -445,7 +488,7 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
     </div>
     <div class="cat-tabs" id="tabs"></div>
     <div class="subcat-tabs" id="subTabs"></div>
-    <div class="menu-grid" id="menuGrid"></div>
+    <div class="menu-sections" id="menuGrid"></div>
   </div>
 </section>
 
@@ -596,11 +639,13 @@ const SHEET_ID = '1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI';
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit?usp=sharing`;
 
 // ══════════════════════════════════════════
-//  GESTIÓN DE VERSIÓN
+//  GESTIÓN DE VERSIÓN (preserva el idioma elegido)
 // ═════════════════════════════════════════
-const currentVersion = '8.3';
+const currentVersion = '8.4';
+const _savedLang = localStorage.getItem('lang');
 if (localStorage.getItem('appVersion') !== currentVersion) {
   localStorage.clear();
+  if (_savedLang) localStorage.setItem('lang', _savedLang);
   localStorage.setItem('appVersion', currentVersion);
   console.log(`✅ Cache local limpiada. Nueva versión: ${currentVersion}`);
 }
@@ -648,7 +693,12 @@ const I18N = {
     sub_hamburguesa: 'Hamburguesa', sub_pizza: 'Pizza de la Casa', sub_ensaladas: 'Ensaladas',
     sub_tartas: 'Tartas Caseras', sub_postres: 'Postres',
     sub_bebidas: 'Bebidas', sub_aperitivos: 'Aperitivos & Clásicos', sub_vinos: 'Vinos & Espumantes',
-    empty_cat: 'No hay productos en esta categoría'
+    empty_cat: 'No hay productos en esta categoría',
+    cat_desayunos: 'Desayunos', cat_platos: 'Platos', cat_bebidas: 'Bebidas',
+    cat_desc_desayunos: 'Para empezar el día con el pie derecho',
+    cat_desc_platos: 'Platos principales hechos con alma',
+    cat_desc_bebidas: 'Tragos, vinos y clásicos de la casa',
+    menu_count_label: 'opciones'
   },
   en: {
     nav_home: 'Home', nav_menu: 'Menu', nav_promos: 'Promos', nav_about: 'About Us', nav_contact: 'Contact', nav_order: 'Order Now',
@@ -689,7 +739,12 @@ const I18N = {
     sub_hamburguesa: 'Hamburger', sub_pizza: 'House Pizza', sub_ensaladas: 'Salads',
     sub_tartas: 'Homemade Pies', sub_postres: 'Desserts',
     sub_bebidas: 'Drinks', sub_aperitivos: 'Aperitifs & Classics', sub_vinos: 'Wines & Sparkling',
-    empty_cat: 'No products in this category'
+    empty_cat: 'No products in this category',
+    cat_desayunos: 'Breakfast', cat_platos: 'Dishes', cat_bebidas: 'Drinks',
+    cat_desc_desayunos: 'Start the day on the right foot',
+    cat_desc_platos: 'Main dishes made with soul',
+    cat_desc_bebidas: 'Cocktails, wines & house classics',
+    menu_count_label: 'options'
   }
 };
 
@@ -783,23 +838,6 @@ function normalize(str) {
   return str.toString().toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function sortMenuItems(items, activeCat) {
-  const catOrder = { 'desayunos': 1, 'platos': 2, 'bebidas': 3 };
-  return [...items].sort((a, b) => {
-    if (activeCat === 'todos') {
-      const catA = catOrder[a.cat] || 99;
-      const catB = catOrder[b.cat] || 99;
-      if (catA !== catB) return catA - catB;
-    }
-    const orderA = SUBCAT_CONFIG[a.cat] ? SUBCAT_CONFIG[a.cat].findIndex(s => normalize(s.key) === normalize(a.subcat)) : -1;
-    const orderB = SUBCAT_CONFIG[b.cat] ? SUBCAT_CONFIG[b.cat].findIndex(s => normalize(s.key) === normalize(b.subcat)) : -1;
-    const valA = orderA === -1 ? 99 : orderA;
-    const valB = orderB === -1 ? 99 : orderB;
-    if (valA !== valB) return valA - valB;
-    return a.name.localeCompare(b.name);
-  });
-}
-
 let menuData   = [];
 let promosData = [];
 let activeCat  = 'todos';
@@ -819,7 +857,6 @@ async function init(){
   observeReveals();
   updateStatus();
   setInterval(updateStatus, 60000);
-  // Scroll-linked effects
   window.addEventListener('scroll', onScrollThrottled, {passive:true});
   window.addEventListener('resize', onScrollThrottled, {passive:true});
   onScroll();
@@ -896,12 +933,10 @@ function onScroll(){
   const vh = window.innerHeight;
   const docH = document.documentElement.scrollHeight - vh;
 
-  // 1) Barra de progreso superior
   const prog = docH > 0 ? Math.min(y / docH, 1) : 0;
   const bar = document.getElementById('scrollProgress');
   if(bar) bar.style.width = (prog * 100).toFixed(2) + '%';
 
-  // 2) Video del hero ligado al scroll (zoom + fade cinematográfico)
   const p = Math.min(Math.max(y / vh, 0), 1);
   const wrap = document.getElementById('heroVideoWrap');
   if(wrap){
@@ -911,7 +946,6 @@ function onScroll(){
   const so = document.getElementById('heroScrollOverlay');
   if(so) so.style.opacity = (p * 0.72).toFixed(3);
 
-  // 3) Contenido del hero: parallax hacia arriba + desvanecimiento
   const hc = document.getElementById('heroContent');
   if(hc){
     hc.style.transform = `translateY(${(-p * 130).toFixed(1)}px)`;
@@ -920,18 +954,80 @@ function onScroll(){
   const si = document.getElementById('scrollInd');
   if(si) si.style.opacity = Math.max(1 - p * 3, 0).toFixed(3);
 
-  // 4) Parallax real de las secciones (mueve el fondo según scroll)
   document.querySelectorAll('.parallax-section').forEach(sec=>{
     const rect = sec.getBoundingClientRect();
     if(rect.bottom > 0 && rect.top < vh){
       const bg = sec.querySelector('.parallax-bg');
       if(bg){
-        const ratio = (rect.top + rect.height/2) / vh; // ~0..2
-        const pos = 32 + (1 - ratio) * 18; // 32%..50%..68%
+        const ratio = (rect.top + rect.height/2) / vh;
+        const pos = 32 + (1 - ratio) * 18;
         bg.style.backgroundPositionY = pos.toFixed(1) + '%';
       }
     }
   });
+}
+
+// ══════════════════════════════════════════
+// AGRUPACIÓN EDITORIAL DEL MENÚ
+// ═════════════════════════════════════════
+function catLabel(key){ return t('cat_' + key); }
+function catDesc(key){ return t('cat_desc_' + key); }
+
+function buildMenuGroups(){
+  const cat = activeCat === 'todos' ? null : activeCat;
+  const base = cat ? menuData.filter(m => m.cat === cat) : menuData;
+  const catKeys = cat ? [cat] : ['desayunos','platos','bebidas'];
+  const groups = [];
+
+  catKeys.forEach((ck, ci)=>{
+    const catItems = base.filter(m => m.cat === ck);
+    if(catItems.length === 0) return;
+
+    const subs = SUBCAT_CONFIG[ck] || [];
+    const known = new Set(subs.map(s => normalize(s.key)));
+    const subgroups = [];
+
+    subs.forEach(s=>{
+      if(activeSubcat !== 'todos' && normalize(activeSubcat) !== normalize(s.key)) return;
+      let items = catItems.filter(m => normalize(m.subcat) === normalize(s.key));
+      items = items.slice().sort((a,b)=>a.name.localeCompare(b.name));
+      if(items.length > 0) subgroups.push({key:s.key, labelKey:s.labelKey, items});
+    });
+
+    // productos sin subcategoría reconocida (solo en vista completa de la categoría)
+    if(activeSubcat === 'todos'){
+      let orphan = catItems.filter(m => !known.has(normalize(m.subcat)));
+      orphan = orphan.slice().sort((a,b)=>a.name.localeCompare(b.name));
+      if(orphan.length > 0) subgroups.push({key:'__other', labelKey:null, items:orphan});
+    }
+
+    if(subgroups.length > 0){
+      const total = subgroups.reduce((s,sg)=>s + sg.items.length, 0);
+      groups.push({cat:ck, index:ci + 1, subgroups, total});
+    }
+  });
+
+  return groups;
+}
+
+function cardHTML(item, i){
+  const desc = currentLang === 'en' && item.descEn ? item.descEn : item.desc;
+  const delay = Math.min(i, 6) * 70;
+  return `
+    <article class="menu-card mcard-reveal" style="--d:${delay}ms">
+      <div class="card-img-wrap">
+        ${item.img ? `<img src="${item.img}" alt="${item.name}" loading="lazy">` : `<div class="card-emoji">${EMOJIS[item.cat]||'🍽️'}</div>`}
+      </div>
+      <div class="card-body">
+        <div class="card-name">${item.name}</div>
+        <div class="card-desc">${desc}</div>
+        <div class="card-footer">
+          <div class="card-price">$${item.price.toLocaleString()}</div>
+          <button class="add-btn" onclick="addToCart(${item.id}, '${item.name.replace(/'/g, "\\'")}', ${item.price}, this)">+</button>
+        </div>
+      </div>
+    </article>
+  `;
 }
 
 // ══════════════════════════════════════════
@@ -988,39 +1084,71 @@ function setSubcategory(subcat){
 }
 
 function renderMenu(){
-  if(!document.getElementById('menuGrid')) return;
-  const grid = document.getElementById('menuGrid');
-  const cat = activeCat === 'todos' ? null : activeCat;
-  let filtered = cat ? menuData.filter(m => m.cat === cat) : menuData;
+  const wrap = document.getElementById('menuGrid');
+  if(!wrap) return;
 
-  if (activeSubcat !== 'todos' && activeCat !== 'todos') {
-    filtered = filtered.filter(m => normalize(m.subcat) === normalize(activeSubcat));
-  }
+  const groups = buildMenuGroups();
 
-  filtered = sortMenuItems(filtered, activeCat);
-
-  if (filtered.length === 0) {
-    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted);">${t('empty_cat')}</div>`;
+  if (groups.length === 0) {
+    wrap.innerHTML = `<div class="menu-empty">${t('empty_cat')}</div>`;
+    observeMenuReveals();
     return;
   }
 
-  grid.innerHTML = filtered.map(item=>{
-    const desc = currentLang === 'en' && item.descEn ? item.descEn : item.desc;
+  wrap.innerHTML = groups.map(g=>{
+    const subsHTML = g.subgroups.map(sg=>{
+      const head = sg.labelKey ? `
+        <div class="menu-subsection-head mhead-reveal">
+          <span class="mssh-dot"></span>
+          <span class="mssh-name">${t(sg.labelKey)}</span>
+          <span class="mssh-rule"></span>
+          <span class="mssh-count">${sg.items.length}</span>
+        </div>` : '';
+      return `
+        <div class="menu-subsection">
+          ${head}
+          <div class="menu-grid">
+            ${sg.items.map((item,i)=>cardHTML(item,i)).join('')}
+          </div>
+        </div>`;
+    }).join('');
+
     return `
-    <div class="menu-card">
-      <div class="card-img-wrap">
-        ${item.img ? `<img src="${item.img}" alt="${item.name}" loading="lazy">` : `<div class="card-emoji">${EMOJIS[item.cat]||'🍽️'}</div>`}
-      </div>
-      <div class="card-body">
-        <div class="card-name">${item.name}</div>
-        <div class="card-desc">${desc}</div>
-        <div class="card-footer">
-          <div class="card-price">$${item.price.toLocaleString()}</div>
-          <button class="add-btn" onclick="addToCart(${item.id}, '${item.name.replace(/'/g, "\\'")}', ${item.price}, this)">+</button>
-        </div>
-      </div>
-    </div>
-  `}).join('');
+      <section class="menu-section">
+        <header class="menu-section-head mhead-reveal">
+          <span class="msh-index">${String(g.index).padStart(2,'0')}</span>
+          <div class="msh-center">
+            <div class="msh-titlerow">
+              <span class="msh-emoji">${EMOJIS[g.cat]||''}</span>
+              <h3 class="msh-title">${catLabel(g.cat)}</h3>
+            </div>
+            <p class="msh-desc">${catDesc(g.cat)}</p>
+          </div>
+          <div class="msh-meta">
+            <span class="msh-count">${g.total}</span>
+            <span class="msh-countlabel">${t('menu_count_label')}</span>
+          </div>
+          <span class="msh-underline"></span>
+        </header>
+        ${subsHTML}
+      </section>`;
+  }).join('');
+
+  observeMenuReveals();
+}
+
+let menuObserver = null;
+function observeMenuReveals(){
+  if(menuObserver) menuObserver.disconnect();
+  menuObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        menuObserver.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('#menuGrid .mhead-reveal, #menuGrid .mcard-reveal').forEach(el=>menuObserver.observe(el));
 }
 
 function renderPromos(){
