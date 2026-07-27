@@ -23,7 +23,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:60;
 .scroll-progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:600;pointer-events:none;
   background:linear-gradient(90deg,var(--gold),var(--gold-l));box-shadow:0 0 10px rgba(201,168,76,.7);}
 
-/* ── NAV ─ */
 nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);transition:all .3s;}
 .nav-inner{max-width:1280px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:62px;}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:.12em;color:var(--gold);}
@@ -54,7 +53,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .lang-btn:hover{color:var(--cream);}
 .lang-btn.active{background:var(--gold);color:var(--dark);}
 
-/* ── HERO ── */
 .hero-video-wrap{position:fixed;inset:0;z-index:0;overflow:hidden;will-change:transform,opacity;}
 .hero-video-wrap video{width:100%;height:100%;object-fit:cover;pointer-events:none;animation:heroZoomOut 7s ease-out forwards;transform-origin:center center;}
 @keyframes heroZoomOut{0%{transform:scale(1.65);}100%{transform:scale(1.0);}}
@@ -97,7 +95,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 
 .strip{position:relative;z-index:1;background:var(--gold);padding:.7rem 1.5rem;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.22em;color:var(--dark);}
 
-/* ── MENU SECTION ── */
 #menu{position:relative;z-index:1;background:var(--dark3);padding:5rem 1.5rem;}
 .container{max-width:1280px;margin:0 auto;}
 .menu-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem;}
@@ -112,7 +109,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .toggle input:checked+.slider-t{background:var(--gold);}
 .toggle input:checked+.slider-t::before{transform:translateX(20px);background:var(--dark);}
 
-/* ── SEARCH BAR ── */
 .menu-search{position:relative;max-width:560px;margin:0 0 1.4rem;}
 .menu-search input{width:100%;background:var(--dark2);border:1px solid var(--border);color:var(--cream);padding:.9rem 3.1rem .9rem 3.1rem;border-radius:50px;font-size:.92rem;font-family:'DM Sans',sans-serif;transition:border-color .25s,box-shadow .25s;}
 .menu-search input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.13);}
@@ -132,7 +128,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .sub-tab{padding:.35rem .85rem;border:1px solid rgba(201,168,76,.35);background:transparent;color:var(--muted);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border-radius:50px;transition:all .2s;font-family:'DM Sans',sans-serif;}
 .sub-tab.active,.sub-tab:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);font-weight:700;}
 
-/* ── MENU EDITORIAL SECTIONS ── */
 .menu-sections{display:flex;flex-direction:column;gap:3.6rem;}
 .menu-section{position:relative;}
 .menu-section-head{position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.4rem 1.6rem;padding-bottom:1.4rem;margin-bottom:2rem;cursor:default;}
@@ -192,7 +187,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 @keyframes addPulse{0%{transform:scale(1);}50%{transform:scale(1.35);}100%{transform:scale(1);}}
 .menu-empty{grid-column:1/-1;text-align:center;padding:3.5rem 1rem;color:var(--muted);font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;}
 
-/* ── CARRITO ── */
 .cart-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:250;}
 .cart-btn{background:var(--gold);color:var(--dark);border:none;padding:.8rem 1.4rem;border-radius:50px;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 6px 28px rgba(201,168,76,.38);transition:all .2s;letter-spacing:.04em;}
 .cart-btn:hover{background:var(--gold-l);transform:translateY(-2px);}
@@ -223,10 +217,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .cart-note{width:100%;background:var(--char);border:1px solid var(--border);color:var(--cream);padding:.55rem .7rem;border-radius:4px;font-size:.85rem;font-family:'DM Sans',sans-serif;resize:vertical;min-height:54px;line-height:1.45;transition:border-color .25s;}
 .cart-note:focus{outline:none;border-color:var(--gold);}
 .cart-note::placeholder{color:var(--muted);}
-.cart-online-wrap{margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:4px;flex-wrap:wrap;}
-.cart-online-wrap input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:pointer;}
-.cart-online-wrap label{font-size:.78rem;color:var(--cream);cursor:pointer;flex:1;}
-.cart-online-wrap .online-info{width:100%;font-size:.68rem;color:var(--muted);margin-top:.2rem;}
+.cart-pay-wrap{margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:4px;flex-wrap:wrap;}
+.cart-pay-wrap input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:pointer;}
+.cart-pay-wrap label{font-size:.78rem;color:var(--cream);cursor:pointer;flex:1;}
+.cart-pay-wrap .pay-info{width:100%;font-size:.68rem;color:var(--muted);margin-top:.2rem;}
 .cart-consult-note{display:none;font-size:.72rem;color:#E8C96A;background:rgba(232,201,106,.08);border:1px solid rgba(232,201,106,.25);border-radius:4px;padding:.45rem .6rem;margin-bottom:.8rem;}
 .cart-consult-note.visible{display:block;}
 .cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;}
@@ -240,10 +234,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .btn-online:hover{background:var(--gold-l);}
 .btn-online.visible{display:flex;}
 
-/* ── PROMOCIONES ── */
 #promociones{position:relative;z-index:1;background:var(--dark2);padding:5rem 1.5rem;}
 .promos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-top:3rem;}
-.promo-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;transition:transform .22s,border-color .22s,box-shadow .22s;}
+.promo-card{border:1px solid var(--border);border-radius:6px;overflow:hidden;position:relative;transition:transform .22s,border-color .22s,box-shadow .22s;background:var(--dark3);}
 .promo-card:hover{transform:translateY(-4px);border-color:rgba(201,168,76,.5);box-shadow:0 12px 32px rgba(0,0,0,.4);}
 .promo-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--rust2));z-index:2;}
 .promo-img-wrap{position:relative;aspect-ratio:16/7;overflow:hidden;background:var(--char);}
@@ -253,11 +246,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .promo-body{padding:1.5rem;}
 .promo-badge{display:inline-block;background:var(--rust);color:#fff;padding:.22rem .7rem;border-radius:2px;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.85rem;}
 .promo-name{font-family:'Bebas Neue',sans-serif;font-size:1.65rem;letter-spacing:.05em;margin-bottom:.5rem;}
-.promo-desc{color:var(--muted);font-size:.83rem;line-height:1.65;margin-bottom:1rem;}
+.promo-desc{color:var(--muted);font-size:.83rem;line-height:1.65;margin-bottom:1rem;min-height:1.2em;}
 .promo-footer{display:flex;align-items:center;justify-content:space-between;gap:.5rem;}
 .promo-price{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;color:var(--gold);}
 
-/* ── NOSOTROS ── */
 #nosotros{position:relative;z-index:1;background:var(--dark3);padding:5rem 1.5rem;}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
 .about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
@@ -268,7 +260,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--gold);line-height:1;}
 .stat-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);}
 
-/* ── CONTACTO ── */
 #contacto{position:relative;z-index:1;background:var(--dark2);padding:5rem 1.5rem;}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
 .contact-info{display:flex;flex-direction:column;gap:1.5rem;}
@@ -286,7 +277,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .map-block{background:var(--char);border:1px solid var(--border);border-radius:6px;height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:var(--muted);font-size:.85rem;text-decoration:none;transition:border-color .2s;}
 .map-block:hover{border-color:var(--gold);}
 
-/* ── FOOTER ── */
 footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid var(--border);padding:3rem 1.5rem 2rem;}
 .footer-inner{max-width:1280px;margin:0 auto;}
 .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:2rem;}
@@ -365,7 +355,7 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
     <br><br>
     <a href="https://docs.google.com/spreadsheets/d/1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI/edit?usp=sharing" target="_blank" style="color:var(--gold-l);text-decoration:underline; font-weight:bold; font-size: 1rem;">📝 Abrir Google Sheets para Editar</a>
     <br><br>
-    <em style="font-size: 0.75rem; color: var(--muted);">Hoja "Menu": A=Categoría (familia), B=Nombre, C=Descripción, D=Precio, E=URL imagen. El sitio clasifica y agrupa automáticamente. Después de guardar cambios, recarga esta página (F5).</em>
+    <em style="font-size: 0.75rem; color: var(--muted);">Hoja "Menu": A=Categoría, B=Nombre, C=Descripción, D=Precio, E=URL de imagen (http/https o enlace público de Drive). Las filas con categoría "PROMOS" se muestran como promociones. Después de guardar cambios, recarga esta página (F5).</em>
   </p>
 </div>
 
@@ -471,7 +461,6 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
   </div>
 </section>
 
-<!-- MENÚ DIGITAL -->
 <section id="menu">
   <div class="container">
     <div class="menu-top reveal">
@@ -501,7 +490,6 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
   </div>
 </section>
 
-<!-- CARRITO -->
 <div class="cart-float">
   <div class="cart-panel" id="cartPanel">
     <div class="cart-header">
@@ -522,10 +510,15 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
         <div class="cart-note-label"><span>📝</span> <span data-i18n="cart_note_label">Nota / Observaciones</span></div>
         <textarea id="cartNote" class="cart-note" data-i18n-placeholder="cart_note_placeholder" placeholder="Ej: sin cebolla, bien cocido, alergias..." oninput="onNoteChange(this.value)" rows="2"></textarea>
       </div>
-      <div class="cart-online-wrap">
+      <div class="cart-pay-wrap">
+        <input type="checkbox" id="cartCashCheck" onchange="toggleCashOption()">
+        <label for="cartCashCheck" data-i18n="cart_cash_label">Compra en Efectivo</label>
+        <div class="pay-info" data-i18n="cart_cash_info">Pagás en el local al recibir tu pedido</div>
+      </div>
+      <div class="cart-pay-wrap">
         <input type="checkbox" id="cartOnlineCheck" onchange="toggleOnlineOption()">
         <label for="cartOnlineCheck" data-i18n="cart_online_label">Compra Online</label>
-        <div class="online-info" data-i18n="cart_online_info">Opcional - Para pedidos con pago digital</div>
+        <div class="pay-info" data-i18n="cart_online_info">Opcional - Para pedidos con pago digital</div>
       </div>
       <div class="cart-consult-note" id="cartConsultNote" data-i18n="cart_consult_note">⚠ Hay ítems con precio a consultar en el local</div>
       <div class="cart-total">
@@ -543,7 +536,6 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
   </button>
 </div>
 
-<!-- PROMOCIONES -->
 <section id="promociones">
   <div class="container">
     <p class="sec-label reveal" data-i18n="promos_label">✦ Ofertas especiales</p>
@@ -553,7 +545,6 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
   </div>
 </section>
 
-<!-- NOSOTROS -->
 <section id="nosotros">
   <div class="container">
     <div class="about-grid">
@@ -579,7 +570,6 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
   </div>
 </section>
 
-<!-- CONTACTO -->
 <section id="contacto">
   <div class="container">
     <p class="sec-label reveal" data-i18n="contact_label">✦ Encontranos</p>
@@ -645,16 +635,10 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
 </footer>
 
 <script>
-// ═════════════════════════════════════════
-// 🔐 GOOGLE SHEETS CONFIGURATION
-// ═════════════════════════════════════════
 const SHEET_ID = '1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI';
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit?usp=sharing`;
 
-// ══════════════════════════════════════════
-//  GESTIÓN DE VERSIÓN (preserva el idioma elegido)
-// ═════════════════════════════════════════
-const currentVersion = '8.6';
+const currentVersion = '8.7';
 const _savedLang = localStorage.getItem('lang');
 if (localStorage.getItem('appVersion') !== currentVersion) {
   localStorage.clear();
@@ -663,9 +647,6 @@ if (localStorage.getItem('appVersion') !== currentVersion) {
   console.log(`✅ Cache local limpiada. Nueva versión: ${currentVersion}`);
 }
 
-// ══════════════════════════════════════════
-// TRADUCCIONES
-// ═════════════════════════════════════════
 const I18N = {
   es: {
     nav_home:'Inicio', nav_menu:'Menú', nav_promos:'Promos', nav_about:'Nosotros', nav_contact:'Contacto', nav_order:'Hacer Pedido',
@@ -691,6 +672,7 @@ const I18N = {
     cart_total_label:'Total estimado', cart_total_partial:'Total parcial', cart_send:'Enviar Pedido por WhatsApp', cart_view:'Ver Pedido',
     cart_mesa_label:'Número de mesa', cart_mesa_placeholder:'Seleccionar mesa...',
     cart_note_label:'Nota / Observaciones', cart_note_placeholder:'Ej: sin cebolla, bien cocido, alergias...',
+    cart_cash_label:'Compra en Efectivo', cart_cash_info:'Pagás en el local al recibir tu pedido',
     cart_online_label:'Compra Online', cart_online_info:'Opcional - Para pedidos con pago digital', cart_online_btn:'Pagar Online',
     cart_consult_note:'⚠ Hay ítems con precio a consultar en el local',
     promos_label:'✦ Ofertas especiales', promos_title:'Promociones',
@@ -721,7 +703,8 @@ const I18N = {
     sub_tintos:'Vinos Tintos', sub_blancos:'Vinos Blancos', sub_espumantes:'Espumantes',
     comanda_title:'COMANDA TONGOY', comanda_table:'MESA', comanda_order:'PEDIDO', comanda_notes:'NOTAS / OBSERVACIONES',
     comanda_total:'TOTAL', comanda_partial:'parcial', comanda_consultwarn:'Incluye ítems a consultar en el local',
-    comanda_online:'COMPRA ONLINE (pago digital)', comanda_hs:'hs'
+    comanda_online:'COMPRA ONLINE (pago digital)', comanda_cash:'COMPRA EN EFECTIVO', comanda_hs:'hs',
+    promo_badge_breakfast:'Desayuno', promo_badge_lunch:'Almuerzo', promo_badge_dinner:'Cena', promo_badge_default:'Promo'
   },
   en: {
     nav_home:'Home', nav_menu:'Menu', nav_promos:'Promos', nav_about:'About Us', nav_contact:'Contact', nav_order:'Order Now',
@@ -747,6 +730,7 @@ const I18N = {
     cart_total_label:'Estimated total', cart_total_partial:'Partial total', cart_send:'Send Order via WhatsApp', cart_view:'View Order',
     cart_mesa_label:'Table number', cart_mesa_placeholder:'Select table...',
     cart_note_label:'Note / Remarks', cart_note_placeholder:'E.g.: no onion, well done, allergies...',
+    cart_cash_label:'Cash Payment', cart_cash_info:'Pay at the venue when you receive your order',
     cart_online_label:'Online Purchase', cart_online_info:'Optional - For digital payment orders', cart_online_btn:'Pay Online',
     cart_consult_note:'⚠ Some items have prices to confirm at the venue',
     promos_label:'✦ Special offers', promos_title:'Promotions',
@@ -777,7 +761,8 @@ const I18N = {
     sub_tintos:'Red Wines', sub_blancos:'White Wines', sub_espumantes:'Sparkling',
     comanda_title:'TONGOY ORDER', comanda_table:'TABLE', comanda_order:'ORDER', comanda_notes:'NOTES / REMARKS',
     comanda_total:'TOTAL', comanda_partial:'partial', comanda_consultwarn:'Includes items to confirm at the venue',
-    comanda_online:'ONLINE PURCHASE (digital payment)', comanda_hs:''
+    comanda_online:'ONLINE PURCHASE (digital payment)', comanda_cash:'CASH PAYMENT', comanda_hs:'',
+    promo_badge_breakfast:'Breakfast', promo_badge_lunch:'Lunch', promo_badge_dinner:'Dinner', promo_badge_default:'Promo'
   }
 };
 
@@ -812,40 +797,29 @@ function applyTranslations() {
   });
 }
 
-// ══════════════════════════════════════════
-// DATOS DE RESPALDO (si Google Sheets no responde)
-// ═════════════════════════════════════════
 const DEFAULT_MENU = [
   {id:1,cat:'desayunos',subcat:'cafeteria',name:'Café',desc:'(100% café) Café espresso intenso, de aroma profundo y sabor equilibrado.',descEn:'',price:8000,img:''},
   {id:2,cat:'desayunos',subcat:'cafeteria',name:'Cortado',desc:'(70% Café - 30% leche) Café espresso suavizado con un toque de leche caliente.',descEn:'',price:8000,img:''},
   {id:3,cat:'desayunos',subcat:'cafeteria',name:'Café con Leche',desc:'(50% Café - 50% leche) Café espresso acompañado de leche caliente y cremosa.',descEn:'',price:8000,img:''},
-  {id:4,cat:'desayunos',subcat:'cafeteria',name:'Capuccino',desc:'Café espresso con leche vaporizada y espuma sedosa, coronado con cacao.',descEn:'',price:8000,img:''},
-  {id:5,cat:'desayunos',subcat:'combos',name:'Cortado + Medialunas',desc:'Cortado acompañado de dos medialunas recién horneadas.',descEn:'',price:8000,img:''},
-  {id:6,cat:'desayunos',subcat:'combos',name:'Café con Leche + Tostado',desc:'Café con leche acompañado de un tostado caliente de jamón y queso.',descEn:'',price:8000,img:''},
-  {id:7,cat:'desayunos',subcat:'tentaciones',name:'Medialuna con Jamón y Queso',desc:'',descEn:'',price:8000,img:''},
-  {id:8,cat:'desayunos',subcat:'tentaciones',name:'Porción de Torta',desc:'',descEn:'',price:8000,img:''},
-  {id:9,cat:'platos',subcat:'hamburguesas',name:'Clásica',desc:'2 medallones de 100 gr, lechuga, tomate, cebolla y queso acompañada con papas fritas.',descEn:'',price:8000,img:''},
-  {id:10,cat:'platos',subcat:'hamburguesas',name:'Tongoy',desc:'2 medallones de 100 gr, con provoleta, lechuga, tomate y mayo de chimichurri acompañada con papas fritas.',descEn:'',price:8000,img:''},
-  {id:11,cat:'platos',subcat:'pizzas',name:'Muzzarella',desc:'Salsa de tomate y Muzzarella.',descEn:'',price:8000,img:''},
-  {id:12,cat:'platos',subcat:'pizzas',name:'Fugazzeta',desc:'Muzzarella, cebolla y orégano.',descEn:'',price:8000,img:''},
-  {id:13,cat:'platos',subcat:'ensaladas',name:'César Clásica',desc:'Lechuga, parmesano, croustons, aderezo y pollo grillado.',descEn:'',price:8000,img:''},
-  {id:14,cat:'platos',subcat:'pastas',name:'Ñoquis de Papas',desc:'Ñoquis elaborados con papa seleccionada, livianos y de sabor tradicional.',descEn:'',price:0,img:''},
-  {id:15,cat:'platos',subcat:'cocina',name:'Milanesa Napolitana',desc:'Milanesa de pollo o carne a la napolitana, acompañada de papas fritas, puré o ensalada.',descEn:'',price:0,img:''},
-  {id:16,cat:'platos',subcat:'cocina',name:'Ojo de Bife',desc:'250 grs de Ojo de Bife con crema de verdeo acompañado de puré de papas cremoso.',descEn:'',price:0,img:''},
-  {id:17,cat:'platos',subcat:'postres',name:'Flan Casero',desc:'',descEn:'',price:8000,img:''},
-  {id:18,cat:'platos',subcat:'postres',name:'Brownie con Helado',desc:'',descEn:'',price:8000,img:''},
-  {id:19,cat:'bebidas',subcat:'aperitivos',name:'Aperol Spritz',desc:'(Aperol + espumante + soda)',descEn:'',price:8000,img:''},
-  {id:20,cat:'bebidas',subcat:'aperitivos',name:'Fernet',desc:'(Fernet Branca + Coca-Cola)',descEn:'',price:8000,img:''},
-  {id:21,cat:'bebidas',subcat:'cervezas',name:'Stella Artois 330 ml',desc:'',descEn:'',price:8000,img:''},
-  {id:22,cat:'bebidas',subcat:'gintonic',name:'Gin Tonic',desc:'Gin + agua tónica + limón / naranja / pomelo.',descEn:'',price:8000,img:''},
-  {id:23,cat:'bebidas',subcat:'tintos',name:'Portillo Malbec 750 ml',desc:'Vino joven, frutado y fácil de tomar, de perfil suave y equilibrado.',descEn:'',price:8000,img:''},
-  {id:24,cat:'bebidas',subcat:'espumantes',name:'Mumm',desc:'',descEn:'',price:8000,img:''},
+  {id:4,cat:'desayunos',subcat:'combos',name:'Cortado + Medialunas',desc:'Cortado acompañado de dos medialunas recién horneadas.',descEn:'',price:8000,img:''},
+  {id:5,cat:'desayunos',subcat:'tentaciones',name:'Medialuna con Jamón y Queso',desc:'',descEn:'',price:8000,img:''},
+  {id:6,cat:'platos',subcat:'hamburguesas',name:'Clásica',desc:'2 medallones de 100 gr, lechuga, tomate, cebolla y queso acompañada con papas fritas.',descEn:'',price:8000,img:''},
+  {id:7,cat:'platos',subcat:'hamburguesas',name:'Tongoy',desc:'2 medallones de 100 gr, con provoleta, lechuga, tomate y mayo de chimichurri acompañada con papas fritas.',descEn:'',price:8000,img:''},
+  {id:8,cat:'platos',subcat:'pizzas',name:'Muzzarella',desc:'Salsa de tomate y Muzzarella.',descEn:'',price:8000,img:''},
+  {id:9,cat:'platos',subcat:'ensaladas',name:'César Clásica',desc:'Lechuga, parmesano, croustons, aderezo y pollo grillado.',descEn:'',price:8000,img:''},
+  {id:10,cat:'platos',subcat:'pastas',name:'Ñoquis de Papas',desc:'Ñoquis elaborados con papa seleccionada, livianos y de sabor tradicional.',descEn:'',price:0,img:''},
+  {id:11,cat:'platos',subcat:'cocina',name:'Milanesa Napolitana',desc:'Milanesa de pollo o carne a la napolitana, acompañada de papas fritas, puré o ensalada.',descEn:'',price:0,img:''},
+  {id:12,cat:'platos',subcat:'postres',name:'Flan Casero',desc:'',descEn:'',price:8000,img:''},
+  {id:13,cat:'bebidas',subcat:'aperitivos',name:'Aperol Spritz',desc:'(Aperol + espumante + soda)',descEn:'',price:8000,img:''},
+  {id:14,cat:'bebidas',subcat:'cervezas',name:'Stella Artois 330 ml',desc:'',descEn:'',price:8000,img:''},
+  {id:15,cat:'bebidas',subcat:'gintonic',name:'Gin Tonic',desc:'Gin + agua tónica + limón / naranja / pomelo.',descEn:'',price:8000,img:''},
+  {id:16,cat:'bebidas',subcat:'tintos',name:'Portillo Malbec 750 ml',desc:'Vino joven, frutado y fácil de tomar, de perfil suave y equilibrado.',descEn:'',price:8000,img:''},
+  {id:17,cat:'bebidas',subcat:'espumantes',name:'Mumm',desc:'',descEn:'',price:8000,img:''},
 ];
 
 const DEFAULT_PROMOS = [
-  {id:'p1',badge:'After Work',name:'Combo After Work',desc:'Gin Tonic + tabla de quesos y fiambres para dos. Lunes a viernes de 18 a 21 hs.',descEn:'Gin Tonic + cheese and cold cuts board for two. Mon-Fri 6-9 PM.',price:8500,img:''},
-  {id:'p2',badge:'Desayuno',name:'Desayuno Completo',desc:'Café con leche + jugo de naranja + 2 medialunas artesanales. De 7 a 11 hs.',descEn:'Coffee with milk + orange juice + 2 artisanal croissants. 7-11 AM.',price:3200,img:''},
-  {id:'p3',badge:'Almuerzo',name:'Menú del Día',desc:'Plato principal + bebida + postre del día. Con ingredientes frescos.',descEn:'Main dish + drink + dessert of the day. With fresh ingredients.',price:6900,img:''},
+  {id:'p1',badge:'',name:'Desayuno',desc:'Café con leche + jugo de naranja + 2 medialunas artesanales.',descEn:'Coffee with milk + orange juice + 2 artisanal croissants.',price:8000,img:''},
+  {id:'p2',badge:'',name:'Almuerzo',desc:'Plato principal + bebida + postre del día.',descEn:'Main dish + drink + dessert of the day.',price:8000,img:''},
 ];
 
 const CATS = [{key:'todos',label:'Todos'},{key:'desayunos',label:'Desayunos'},{key:'platos',label:'Platos'},{key:'bebidas',label:'Bebidas'}];
@@ -858,9 +832,6 @@ const SUBCAT_EMOJI = {
   sinalcohol:'🥤', tintos:'🍷', blancos:'🥂', espumantes:'🍾'
 };
 
-// ══════════════════════════════════════════
-// TAXONOMÍA
-// ══════════════════════════════════════════
 const SUBCAT_CONFIG = {
   desayunos: [
     {key:'cafeteria', labelKey:'sub_cafeteria'},
@@ -899,8 +870,23 @@ function normalize(str) {
   return str.toString().toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function isValidImg(u){ return typeof u==='string' && (u.startsWith('http://')||u.startsWith('https://')||u.startsWith('data:image')); }
 function formatPrice(p){ if(!p || p<=0) return t('price_consult'); return '$' + Number(p).toLocaleString('es-AR'); }
+
+// Convierte la columna E en una URL visualizable (http/https directas o Google Drive público)
+function resolveImageUrl(raw){
+  if(!raw) return '';
+  let u = raw.toString().trim();
+  if(!u) return '';
+  if(u.startsWith('data:image')) return u;
+  let m = u.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if(m) return 'https://lh3.googleusercontent.com/d/'+m[1];
+  if(u.includes('drive.google.com')){
+    m = u.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+    if(m) return 'https://lh3.googleusercontent.com/d/'+m[1];
+  }
+  if(u.startsWith('http://')||u.startsWith('https://')) return u;
+  return ''; // nombre de archivo local → no visualizable en web
+}
 
 function classify(rawCat){
   const c = normalize(rawCat);
@@ -957,14 +943,13 @@ function splitNameDesc(name, desc){
   return [name,desc];
 }
 
-// ══════════════════════════════════════════
-// PARSER INTELIGENTE DE LA HOJA "Menu"
-// ══════════════════════════════════════════
-function parseMenuRows(rows){
-  const items=[];
+// Parsea la hoja "Menu" y separa productos vs promociones (categoría "PROMOS")
+function parseSheetRows(rows){
+  const menuItems=[];
+  const promoItems=[];
   let lastCat='';
   let lastWineSub='tintos';
-  let idc=0;
+  let idc=0, pidc=0;
   rows.forEach(row=>{
     const c=row.c||[];
     let rawCat=(c[0]?.v??'').toString().trim();
@@ -972,13 +957,23 @@ function parseMenuRows(rows){
     let rawDesc=(c[2]?.v??'').toString().trim();
     let rawPrice=c[3]?.v;
     let rawImg=(c[4]?.v??'').toString().trim();
-
     if(rawCat) lastCat=rawCat; else rawCat=lastCat;
     if(!rawCat && !rawName) return;
 
+    // PROMOCIONES
+    if(normalize(rawCat).includes('promo')){
+      let name=rawName||rawDesc;
+      if(!name) return;
+      let desc=(rawName&&rawDesc)?rawDesc:'';
+      const price=parseInt(rawPrice)>0?parseInt(rawPrice):0;
+      const img=resolveImageUrl(rawImg);
+      promoItems.push({id:'p'+(++pidc), badge:'', name, desc, descEn:'', price, img});
+      return;
+    }
+
+    // PRODUCTOS DEL MENÚ
     const cls=classify(rawCat);
     let cat=cls.cat, sub=cls.sub, name=rawName, desc=rawDesc;
-
     if(sub==='__bycol'){
       sub=mapBeerSub(rawName);
       if(normalize(rawName).includes('gin')){ name='Gin Tonic'; desc=rawDesc; }
@@ -992,54 +987,14 @@ function parseMenuRows(rows){
       const isHeader=/(tintos|blancos|espumantes)(\s*750\s*ml)?$/.test(nb)||nb==='tintos'||nb==='blancos'||nb==='espumantes';
       if(isHeader){ name=rawDesc; desc=''; } else { name=rawName; desc=rawDesc; }
     }
-
     if(!name && desc){ name=desc; desc=''; }
     if(!name) return;
     [name,desc]=splitNameDesc(name,desc);
-
-    const price = parseInt(rawPrice)>0 ? parseInt(rawPrice) : 0;
-    const img = isValidImg(rawImg) ? rawImg : '';
-    items.push({id:++idc, cat, subcat:sub, name, desc, descEn:'', price, img});
+    const price=parseInt(rawPrice)>0?parseInt(rawPrice):0;
+    const img=resolveImageUrl(rawImg);
+    menuItems.push({id:++idc, cat, subcat:sub, name, desc, descEn:'', price, img});
   });
-  return items;
-}
-
-function parseMenuFromSheet(resp){
-  try{
-    const m=resp.match(/setResponse\((\{[\s\S]*\})\)/);
-    if(!m) return [];
-    const data=JSON.parse(m[1]);
-    if(!data.table||!data.table.rows) return [];
-    return parseMenuRows(data.table.rows);
-  }catch(e){ return []; }
-}
-
-function parsePromosFromSheet(resp){
-  try{
-    const m=resp.match(/setResponse\((\{[\s\S]*\})\)/);
-    if(!m) return [];
-    const data=JSON.parse(m[1]);
-    if(!data.table||!data.table.rows) return [];
-    const items=[];
-    data.table.rows.forEach((row,i)=>{
-      const c=row.c||[];
-      const badge=(c[0]?.v??'').toString().trim();
-      const name=(c[1]?.v??'').toString().trim();
-      const desc=(c[2]?.v??'').toString().trim();
-      const descEn=(c[5]?.v??'').toString().trim();
-      const price=parseInt(c[3]?.v)>0?parseInt(c[3]?.v):0;
-      const rawImg=(c[4]?.v??'').toString().trim();
-      const img=isValidImg(rawImg)?rawImg:'';
-      if(name) items.push({id:'p'+(i+1), badge:badge||'Promo', name, desc, descEn, price, img});
-    });
-    return items;
-  }catch(e){ return []; }
-}
-
-const MENU_CAT_TOKENS=['cafeteria','combo','tentacion','hamburguesa','pizza','ensalada','tarta','pasta','salsa','kid','panes','cocina','postre','bebida','aperitivo','vino','espumante','cerveza'];
-function looksLikeMenu(promos){
-  if(!promos.length) return false;
-  return promos.every(p=>{ const b=normalize(p.badge); return MENU_CAT_TOKENS.some(tok=>b.includes(tok)); });
+  return {menuItems, promoItems};
 }
 
 let menuData=[];
@@ -1051,32 +1006,33 @@ let cart={};
 let adminMode=false;
 let cartMesa=null;
 let cartOnline=false;
+let cartCash=false;
 let cartNote='';
 
-// ══════════════════════════════════════════
-// CARGA DESDE GOOGLE SHEETS
-// ══════════════════════════════════════════
 async function loadDataFromSheets(){
   try{
-    const menuUrl=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Menu`;
-    const resp=await fetch(menuUrl).then(r=>r.text());
-    const parsed=parseMenuFromSheet(resp);
-    if(parsed.length>0){ menuData=parsed; console.log('✅ Menú cargado desde Google Sheets ('+parsed.length+' productos)'); }
-    else { menuData=JSON.parse(JSON.stringify(DEFAULT_MENU)); console.warn('⚠ Menú vacío en Sheets, usando respaldo local'); }
-  }catch(e){ menuData=JSON.parse(JSON.stringify(DEFAULT_MENU)); console.warn('⚠ Error cargando Menú, usando respaldo local'); }
-
-  try{
-    const promosUrl=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Promos`;
-    const resp=await fetch(promosUrl).then(r=>r.text());
-    let parsed=parsePromosFromSheet(resp);
-    if(parsed.length>0 && !looksLikeMenu(parsed)){ promosData=parsed; console.log('✅ Promos cargadas desde Google Sheets'); }
-    else { promosData=JSON.parse(JSON.stringify(DEFAULT_PROMOS)); }
-  }catch(e){ promosData=JSON.parse(JSON.stringify(DEFAULT_PROMOS)); }
+    const url=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Menu`;
+    const resp=await fetch(url).then(r=>r.text());
+    const m=resp.match(/setResponse\((\{[\s\S]*\})\)/);
+    if(m){
+      const data=JSON.parse(m[1]);
+      if(data.table&&data.table.rows){
+        const {menuItems, promoItems}=parseSheetRows(data.table.rows);
+        if(menuItems.length>0){ menuData=menuItems; console.log('✅ Menú cargado ('+menuItems.length+' productos)'); }
+        else { menuData=JSON.parse(JSON.stringify(DEFAULT_MENU)); }
+        if(promoItems.length>0){ promosData=promoItems; console.log('✅ Promos cargadas ('+promoItems.length+')'); }
+        else { promosData=JSON.parse(JSON.stringify(DEFAULT_PROMOS)); }
+        return;
+      }
+    }
+    throw new Error('sin datos');
+  }catch(e){
+    console.warn('⚠ Usando respaldo local:', e.message);
+    menuData=JSON.parse(JSON.stringify(DEFAULT_MENU));
+    promosData=JSON.parse(JSON.stringify(DEFAULT_PROMOS));
+  }
 }
 
-// ══════════════════════════════════════════
-// SCROLL-LINKED VIDEO + PARALLAX
-// ═════════════════════════════════════════
 let ticking=false;
 function onScrollThrottled(){ if(!ticking){ ticking=true; requestAnimationFrame(()=>{ onScroll(); ticking=false; }); } }
 function onScroll(){
@@ -1104,9 +1060,6 @@ function onScroll(){
   });
 }
 
-// ══════════════════════════════════════════
-// BÚSQUEDA
-// ══════════════════════════════════════════
 function onSearch(val){
   searchQuery=val;
   const clr=document.getElementById('searchClear');
@@ -1122,9 +1075,6 @@ function clearSearch(){
   renderMenu();
 }
 
-// ══════════════════════════════════════════
-// AGRUPACIÓN EDITORIAL DEL MENÚ
-// ══════════════════════════════════════════
 function catLabel(key){ return t('cat_'+key); }
 function catDesc(key){ return t('cat_desc_'+key); }
 
@@ -1185,9 +1135,6 @@ function cardHTML(item,i){
   `;
 }
 
-// ══════════════════════════════════════════
-// RENDERIZADO
-// ═════════════════════════════════════════
 function renderTabs(){
   if(!document.getElementById('tabs')) return;
   const tabs=document.getElementById('tabs');
@@ -1293,31 +1240,39 @@ function observeMenuReveals(){
   document.querySelectorAll('#menuGrid .mhead-reveal, #menuGrid .mcard-reveal').forEach(el=>menuObserver.observe(el));
 }
 
+function promoBadge(name){
+  const n=normalize(name);
+  if(n.includes('desayuno')) return t('promo_badge_breakfast');
+  if(n.includes('almuerzo')) return t('promo_badge_lunch');
+  if(n.includes('cena')) return t('promo_badge_dinner');
+  if(n.includes('after')) return 'After Work';
+  return t('promo_badge_default');
+}
+
 function renderPromos(){
-  if(!document.getElementById('promosGrid')) return;
   const grid=document.getElementById('promosGrid');
+  if(!grid) return;
   grid.innerHTML=promosData.map(item=>{
     const desc=currentLang==='en'&&item.descEn?item.descEn:item.desc;
+    const badge=item.badge||promoBadge(item.name);
     return `
     <div class="promo-card">
       <div class="promo-img-wrap">
-        ${item.img?`<img src="${item.img}" alt="${item.name}" loading="lazy">`:`<div class="promo-img-emoji">🎉</div>`}
+        ${item.img?`<img src="${item.img}" alt="${escapeHtml(item.name)}" loading="lazy">`:`<div class="promo-img-emoji">🎉</div>`}
       </div>
       <div class="promo-body">
-        <div class="promo-badge">${escapeHtml(item.badge)}</div>
+        <div class="promo-badge">${escapeHtml(badge)}</div>
         <div class="promo-name">${escapeHtml(item.name)}</div>
         <div class="promo-desc">${escapeHtml(desc)}</div>
         <div class="promo-footer">
           <div class="promo-price">${formatPrice(item.price)}</div>
+          <button class="add-btn" onclick="addToCart('${item.id}', '${item.name.replace(/'/g,"\\'")}', ${item.price||0}, this)">+</button>
         </div>
       </div>
     </div>
   `}).join('');
 }
 
-// ═════════════════════════════════════════
-// CARRITO
-// ═════════════════════════════════════════
 function addToCart(id, name, price, btnElement){
   if(!cart[id]) cart[id]={name, price, qty:0};
   cart[id].qty++;
@@ -1385,11 +1340,19 @@ function updateCartMesa(){
   updateSendButtonState();
 }
 function onNoteChange(val){ cartNote=val; }
-function toggleOnlineOption(){ cartOnline=document.getElementById('cartOnlineCheck').checked; updateSendButtonState(); }
 
-// ═════════════════════════════════════════
-// COMANDA (formato para cocina)
-// ═════════════════════════════════════════
+// Efectivo y Online son excluyentes
+function toggleCashOption(){
+  cartCash=document.getElementById('cartCashCheck').checked;
+  if(cartCash){ cartOnline=false; document.getElementById('cartOnlineCheck').checked=false; }
+  updateSendButtonState();
+}
+function toggleOnlineOption(){
+  cartOnline=document.getElementById('cartOnlineCheck').checked;
+  if(cartOnline){ cartCash=false; document.getElementById('cartCashCheck').checked=false; }
+  updateSendButtonState();
+}
+
 function buildComanda(){
   const items=Object.values(cart).filter(i=>i.qty>0);
   const total=items.reduce((s,i)=>s+(i.price*i.qty),0);
@@ -1423,7 +1386,8 @@ function buildComanda(){
   lines.push(sep);
   lines.push('💰 *'+t('comanda_total')+': $'+total.toLocaleString('es-AR')+'*'+(hasConsult?' ('+t('comanda_partial')+')':''));
   if(hasConsult) lines.push('⚠️ '+t('comanda_consultwarn'));
-  if(cartOnline) lines.push('💳 *'+t('comanda_online')+'*');
+  if(cartCash) lines.push('💵 *'+t('comanda_cash')+'*');
+  else if(cartOnline) lines.push('💳 *'+t('comanda_online')+'*');
   lines.push(sep);
   return lines.join('\n');
 }
@@ -1433,8 +1397,9 @@ function sendOrder(){
   const items=Object.values(cart).filter(i=>i.qty>0);
   if(items.length===0) return;
   window.open(`https://wa.me/5493489236010?text=${encodeURIComponent(buildComanda())}`);
-  cart={}; cartMesa=null; cartOnline=false; cartNote='';
+  cart={}; cartMesa=null; cartOnline=false; cartCash=false; cartNote='';
   document.getElementById('cartOnlineCheck').checked=false;
+  document.getElementById('cartCashCheck').checked=false;
   document.getElementById('cartMesaSelect').value='';
   const noteEl=document.getElementById('cartNote'); if(noteEl) noteEl.value='';
   updateCartUI(); toggleCart();
@@ -1451,9 +1416,6 @@ function sendOnlineOrder(){
   alert(message);
 }
 
-// ═════════════════════════════════════════
-// ADMIN
-// ═════════════════════════════════════════
 function setAdmin(on){
   if(on){
     const pwd=prompt(t('admin_password'));
@@ -1468,9 +1430,6 @@ function setAdmin(on){
   else console.log('⚠️ MODO ADMINISTRADOR DESACTIVADO');
 }
 
-// ═════════════════════════════════════════
-// INICIALIZACIÓN Y AUXILIARES
-// ═════════════════════════════════════════
 async function init(){
   await loadDataFromSheets();
   setLang(currentLang);
