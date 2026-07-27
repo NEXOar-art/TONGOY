@@ -218,6 +218,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 .cart-mesa-label .required{color:#E07050;}
 .cart-mesa-select{width:100%;background:var(--char);border:1px solid var(--border);color:var(--cream);padding:.5rem .7rem;border-radius:4px;font-size:.85rem;font-family:'DM Sans',sans-serif;cursor:pointer;}
 .cart-mesa-select:focus{outline:none;border-color:var(--gold);}
+.cart-note-wrap{margin-bottom:.8rem;}
+.cart-note-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem;}
+.cart-note{width:100%;background:var(--char);border:1px solid var(--border);color:var(--cream);padding:.55rem .7rem;border-radius:4px;font-size:.85rem;font-family:'DM Sans',sans-serif;resize:vertical;min-height:54px;line-height:1.45;transition:border-color .25s;}
+.cart-note:focus{outline:none;border-color:var(--gold);}
+.cart-note::placeholder{color:var(--muted);}
 .cart-online-wrap{margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:4px;flex-wrap:wrap;}
 .cart-online-wrap input[type="checkbox"]{width:16px;height:16px;accent-color:var(--gold);cursor:pointer;}
 .cart-online-wrap label{font-size:.78rem;color:var(--cream);cursor:pointer;flex:1;}
@@ -513,6 +518,10 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
           <option value="" data-i18n="cart_mesa_placeholder">Seleccionar mesa...</option>
         </select>
       </div>
+      <div class="cart-note-wrap">
+        <div class="cart-note-label"><span>📝</span> <span data-i18n="cart_note_label">Nota / Observaciones</span></div>
+        <textarea id="cartNote" class="cart-note" data-i18n-placeholder="cart_note_placeholder" placeholder="Ej: sin cebolla, bien cocido, alergias..." oninput="onNoteChange(this.value)" rows="2"></textarea>
+      </div>
       <div class="cart-online-wrap">
         <input type="checkbox" id="cartOnlineCheck" onchange="toggleOnlineOption()">
         <label for="cartOnlineCheck" data-i18n="cart_online_label">Compra Online</label>
@@ -645,7 +654,7 @@ const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit?usp=s
 // ══════════════════════════════════════════
 //  GESTIÓN DE VERSIÓN (preserva el idioma elegido)
 // ═════════════════════════════════════════
-const currentVersion = '8.5';
+const currentVersion = '8.6';
 const _savedLang = localStorage.getItem('lang');
 if (localStorage.getItem('appVersion') !== currentVersion) {
   localStorage.clear();
@@ -681,6 +690,7 @@ const I18N = {
     cart_title:'🛒 Tu Pedido', cart_empty:'Tu carrito está vacío.<br>¡Agregá algo del menú!',
     cart_total_label:'Total estimado', cart_total_partial:'Total parcial', cart_send:'Enviar Pedido por WhatsApp', cart_view:'Ver Pedido',
     cart_mesa_label:'Número de mesa', cart_mesa_placeholder:'Seleccionar mesa...',
+    cart_note_label:'Nota / Observaciones', cart_note_placeholder:'Ej: sin cebolla, bien cocido, alergias...',
     cart_online_label:'Compra Online', cart_online_info:'Opcional - Para pedidos con pago digital', cart_online_btn:'Pagar Online',
     cart_consult_note:'⚠ Hay ítems con precio a consultar en el local',
     promos_label:'✦ Ofertas especiales', promos_title:'Promociones',
@@ -708,7 +718,10 @@ const I18N = {
     sub_entrepanes:'Entre Panes', sub_cocina:'La Cocina de Tongoy', sub_kids:'Menú Kids', sub_postres:'Postres', sub_otros:'Otros',
     sub_aperitivos:'Aperitivos & Clásicos', sub_cervezas:'Cervezas', sub_gintonic:'Gin Tonic',
     sub_licores:'Licores', sub_whisky:'Whisky', sub_vodka:'Vodka', sub_sinalcohol:'Sin Alcohol',
-    sub_tintos:'Vinos Tintos', sub_blancos:'Vinos Blancos', sub_espumantes:'Espumantes'
+    sub_tintos:'Vinos Tintos', sub_blancos:'Vinos Blancos', sub_espumantes:'Espumantes',
+    comanda_title:'COMANDA TONGOY', comanda_table:'MESA', comanda_order:'PEDIDO', comanda_notes:'NOTAS / OBSERVACIONES',
+    comanda_total:'TOTAL', comanda_partial:'parcial', comanda_consultwarn:'Incluye ítems a consultar en el local',
+    comanda_online:'COMPRA ONLINE (pago digital)', comanda_hs:'hs'
   },
   en: {
     nav_home:'Home', nav_menu:'Menu', nav_promos:'Promos', nav_about:'About Us', nav_contact:'Contact', nav_order:'Order Now',
@@ -733,6 +746,7 @@ const I18N = {
     cart_title:'🛒 Your Order', cart_empty:'Your cart is empty.<br>Add something from the menu!',
     cart_total_label:'Estimated total', cart_total_partial:'Partial total', cart_send:'Send Order via WhatsApp', cart_view:'View Order',
     cart_mesa_label:'Table number', cart_mesa_placeholder:'Select table...',
+    cart_note_label:'Note / Remarks', cart_note_placeholder:'E.g.: no onion, well done, allergies...',
     cart_online_label:'Online Purchase', cart_online_info:'Optional - For digital payment orders', cart_online_btn:'Pay Online',
     cart_consult_note:'⚠ Some items have prices to confirm at the venue',
     promos_label:'✦ Special offers', promos_title:'Promotions',
@@ -760,7 +774,10 @@ const I18N = {
     sub_entrepanes:'Sandwiches', sub_cocina:"Tongoy's Kitchen", sub_kids:'Kids Menu', sub_postres:'Desserts', sub_otros:'Others',
     sub_aperitivos:'Aperitifs & Classics', sub_cervezas:'Beers', sub_gintonic:'Gin Tonic',
     sub_licores:'Liqueurs', sub_whisky:'Whisky', sub_vodka:'Vodka', sub_sinalcohol:'Non-Alcoholic',
-    sub_tintos:'Red Wines', sub_blancos:'White Wines', sub_espumantes:'Sparkling'
+    sub_tintos:'Red Wines', sub_blancos:'White Wines', sub_espumantes:'Sparkling',
+    comanda_title:'TONGOY ORDER', comanda_table:'TABLE', comanda_order:'ORDER', comanda_notes:'NOTES / REMARKS',
+    comanda_total:'TOTAL', comanda_partial:'partial', comanda_consultwarn:'Includes items to confirm at the venue',
+    comanda_online:'ONLINE PURCHASE (digital payment)', comanda_hs:''
   }
 };
 
@@ -842,7 +859,7 @@ const SUBCAT_EMOJI = {
 };
 
 // ══════════════════════════════════════════
-// TAXONOMÍA (orden de sub-filtros por macro-categoría)
+// TAXONOMÍA
 // ══════════════════════════════════════════
 const SUBCAT_CONFIG = {
   desayunos: [
@@ -885,7 +902,6 @@ function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':
 function isValidImg(u){ return typeof u==='string' && (u.startsWith('http://')||u.startsWith('https://')||u.startsWith('data:image')); }
 function formatPrice(p){ if(!p || p<=0) return t('price_consult'); return '$' + Number(p).toLocaleString('es-AR'); }
 
-// Clasifica la "familia" (columna A) → macro-categoría + subcategoría
 function classify(rawCat){
   const c = normalize(rawCat);
   if(c.includes('aperitiv')) return {cat:'bebidas', sub:'aperitivos'};
@@ -957,19 +973,17 @@ function parseMenuRows(rows){
     let rawPrice=c[3]?.v;
     let rawImg=(c[4]?.v??'').toString().trim();
 
-    if(rawCat) lastCat=rawCat; else rawCat=lastCat;   // forward-fill de categoría
+    if(rawCat) lastCat=rawCat; else rawCat=lastCat;
     if(!rawCat && !rawName) return;
 
     const cls=classify(rawCat);
     let cat=cls.cat, sub=cls.sub, name=rawName, desc=rawDesc;
 
     if(sub==='__bycol'){
-      // Bebidas: sub-familia en columna B, producto en columna C
       sub=mapBeerSub(rawName);
       if(normalize(rawName).includes('gin')){ name='Gin Tonic'; desc=rawDesc; }
       else { name=rawDesc; desc=''; }
     } else if(sub==='__wine'){
-      // Vinos: forward-fill de Tintos/Blancos/Espumantes según encabezados
       const nb=normalize(rawName);
       if(nb.includes('tinto')) lastWineSub='tintos';
       else if(nb.includes('blanco')) lastWineSub='blancos';
@@ -1022,7 +1036,6 @@ function parsePromosFromSheet(resp){
   }catch(e){ return []; }
 }
 
-// Detecta si la hoja "Promos" devolvió en realidad la hoja "Menu"
 const MENU_CAT_TOKENS=['cafeteria','combo','tentacion','hamburguesa','pizza','ensalada','tarta','pasta','salsa','kid','panes','cocina','postre','bebida','aperitivo','vino','espumante','cerveza'];
 function looksLikeMenu(promos){
   if(!promos.length) return false;
@@ -1038,12 +1051,12 @@ let cart={};
 let adminMode=false;
 let cartMesa=null;
 let cartOnline=false;
+let cartNote='';
 
 // ══════════════════════════════════════════
-// CARGA DESDE GOOGLE SHEETS (independiente por hoja)
+// CARGA DESDE GOOGLE SHEETS
 // ══════════════════════════════════════════
 async function loadDataFromSheets(){
-  // MENU
   try{
     const menuUrl=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Menu`;
     const resp=await fetch(menuUrl).then(r=>r.text());
@@ -1052,7 +1065,6 @@ async function loadDataFromSheets(){
     else { menuData=JSON.parse(JSON.stringify(DEFAULT_MENU)); console.warn('⚠ Menú vacío en Sheets, usando respaldo local'); }
   }catch(e){ menuData=JSON.parse(JSON.stringify(DEFAULT_MENU)); console.warn('⚠ Error cargando Menú, usando respaldo local'); }
 
-  // PROMOS
   try{
     const promosUrl=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=Promos`;
     const resp=await fetch(promosUrl).then(r=>r.text());
@@ -1120,7 +1132,6 @@ function buildMenuGroups(){
   const q=normalize(searchQuery);
   let base=menuData;
   if(q){
-    // búsqueda global: recorre todo el menú sin importar pestaña activa
     base=base.filter(m=>normalize(m.name).includes(q)||normalize(m.desc).includes(q));
   } else {
     const cat=activeCat==='todos'?null:activeCat;
@@ -1373,29 +1384,59 @@ function updateCartMesa(){
   cartMesa=(val&&val>=1&&val<=200)?val:null;
   updateSendButtonState();
 }
+function onNoteChange(val){ cartNote=val; }
 function toggleOnlineOption(){ cartOnline=document.getElementById('cartOnlineCheck').checked; updateSendButtonState(); }
 
-function buildOrderText(){
+// ═════════════════════════════════════════
+// COMANDA (formato para cocina)
+// ═════════════════════════════════════════
+function buildComanda(){
   const items=Object.values(cart).filter(i=>i.qty>0);
   const total=items.reduce((s,i)=>s+(i.price*i.qty),0);
   const hasConsult=items.some(i=>!i.price||i.price<=0);
-  const mesaText=currentLang==='es'?'Mesa':'Table';
-  const lines=items.map(i=>`${i.qty}x ${i.name} - ${formatPrice(i.price)}`).join('\n');
-  const onlineText=cartOnline?(currentLang==='es'?'\n💳 COMPRA ONLINE (pago digital)':'\n💳 ONLINE PURCHASE (digital payment)'):'';
-  const totalLine=hasConsult
-    ? (currentLang==='es'?`Total parcial: $${total.toLocaleString('es-AR')} (hay ítems a consultar)`:`Partial total: $${total.toLocaleString('es-AR')} (some items to confirm)`)
-    : `Total: $${total.toLocaleString('es-AR')}`;
-  return `Hola! 🍽️ Quiero hacer un pedido:\n\n${lines}\n\n📍 ${mesaText} ${cartMesa}${onlineText}\n${totalLine}`;
+  const now=new Date();
+  const fecha=now.toLocaleDateString('es-AR');
+  const hora=now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+  const num=Math.floor(1000+Math.random()*9000);
+  const sep='━━━━━━━━━━━━━━━';
+  const note=cartNote.trim();
+  const hs=currentLang==='es'?' hs':'';
+
+  const lines=[];
+  lines.push('🍽️ *'+t('comanda_title')+'*');
+  lines.push('🔖 N° #'+num);
+  lines.push(sep);
+  lines.push('📍 *'+t('comanda_table')+' '+cartMesa+'*');
+  lines.push('🕐 '+fecha+' · '+hora+hs);
+  lines.push(sep);
+  lines.push('📋 *'+t('comanda_order')+'*');
+  lines.push('');
+  items.forEach(i=>{
+    lines.push('▸ '+i.qty+'x '+i.name+' — '+formatPrice(i.price));
+  });
+  lines.push('');
+  if(note){
+    lines.push(sep);
+    lines.push('📝 *'+t('comanda_notes')+'*');
+    lines.push(note);
+  }
+  lines.push(sep);
+  lines.push('💰 *'+t('comanda_total')+': $'+total.toLocaleString('es-AR')+'*'+(hasConsult?' ('+t('comanda_partial')+')':''));
+  if(hasConsult) lines.push('⚠️ '+t('comanda_consultwarn'));
+  if(cartOnline) lines.push('💳 *'+t('comanda_online')+'*');
+  lines.push(sep);
+  return lines.join('\n');
 }
 
 function sendOrder(){
   if(!cartMesa){ alert(currentLang==='es'?'Por favor seleccioná un número de mesa':'Please select a table number'); return; }
   const items=Object.values(cart).filter(i=>i.qty>0);
   if(items.length===0) return;
-  window.open(`https://wa.me/5493489236010?text=${encodeURIComponent(buildOrderText())}`);
-  cart={}; cartMesa=null; cartOnline=false;
+  window.open(`https://wa.me/5493489236010?text=${encodeURIComponent(buildComanda())}`);
+  cart={}; cartMesa=null; cartOnline=false; cartNote='';
   document.getElementById('cartOnlineCheck').checked=false;
   document.getElementById('cartMesaSelect').value='';
+  const noteEl=document.getElementById('cartNote'); if(noteEl) noteEl.value='';
   updateCartUI(); toggleCart();
 }
 
