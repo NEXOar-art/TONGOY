@@ -187,6 +187,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;background:rgba(15,12,9,.92)
 @keyframes addPulse{0%{transform:scale(1);}50%{transform:scale(1.35);}100%{transform:scale(1);}}
 .menu-empty{grid-column:1/-1;text-align:center;padding:3.5rem 1rem;color:var(--muted);font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;}
 
+.img-edit-btn{position:absolute;top:.5rem;right:.5rem;z-index:3;background:rgba(15,12,9,.85);border:1px solid var(--gold);color:var(--gold);width:32px;height:32px;border-radius:4px;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;transition:all .2s;backdrop-filter:blur(4px);}
+.img-edit-btn:hover{background:var(--gold);color:var(--dark);transform:scale(1.1);}
+
 .cart-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:250;}
 .cart-btn{background:var(--gold);color:var(--dark);border:none;padding:.8rem 1.4rem;border-radius:50px;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;gap:.5rem;box-shadow:0 6px 28px rgba(201,168,76,.38);transition:all .2s;letter-spacing:.04em;}
 .cart-btn:hover{background:var(--gold-l);transform:translateY(-2px);}
@@ -351,11 +354,15 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
     <button class="admin-close-full" onclick="setAdmin(false)" data-i18n="admin_exit">Salir del modo admin</button>
   </div>
   <p class="admin-hint">
-    📊 <strong>Base de Datos:</strong> Todos los productos, precios e imágenes se cargan directamente desde Google Sheets.
+    📊 <strong>Base de Datos:</strong> Productos, precios e imágenes se cargan desde Google Sheets.
     <br><br>
     <a href="https://docs.google.com/spreadsheets/d/1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI/edit?usp=sharing" target="_blank" style="color:var(--gold-l);text-decoration:underline; font-weight:bold; font-size: 1rem;">📝 Abrir Google Sheets para Editar</a>
     <br><br>
-    <em style="font-size: 0.75rem; color: var(--muted);">Hoja "Menu": A=Categoría, B=Nombre, C=Descripción, D=Precio, E=URL de imagen (http/https o enlace público de Drive). Las filas con categoría "PROMOS" se muestran como promociones. Después de guardar cambios, recarga esta página (F5).</em>
+    <em style="font-size: 0.75rem; color: var(--muted);">
+    🖼️ <strong>Imágenes (columna E):</strong> pegá una URL pública (http/https, Google Drive compartido, Dropbox o Imgur) y se muestra sola.
+    También podés cambiar la imagen con el botón 📷 de cada tarjeta (se guarda en este navegador).
+    <br>🧾 Las filas con categoría "PROMOS" se muestran como promociones. Después de guardar cambios en la hoja, recargá (F5).
+    </em>
   </p>
 </div>
 
@@ -634,11 +641,13 @@ footer{position:relative;z-index:1;background:var(--dark3);border-top:1px solid 
   </div>
 </footer>
 
+<input type="file" id="imgFileInput" accept="image/*" style="display:none">
+
 <script>
 const SHEET_ID = '1wlDDniHWbdJZ0FbbEcEPLVi4EeglWlAHlKf4oO0VScI';
 const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/edit?usp=sharing`;
 
-const currentVersion = '8.7';
+const currentVersion = '8.8';
 const _savedLang = localStorage.getItem('lang');
 if (localStorage.getItem('appVersion') !== currentVersion) {
   localStorage.clear();
@@ -703,8 +712,11 @@ const I18N = {
     sub_tintos:'Vinos Tintos', sub_blancos:'Vinos Blancos', sub_espumantes:'Espumantes',
     comanda_title:'COMANDA TONGOY', comanda_table:'MESA', comanda_order:'PEDIDO', comanda_notes:'NOTAS / OBSERVACIONES',
     comanda_total:'TOTAL', comanda_partial:'parcial', comanda_consultwarn:'Incluye ítems a consultar en el local',
-    comanda_online:'COMPRA ONLINE (pago digital)', comanda_cash:'COMPRA EN EFECTIVO', comanda_hs:'hs',
-    promo_badge_breakfast:'Desayuno', promo_badge_lunch:'Almuerzo', promo_badge_dinner:'Cena', promo_badge_default:'Promo'
+    comanda_online:'PAGO: ONLINE (pago digital)', comanda_cash:'PAGO: EFECTIVO', comanda_pay_default:'PAGO: A CONFIRMAR EN EL LOCAL',
+    comanda_hs:'hs', comanda_qty:'CANT', comanda_item:'PRODUCTO', comanda_amount:'IMPORTE',
+    comanda_thanks:'¡Gracias por tu pedido! 🙌',
+    promo_badge_breakfast:'Desayuno', promo_badge_lunch:'Almuerzo', promo_badge_dinner:'Cena', promo_badge_default:'Promo',
+    img_select_error:'Seleccioná un archivo de imagen válido', img_too_large:'La imagen es demasiado grande para guardar en este navegador'
   },
   en: {
     nav_home:'Home', nav_menu:'Menu', nav_promos:'Promos', nav_about:'About Us', nav_contact:'Contact', nav_order:'Order Now',
@@ -761,8 +773,11 @@ const I18N = {
     sub_tintos:'Red Wines', sub_blancos:'White Wines', sub_espumantes:'Sparkling',
     comanda_title:'TONGOY ORDER', comanda_table:'TABLE', comanda_order:'ORDER', comanda_notes:'NOTES / REMARKS',
     comanda_total:'TOTAL', comanda_partial:'partial', comanda_consultwarn:'Includes items to confirm at the venue',
-    comanda_online:'ONLINE PURCHASE (digital payment)', comanda_cash:'CASH PAYMENT', comanda_hs:'',
-    promo_badge_breakfast:'Breakfast', promo_badge_lunch:'Lunch', promo_badge_dinner:'Dinner', promo_badge_default:'Promo'
+    comanda_online:'PAYMENT: ONLINE (digital payment)', comanda_cash:'PAYMENT: CASH', comanda_pay_default:'PAYMENT: TO CONFIRM AT VENUE',
+    comanda_hs:'', comanda_qty:'QTY', comanda_item:'ITEM', comanda_amount:'AMOUNT',
+    comanda_thanks:'Thank you for your order! 🙌',
+    promo_badge_breakfast:'Breakfast', promo_badge_lunch:'Lunch', promo_badge_dinner:'Dinner', promo_badge_default:'Promo',
+    img_select_error:'Please select a valid image file', img_too_large:'Image is too large to save in this browser'
   }
 };
 
@@ -870,9 +885,10 @@ function normalize(str) {
   return str.toString().toLowerCase().trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 function escapeHtml(s){ return (s||'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(s){ return (s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function formatPrice(p){ if(!p || p<=0) return t('price_consult'); return '$' + Number(p).toLocaleString('es-AR'); }
 
-// Convierte la columna E en una URL visualizable (http/https directas o Google Drive público)
+// Convierte la columna E en una URL visualizable (URL directa, Google Drive, Dropbox, Imgur o data:image)
 function resolveImageUrl(raw){
   if(!raw) return '';
   let u = raw.toString().trim();
@@ -884,8 +900,56 @@ function resolveImageUrl(raw){
     m = u.match(/[?&]id=([a-zA-Z0-9_-]+)/);
     if(m) return 'https://lh3.googleusercontent.com/d/'+m[1];
   }
+  if(u.includes('dropbox.com')){
+    return u.replace('www.dropbox.com','dl.dropboxusercontent.com').replace('dl=0','dl=1');
+  }
+  m = u.match(/imgur\.com\/(a\/)?([a-zA-Z0-9]+)/);
+  if(m && !/\.(jpg|jpeg|png|gif|webp)$/i.test(u)){
+    return 'https://i.imgur.com/'+m[2]+'.jpg';
+  }
   if(u.startsWith('http://')||u.startsWith('https://')) return u;
   return ''; // nombre de archivo local → no visualizable en web
+}
+
+// Overrides de imágenes subidas desde la PC (modo admin, guardadas en este navegador)
+let imageOverrides = {};
+function loadOverrides(){ try{ imageOverrides = JSON.parse(localStorage.getItem('tongoy_img_overrides')||'{}'); }catch(e){ imageOverrides={}; } }
+function saveOverrides(){ localStorage.setItem('tongoy_img_overrides', JSON.stringify(imageOverrides)); }
+function imgKey(item, isPromo){ return (isPromo?'promo::':normalize(item.cat)+'::')+normalize(item.name); }
+function getItemImg(item, isPromo){
+  const k = imgKey(item, isPromo);
+  if(imageOverrides[k]) return imageOverrides[k];
+  return resolveImageUrl(item.img);
+}
+let pendingImgKey = null;
+function editImage(key){ pendingImgKey = key; document.getElementById('imgFileInput').click(); }
+function handleImageFile(e){
+  const file = e.target.files[0];
+  if(!file || !pendingImgKey) return;
+  if(!file.type || !file.type.startsWith('image/')){ alert(t('img_select_error')); e.target.value=''; return; }
+  const key = pendingImgKey;
+  pendingImgKey = null;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    const img = new Image();
+    img.onload = function(){
+      const maxW = 900;
+      let w = img.width, h = img.height;
+      if(w > maxW){ h = Math.round(h * maxW / w); w = maxW; }
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.82);
+      imageOverrides[key] = dataUrl;
+      try{ saveOverrides(); }catch(err){ alert(t('img_too_large')); return; }
+      renderMenu();
+      renderPromos();
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+  e.target.value = '';
 }
 
 function classify(rawCat){
@@ -943,7 +1007,6 @@ function splitNameDesc(name, desc){
   return [name,desc];
 }
 
-// Parsea la hoja "Menu" y separa productos vs promociones (categoría "PROMOS")
 function parseSheetRows(rows){
   const menuItems=[];
   const promoItems=[];
@@ -960,18 +1023,15 @@ function parseSheetRows(rows){
     if(rawCat) lastCat=rawCat; else rawCat=lastCat;
     if(!rawCat && !rawName) return;
 
-    // PROMOCIONES
     if(normalize(rawCat).includes('promo')){
       let name=rawName||rawDesc;
       if(!name) return;
       let desc=(rawName&&rawDesc)?rawDesc:'';
       const price=parseInt(rawPrice)>0?parseInt(rawPrice):0;
-      const img=resolveImageUrl(rawImg);
-      promoItems.push({id:'p'+(++pidc), badge:'', name, desc, descEn:'', price, img});
+      promoItems.push({id:'p'+(++pidc), badge:'', name, desc, descEn:'', price, img:rawImg});
       return;
     }
 
-    // PRODUCTOS DEL MENÚ
     const cls=classify(rawCat);
     let cat=cls.cat, sub=cls.sub, name=rawName, desc=rawDesc;
     if(sub==='__bycol'){
@@ -991,8 +1051,7 @@ function parseSheetRows(rows){
     if(!name) return;
     [name,desc]=splitNameDesc(name,desc);
     const price=parseInt(rawPrice)>0?parseInt(rawPrice):0;
-    const img=resolveImageUrl(rawImg);
-    menuItems.push({id:++idc, cat, subcat:sub, name, desc, descEn:'', price, img});
+    menuItems.push({id:++idc, cat, subcat:sub, name, desc, descEn:'', price, img:rawImg});
   });
   return {menuItems, promoItems};
 }
@@ -1118,10 +1177,13 @@ function cardHTML(item,i){
   const priceLabel=formatPrice(item.price);
   const noPrice=(!item.price||item.price<=0);
   const emoji=SUBCAT_EMOJI[item.subcat]||EMOJIS[item.cat]||'🍽️';
+  const img=getItemImg(item,false);
+  const key=imgKey(item,false);
   return `
     <article class="menu-card mcard-reveal" style="--d:${delay}ms">
       <div class="card-img-wrap">
-        ${item.img?`<img src="${item.img}" alt="${escapeHtml(item.name)}" loading="lazy">`:`<div class="card-emoji">${emoji}</div>`}
+        ${img?`<img src="${img}" alt="${escapeHtml(item.name)}" loading="lazy">`:`<div class="card-emoji">${emoji}</div>`}
+        ${adminMode?`<button class="img-edit-btn" data-imgkey="${escapeAttr(key)}" title="Cambiar imagen">📷</button>`:''}
       </div>
       <div class="card-body">
         <div class="card-name">${escapeHtml(item.name)}</div>
@@ -1255,10 +1317,13 @@ function renderPromos(){
   grid.innerHTML=promosData.map(item=>{
     const desc=currentLang==='en'&&item.descEn?item.descEn:item.desc;
     const badge=item.badge||promoBadge(item.name);
+    const img=getItemImg(item,true);
+    const key=imgKey(item,true);
     return `
     <div class="promo-card">
       <div class="promo-img-wrap">
-        ${item.img?`<img src="${item.img}" alt="${escapeHtml(item.name)}" loading="lazy">`:`<div class="promo-img-emoji">🎉</div>`}
+        ${img?`<img src="${img}" alt="${escapeHtml(item.name)}" loading="lazy">`:`<div class="promo-img-emoji">🎉</div>`}
+        ${adminMode?`<button class="img-edit-btn" data-imgkey="${escapeAttr(key)}" title="Cambiar imagen">📷</button>`:''}
       </div>
       <div class="promo-body">
         <div class="promo-badge">${escapeHtml(badge)}</div>
@@ -1341,7 +1406,6 @@ function updateCartMesa(){
 }
 function onNoteChange(val){ cartNote=val; }
 
-// Efectivo y Online son excluyentes
 function toggleCashOption(){
   cartCash=document.getElementById('cartCashCheck').checked;
   if(cartCash){ cartOnline=false; document.getElementById('cartOnlineCheck').checked=false; }
@@ -1353,6 +1417,10 @@ function toggleOnlineOption(){
   updateSendButtonState();
 }
 
+// ── COMANDA PROFESIONAL (formato ticket para cocina) ──
+function padR(s,w){ s=String(s); return s.length>w ? s.slice(0,w-1)+'…' : s+' '.repeat(w-s.length); }
+function padL(s,w){ s=String(s); return s.length>w ? s.slice(0,w) : ' '.repeat(w-s.length)+s; }
+
 function buildComanda(){
   const items=Object.values(cart).filter(i=>i.qty>0);
   const total=items.reduce((s,i)=>s+(i.price*i.qty),0);
@@ -1361,35 +1429,42 @@ function buildComanda(){
   const fecha=now.toLocaleDateString('es-AR');
   const hora=now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
   const num=Math.floor(1000+Math.random()*9000);
-  const sep='━━━━━━━━━━━━━━━';
   const note=cartNote.trim();
   const hs=currentLang==='es'?' hs':'';
+  const FENCE='\u0060\u0060\u0060';
 
-  const lines=[];
-  lines.push('🍽️ *'+t('comanda_title')+'*');
-  lines.push('🔖 N° #'+num);
-  lines.push(sep);
-  lines.push('📍 *'+t('comanda_table')+' '+cartMesa+'*');
-  lines.push('🕐 '+fecha+' · '+hora+hs);
-  lines.push(sep);
-  lines.push('📋 *'+t('comanda_order')+'*');
-  lines.push('');
+  const priceFn = i => (i.price&&i.price>0) ? '$'+(i.price*i.qty).toLocaleString('es-AR') : t('price_consult');
+  const totalStr = '$'+total.toLocaleString('es-AR');
+  const nameW = Math.min(28, Math.max(t('comanda_item').length, ...items.map(i=>i.name.length)));
+  const priceW = Math.max(t('comanda_amount').length, totalStr.length, ...items.map(i=>priceFn(i).length));
+  const sepLen = 4 + 2 + nameW + 2 + priceW;
+  const sep = '-'.repeat(sepLen);
+
+  const table=[];
+  table.push(padR(t('comanda_qty'),4)+'  '+padR(t('comanda_item'),nameW)+'  '+padL(t('comanda_amount'),priceW));
+  table.push(sep);
   items.forEach(i=>{
-    lines.push('▸ '+i.qty+'x '+i.name+' — '+formatPrice(i.price));
+    table.push(padL(i.qty+'x',4)+'  '+padR(i.name,nameW)+'  '+padL(priceFn(i),priceW));
   });
-  lines.push('');
-  if(note){
-    lines.push(sep);
-    lines.push('📝 *'+t('comanda_notes')+'*');
-    lines.push(note);
-  }
-  lines.push(sep);
-  lines.push('💰 *'+t('comanda_total')+': $'+total.toLocaleString('es-AR')+'*'+(hasConsult?' ('+t('comanda_partial')+')':''));
-  if(hasConsult) lines.push('⚠️ '+t('comanda_consultwarn'));
-  if(cartCash) lines.push('💵 *'+t('comanda_cash')+'*');
-  else if(cartOnline) lines.push('💳 *'+t('comanda_online')+'*');
-  lines.push(sep);
-  return lines.join('\n');
+  table.push(sep);
+  table.push(' '.repeat(6)+padL(t('comanda_total'),nameW)+'  '+padL(hasConsult?totalStr+' +':totalStr,priceW));
+
+  const msg=[];
+  msg.push('*🍽️ '+t('comanda_title')+'  ·  #'+num+'*');
+  msg.push('*📍 '+t('comanda_table')+' '+cartMesa+'*    🕐 '+fecha+' · '+hora+hs);
+  msg.push('');
+  msg.push(FENCE);
+  table.forEach(l=>msg.push(l));
+  msg.push(FENCE);
+  if(note){ msg.push(''); msg.push('📝 *'+t('comanda_notes')+':* '+note); }
+  msg.push('');
+  if(cartCash) msg.push('💵 *'+t('comanda_cash')+'*');
+  else if(cartOnline) msg.push('💳 *'+t('comanda_online')+'*');
+  else msg.push('💰 *'+t('comanda_pay_default')+'*');
+  if(hasConsult) msg.push('⚠️ '+t('comanda_consultwarn'));
+  msg.push('');
+  msg.push(t('comanda_thanks'));
+  return msg.join('\n');
 }
 
 function sendOrder(){
@@ -1426,11 +1501,14 @@ function setAdmin(on){
   document.getElementById('adminToggle').checked=on;
   document.getElementById('adminPanel').classList.toggle('open',on);
   document.body.classList.toggle('admin-mode',on);
+  renderMenu();
+  renderPromos();
   if(on) console.log('✅ MODO ADMINISTRADOR ACTIVADO - Google Sheets abierto');
   else console.log('⚠️ MODO ADMINISTRADOR DESACTIVADO');
 }
 
 async function init(){
+  loadOverrides();
   await loadDataFromSheets();
   setLang(currentLang);
   observeReveals();
@@ -1439,6 +1517,15 @@ async function init(){
   window.addEventListener('scroll',onScrollThrottled,{passive:true});
   window.addEventListener('resize',onScrollThrottled,{passive:true});
   onScroll();
+
+  // Delegación para botones de cambio de imagen (modo admin)
+  const mg=document.getElementById('menuGrid');
+  if(mg) mg.addEventListener('click', function(e){ const b=e.target.closest('.img-edit-btn'); if(b) editImage(b.getAttribute('data-imgkey')); });
+  const pg=document.getElementById('promosGrid');
+  if(pg) pg.addEventListener('click', function(e){ const b=e.target.closest('.img-edit-btn'); if(b) editImage(b.getAttribute('data-imgkey')); });
+  const fi=document.getElementById('imgFileInput');
+  if(fi) fi.addEventListener('change', handleImageFile);
+
   console.log('✅ App iniciada - Versión:',currentVersion,'- Idioma:',currentLang);
 }
 
